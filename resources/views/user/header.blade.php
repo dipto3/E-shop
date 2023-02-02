@@ -28,7 +28,7 @@
                    <a class="nav-link" href="blog_list.html">About</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="contact.html">Contact</a>
+                   <a class="nav-link" href="contact.html">Contact us</a>
                 </li>
 
                 @if (Route::has('login'))

@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController; 
 use App\Http\Controllers\CategoryController; 
 use App\Http\Controllers\UnitController; 
+use App\Http\Controllers\SizeController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -39,6 +40,14 @@ Route::get('/all-unit', [UnitController::class, 'index']);
 Route::get('/edit-unit/{id}', [UnitController::class, 'edit']);
 Route::post('/update-unit/{id}', [UnitController::class, 'update']);
 Route::post('/delete-unit/{id}', [UnitController::class, 'destroy']);
+
+
+Route::get('/add-size', [SizeController::class, 'create']);
+// Route::post('/store-unit', [UnitController::class, 'store']);
+Route::get('/all-size', [SizeController::class, 'index']);
+// Route::get('/edit-unit/{id}', [UnitController::class, 'edit']);
+// Route::post('/update-unit/{id}', [UnitController::class, 'update']);
+// Route::post('/delete-unit/{id}', [UnitController::class, 'destroy']);
 
 
 

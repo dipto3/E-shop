@@ -13,6 +13,7 @@
   <link rel="stylesheet" href="{{asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
 
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
+  {{-- <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}"> --}}
 
   <link rel="shortcut icon" href="{{asset('images/favicon.png')}}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">

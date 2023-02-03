@@ -27,7 +27,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Size Name</label>
-                        <input id="form_name" type="text" data-role="tagsinput" name="size" class="form-control" placeholder="Please enter size name..." required="required" data-error="Firstname is required.">
+                        <input id="form_name" type="text" data-role="tagsinput" name="size" class="form-control" placeholder="Please enter size name..."  >
                         
                     </div>
                 </div>

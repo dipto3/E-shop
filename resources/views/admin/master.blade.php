@@ -13,7 +13,7 @@
   <link rel="stylesheet" href="{{asset('vendors/datatables.net-bs4/dataTables.bootstrap4.css')}}">
 
   <link rel="stylesheet" href="{{asset('css/style.css')}}">
-  {{-- <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}"> --}}
+  <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
 
   <link rel="shortcut icon" href="{{asset('images/favicon.png')}}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
@@ -56,6 +56,7 @@
   <!-- End plugin js for this page-->
   <!-- inject:js -->
   <script src="{{asset('js/off-canvas.js')}}"></script>
+  <script src="{{asset('js/bootstrap-tagsinput.min.js')}}"></script>
   <script src="js/hoverable-collapse.js"></script>
   <script src="js/template.js"></script>
   <!-- endinject -->

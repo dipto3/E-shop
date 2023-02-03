@@ -5,8 +5,8 @@
     <thead>
         <tr>
           <th style="width: 5%;" scope="col">ID</th>
-          <th style="width: 20%;"scope="col">Unit Name</th>
-          <th style="width: 60%;"scope="col">Description</th>
+          <th style="width: 20%;"scope="col">Size Name</th>
+         
           <th style="width: 15%;"scope="col">Action</th>
         </tr>
       </thead>

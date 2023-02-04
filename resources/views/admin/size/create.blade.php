@@ -16,7 +16,7 @@
         <div class="card-body bg-light">
    
         <div class = "container">
-        <form id="contact-form" role="form" action="" method="POST">
+        <form id="contact-form" role="form" action="{{url('/store-size')}}" method="POST">
             @csrf
 
         

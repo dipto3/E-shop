@@ -11,11 +11,13 @@
         </tr>
       </thead>
     <tbody>
-       
+       @foreach ($sizes as $size)
+           
+      
         <tr>
-            <th scope="row"></th>
-            <td></td>
-            <td></td>
+            <th scope="row">{{$size->id}}</th>
+            <td>{{$size->size}}</td>
+           
             <td style="text-align:center;">
                 <a href="" class="btn btn-info update_productform">
                     <i class="las la-edit"></i>
@@ -30,7 +32,7 @@
               
             </td>
         </tr>
-       
+        @endforeach
      </tbody>
  </table>
 @endsection

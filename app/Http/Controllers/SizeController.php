@@ -11,7 +11,8 @@ class SizeController extends Controller
     return view('admin.size.create');
    }
    public function index(){
-    return view('admin.size.index');
+    $sizes = Size::all();
+    return view('admin.size.index',compact('sizes'));
    }
 
    public function store(Request $request)
@@ -23,4 +24,5 @@ class SizeController extends Controller
          
         return redirect()->back()->with('message','Size added');
     }
+    
 }

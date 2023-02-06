@@ -43,7 +43,7 @@
         <div class="collapse" id="ui-basic">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('/add-size')}}">Add Size</a></li>
-            <li class="nav-item"> <a class="nav-link" href="{{url('/all-size')}}">All Unit</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/all-size')}}">All size</a></li>
           </ul>
         </div>
       </li>

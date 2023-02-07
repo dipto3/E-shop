@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;
 use App\Http\Controllers\CategoryController; 
 use App\Http\Controllers\UnitController; 
 use App\Http\Controllers\SizeController; 
+use App\Http\Controllers\ColorController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -48,6 +49,13 @@ Route::get('/all-size', [SizeController::class, 'index']);
 Route::get('/edit-size/{id}', [SizeController::class, 'edit']);
 Route::post('/update-size/{id}', [SizeController::class, 'update']);
 Route::post('/delete-size/{id}', [SizeController::class, 'destroy']);
+
+Route::get('/add-color', [ColorController::class, 'create']);
+Route::post('/store-color', [ColorController::class, 'store']);
+Route::get('/all-color', [ColorController::class, 'index']);
+Route::get('/edit-color/{id}', [ColorController::class, 'edit']);
+Route::post('/update-color/{id}', [ColorController::class, 'update']);
+Route::post('/delete-color/{id}', [ColorController::class, 'destroy']);
 
 
 

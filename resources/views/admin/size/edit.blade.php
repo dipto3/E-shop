@@ -16,8 +16,9 @@
         <div class="card-body bg-light">
    
         <div class = "container">
-        <form id="contact-form" role="form" action="" method="POST">
+        <form id="contact-form" role="form" action="{{url('/update-size/'.$size->id)}}" method="POST">
             @csrf
+            
 
         
 
@@ -27,7 +28,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Category Name</label>
-                        <input id="form_name" type="text" name="name" class="form-control" value=""  >
+                        <input id="form_name" data-role="tagsinput"  type="text" name="size" class="form-control" value="{{implode(',',Json_decode($size->size))}}"  >
                         
                     </div>
                 </div>

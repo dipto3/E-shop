@@ -16,14 +16,20 @@
       
         <tr>
             <th scope="row">{{$size->id}}</th>
-            <td>{{$size->size}}</td>
+            <td>
+                @foreach(Json_decode($size->size) as $sizes)
+            <ul class="span3">
+                {{$sizes}}
+            </ul>
+            @endforeach
+            </td>
            
             <td style="text-align:center;">
-                <a href="" class="btn btn-info update_productform">
+                <a href="{{url('/edit-size/'.$size->id)}}" class="btn btn-info update_productform">
                     <i class="las la-edit"></i>
                 </a>
                 <br>
-                <form action="" method="POST">
+                <form action="{{url('/delete-size/'.$size->id)}}" method="POST">
                     @csrf
                     <button type="submit" href="" class="btn btn-danger delete_product">
                         <i class="las la-trash-alt"></i>

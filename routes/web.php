@@ -45,9 +45,9 @@ Route::post('/delete-unit/{id}', [UnitController::class, 'destroy']);
 Route::get('/add-size', [SizeController::class, 'create']);
 Route::post('/store-size', [SizeController::class, 'store']);
 Route::get('/all-size', [SizeController::class, 'index']);
-// Route::get('/edit-unit/{id}', [UnitController::class, 'edit']);
-// Route::post('/update-unit/{id}', [UnitController::class, 'update']);
-// Route::post('/delete-unit/{id}', [UnitController::class, 'destroy']);
+Route::get('/edit-size/{id}', [SizeController::class, 'edit']);
+Route::post('/update-size/{id}', [SizeController::class, 'update']);
+Route::post('/delete-size/{id}', [SizeController::class, 'destroy']);
 
 
 

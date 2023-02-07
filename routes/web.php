@@ -6,6 +6,7 @@ use App\Http\Controllers\CategoryController;
 use App\Http\Controllers\UnitController; 
 use App\Http\Controllers\SizeController; 
 use App\Http\Controllers\ColorController; 
+use App\Http\Controllers\ProductController; 
 
 /*
 |--------------------------------------------------------------------------
@@ -57,7 +58,7 @@ Route::get('/edit-color/{id}', [ColorController::class, 'edit']);
 Route::post('/update-color/{id}', [ColorController::class, 'update']);
 Route::post('/delete-color/{id}', [ColorController::class, 'destroy']);
 
-
+Route::get('/add-product', [ProductController::class, 'create']);
 
 
 Route::middleware([

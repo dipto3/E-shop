@@ -22,7 +22,7 @@ return new class extends Migration
             $table->Integer('color_id');
             $table->float('price');
             $table->string('image');
-            $table->string('status');
+            $table->string('status')->default(1);
             $table->longText('description');
             $table->timestamps();
         });

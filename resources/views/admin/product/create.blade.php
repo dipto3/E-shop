@@ -16,7 +16,7 @@
         <div class="card-body bg-light">
    
         <div class = "container">
-        <form id="contact-form" role="form" action="{{url('/store-category')}}" method="POST">
+        <form id="contact-form" role="form" action="" method="POST">
             @csrf
 
         
@@ -38,7 +38,12 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Category Name</label>
-                        <input id="form_name" type="text" name="category" class="form-control" placeholder="Please enter category name..." required="required" data-error="Firstname is required.">
+                       <select class="form-control" name="" id="">
+                        <option value="">Select Category</option>
+                        @foreach ($categories as $category )
+                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        @endforeach
+                       </select>
                         
                     </div>
                 </div>
@@ -49,7 +54,12 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Color Name</label>
-                        <input id="form_name" type="text" name="color" class="form-control" placeholder="Please enter category name..." required="required" data-error="Firstname is required.">
+                        <select class="form-control" name="" id="">
+                            <option value="">Select Color</option>
+                            @foreach ($colors as $color )
+                            <option value="{{$color->id}}">{{$color->color}}</option>
+                            @endforeach
+                           </select>
                         
                     </div>
                 </div>
@@ -60,7 +70,28 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Size Name</label>
-                        <input id="form_name" type="text" name="size" class="form-control" placeholder="Please enter size name..." required="required" data-error="Firstname is required.">
+                        <select class="form-control" name="" id="">
+                            <option value="">Select Size</option>
+                            @foreach ($sizes as $size )
+                            <option value="{{$size->id}}">{{$size->size}}</option>
+                            @endforeach
+                           </select>
+                        
+                    </div>
+                </div>
+              
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label style="color: rgb(57, 114, 219);" for="form_name">Unit Name</label>
+                        <select class="form-control" name="" id="">
+                            <option value="">Select Unit</option>
+                            @foreach ($units as $unit )
+                            <option value="{{$unit->id}}">{{$unit->name}}</option>
+                            @endforeach
+                           </select>
                         
                     </div>
                 </div>

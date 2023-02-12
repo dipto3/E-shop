@@ -7,8 +7,8 @@
         <tr>
           <th style="width: 5%;" scope="col">ID</th>
           <th style="width: 20%;"scope="col">Category Name</th>
-          <th style="width: 60%;"scope="col">Description</th>
-          <th style="width: 15%;"scope="col">Action</th>
+          <th style="width: 50%;"scope="col">Description</th>
+          <th style="width: 25%;"scope="col">Action</th>
         </tr>
       </thead>
     <tbody>
@@ -17,7 +17,7 @@
             <th scope="row">{{$category->id}}</th>
             <td>{{$category->name}}</td>
             <td>{{$category->description}}</td>
-            <td style="text-align:center;">
+            <td  style="text-align:center;">
                 <a href="{{url('/edit-category/'.$category->id)}}" class="btn btn-info update_productform">
                     <i class="las la-edit"></i>
                 </a>

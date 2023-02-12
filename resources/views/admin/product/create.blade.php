@@ -16,7 +16,7 @@
         <div class="card-body bg-light">
    
         <div class = "container">
-        <form id="contact-form" role="form" action="{{url('/store-product')}}" method="POST">
+        <form id="contact-form" role="form" action="{{url('/store-product')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
         
@@ -111,7 +111,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Image</label>
-                        <input name="file" type="file" class="form-control"  multiple required>
+                        <input name="file[]" type="file" class="form-control"  multiple required>
                         
                     </div>
                 </div>

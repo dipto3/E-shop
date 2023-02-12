@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>ico
 <html lang="en">
 
 <head>
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="{{asset('css/bootstrap-tagsinput.css')}}">
 
   <link rel="shortcut icon" href="{{asset('images/favicon.png')}}">
+  <link rel="shortcut icon" href="{{asset('images/favicon.ico')}}">
   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css">
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.bundle.min.js">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js">

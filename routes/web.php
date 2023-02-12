@@ -60,6 +60,9 @@ Route::post('/delete-color/{id}', [ColorController::class, 'destroy']);
 
 Route::get('/add-product', [ProductController::class, 'create']);
 Route::post('/store-product', [ProductController::class, 'store']);
+Route::get('/all-product', [ProductController::class, 'index']);
+
+
 
 Route::middleware([
     'auth:sanctum',

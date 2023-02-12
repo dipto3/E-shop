@@ -71,7 +71,7 @@
         <div class="collapse" id="ui-product">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('/add-product')}}">Add Products</a></li>
-            <li class="nav-item"> <a class="nav-link" href="">All Producs</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/all-product')}}">All Producs</a></li>
           </ul>
         </div>
       </li>

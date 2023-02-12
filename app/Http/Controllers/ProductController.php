@@ -53,11 +53,15 @@ class ProductController extends Controller
         }else{
             echo "error";
         }
-
-        
         $product ->save();
 
         return redirect()->back();
+    }
+
+    public function index(){
+        $products = Product::all();
+
+        return view('admin.product.index',compact('products'));
     }
 
 }

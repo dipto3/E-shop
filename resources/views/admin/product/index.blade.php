@@ -55,7 +55,7 @@
                     <i class="las la-thumbs-down"></i>  
                 </a>
                 </div>
-                <a href="" class="btn btn-info update_productform">
+                <a href="{{url('/edit-product/'.$product->id)}}" class="btn btn-info update_productform">
                     <i class="las la-edit"></i>
                 </a>
                 <br>

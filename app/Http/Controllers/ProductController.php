@@ -64,4 +64,17 @@ class ProductController extends Controller
         return view('admin.product.index',compact('products'));
     }
 
+    public function edit($id){
+        $categories = Category::all();
+        $category = Category::findOrFail($id);
+        $sizes = Size::all();
+        $size = Size::findOrFail($id);
+        $colors = Color::all();
+        $color = Color::findOrFail($id);
+        $units = Unit::all();
+        $unit = Unit::findOrFail($id);
+        $product = Product::find($id);
+        return view('admin.product.edit',compact('product','categories','category','size','sizes','colors','color','units','unit'));
+    }
+
 }

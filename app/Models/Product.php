@@ -13,7 +13,7 @@ class Product extends Model
 
 
     public function category(){
-        return $this->belongsTo(Catogory::class,'cat_id'); 
+        return $this->belongsTo(Category::class,'cat_id'); 
     }
     public function size(){
         return $this->belongsTo(Size::class,'size_id'); 
@@ -25,9 +25,4 @@ class Product extends Model
     public function unit(){
         return $this->belongsTo(Unit::class,'unit_id'); 
     }
-
-
-
-
-
 }

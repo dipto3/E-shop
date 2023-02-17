@@ -20,6 +20,7 @@ class ProductController extends Controller
     }
    
     public function store(Request $request){
+       
         $product = new Product();
         $product->name = $request->product;
         $product->cat_id = $request->category_id;
@@ -60,21 +61,99 @@ class ProductController extends Controller
 
     public function index(){
         $products = Product::all();
-
+        
         return view('admin.product.index',compact('products'));
     }
 
     public function edit($id){
+       
         $categories = Category::all();
-        $category = Category::findOrFail($id);
+      
         $sizes = Size::all();
-        $size = Size::findOrFail($id);
+       
         $colors = Color::all();
-        $color = Color::findOrFail($id);
+        
+     
         $units = Unit::all();
-        $unit = Unit::findOrFail($id);
+       
         $product = Product::find($id);
-        return view('admin.product.edit',compact('product','categories','category','size','sizes','colors','color','units','unit'));
+
+        return view('admin.product.edit',compact('product','categories','sizes','colors','units'));
     }
+    public function update(Request $request,$id){
+        // dd($request->all());
+        $product =  Product::find($id);
+        $product->name = $request->product;
+        $product->cat_id = $request->category_id;
+        $product->unit_id = $request->unit_id;
+        $product->size_id = $request->size_id;
+        $product->color_id = $request->color_id;
+        $product->price = $request->price;
+        $product->description = $request->description; 
+
+        // $images = array();
+        // if($files =$request->file('file')){
+        //     $i = 0;
+        //     foreach($files as $file){
+        //         $name = $file->getClientOriginalName();
+        //         $fileNameExtract = explode('.',$name);
+        //         $filename =  $fileNameExtract[0];
+        //         $filename.=time();
+        //         $filename.=$i;
+        //         $filename.='.';
+        //         $filename.=$fileNameExtract[1];
+        //         $file->move('image',$filename);
+        //         $images[]=$filename;
+        //         $i++;
+
+        //     }
+        //     $product['image']=implode("|",$images);
+        //     $product ->save();
+        //     return redirect()->back();
+        // }else{
+        //     echo "error";
+        // }
+        $product ->save();
+
+        return redirect('/all-product');
+    }
+    // public function update(Request $request, Product $product)
+    // {
+    //    $size = explode(",",$request->size_id);
+    //    $color = explode(",",$request->color_id);
+    //     $update = $product->update([
+
+    //         'name' =>  $request->product,
+    //         'cat_id' =>  $request->category_id,
+
+    //         'unit_id' =>  $request->unit_id,
+    //         'size_id' =>  (int) json_encode($size),
+    //         'color_id' =>  (int) json_encode($color),
+
+    //         'description' => $request->description,
+    //         'price' => $request->price,
+    //     ]);
+    //     if($update)
+   
+    //     return redirect()->back();
+    // }
+
+
+    public function destroy($id){
+        $product = Product::find($id);
+        $product->delete();
+         return redirect()->back();
+
+    }
+    public function change_status(Product $product)
+    {
+      if($product->status==1){
+        $product->update(['status'=>0]);
+        }
+       else{
+        $product->update(['status'=>1]);
+        }
+       return redirect()->back();
+   }
 
 }

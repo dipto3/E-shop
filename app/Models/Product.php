@@ -9,20 +9,18 @@ class Product extends Model
 {
     use HasFactory;
     protected $fillable = [
-    'name','cat_id','unit_id','size_id','color_id','price','image','status ','description'];
+        'name','description','category','unit','size','color','status','price','image'];
 
-
-    public function category(){
-        return $this->belongsTo(Category::class,'cat_id'); 
-    }
-    public function size(){
-        return $this->belongsTo(Size::class,'size_id'); 
-    }
-
-    public function color(){
-        return $this->belongsTo(Color::class,'color_id'); 
-    }
-    public function unit(){
-        return $this->belongsTo(Unit::class,'unit_id'); 
-    }
+        public function category(){
+            return $this->belongsTo(Category::class,'category'); 
+        }
+        public function unit(){
+            return $this->belongsTo(Unit::class,'unit'); 
+        }
+        public function size(){
+            return $this->belongsTo(Size::class,'size'); 
+        }
+        public function color(){
+            return $this->belongsTo(Color::class,'color'); 
+        }
 }

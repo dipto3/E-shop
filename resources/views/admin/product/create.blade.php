@@ -48,10 +48,10 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Category Name</label>
-                       <select class="form-control" name="category_id" id="">
+                       <select class="form-control" name="category" id="">
                         <option value="">Select Category</option>
                         @foreach ($categories as $category )
-                        <option value="{{$category->id}}">{{$category->name}}</option>
+                        <option value="{{$category->name}}">{{$category->name}}</option>
                         @endforeach
                        </select>
                         
@@ -64,10 +64,10 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Color Name</label>
-                        <select class="form-control" name="color_id" id="">
+                        <select class="form-control" name="color" id="">
                             <option value="">Select Color</option>
                             @foreach ($colors as $color )
-                            <option value="{{$color->id}}">{{$color->color}}</option>
+                            <option value="{{$color->color}}">{{$color->color}}</option>
                             @endforeach
                            </select>
                         
@@ -80,10 +80,10 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Size Name</label>
-                        <select class="form-control" name="size_id" id="">
+                        <select class="form-control" name="size" id="">
                             <option value="">Select Size</option>
                             @foreach ($sizes as $size )
-                            <option value="{{$size->id}}">{{$size->size}}</option>
+                            <option value="{{$size->size}}">{{$size->size}}</option>
                             @endforeach
                            </select>
                         
@@ -96,10 +96,10 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Unit Name</label>
-                        <select class="form-control" name="unit_id" id="">
+                        <select class="form-control" name="unit" id="">
                             <option value="">Select Unit</option>
                             @foreach ($units as $unit )
-                            <option value="{{$unit->id}}">{{$unit->name}}</option>
+                            <option value="{{$unit->name}}">{{$unit->name}}</option>
                             @endforeach
                            </select>
                         

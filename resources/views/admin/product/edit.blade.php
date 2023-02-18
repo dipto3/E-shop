@@ -19,8 +19,6 @@
         <form id="contact-form" role="form" action="{{url('/update-product/'.$product->id)}}" method="POST" enctype="multipart/form-data">
             @csrf
 
-        
-
         <div class="controls">
 
             <div class="row">
@@ -48,12 +46,30 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Color Name</label>
-                        <select class="form-control" name="color_id" value="">
+                        <select class="form-control" name="color" value="">
 
-                            @foreach ($colors as $color )
-                
-                           
-                            <option value="{{$color->id}}" selected> {{implode(',',Json_decode($color->color)) }}</option>
+                            <option >{{implode(',',Json_decode($product->color))}}</option>
+                         @foreach ($colors as $color)
+                    
+                            <option value="{{$color->color}}">{{implode(',',Json_decode($color->color))}} </option>
+                            @endforeach
+                           </select>
+                        
+                    </div>
+                </div>
+              
+            </div>
+
+            <div class="row">
+                <div class="col-md-12">
+                    <div class="form-group">
+                        <label style="color: rgb(57, 114, 219);" for="form_name">Category Name</label>
+                        <select class="form-control" name="category" value="">
+
+                            <option>{{$product->category}}</option>
+                        @foreach ($categories as $category)
+                    
+                            <option value="{{$category->name}}"> {{$category->name}}</option>
                             @endforeach
                            </select>
                         
@@ -62,36 +78,19 @@
               
             </div>
        
-            <div class="control-group ">
-                <label class="control-label" for="textarea2">Select Category</label>
-                <div class="control">
-                    <select name="category_id" style="margin-left: 20px">
-                
-                        
-                    @foreach($categories as $category)
-                    
-
-                    <option value="{{$category->id}}" selected>{{$category->name}}</option>
-
-                    @endforeach
-                    
-
-
-                    </select>
-                </div>
-             </div>
+       
            
 
             <div class="row">
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Size Name</label>
-                        <select class="form-control" name="size_id" id="">
+                        <select class="form-control" name="size" id="">
                          
-                            @foreach ($sizes as $size)
-                 
-                           
-                            <option value="{{$size->id}}" selected>{{implode(',',Json_decode($size->size)) }}</option>
+                       <option >{{implode(',',Json_decode($product->size))}}</option> 
+                           @foreach ( $sizes as $size)
+                             
+                            <option value="{{$size->size}}" >{{implode(',',Json_decode($size->size))}}</option>
                             @endforeach
                            </select>
                         
@@ -104,12 +103,11 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Unit Name</label>
-                        <select class="form-control" name="unit_id" id="">
-                          
-                            @foreach ($units as $unit )
-                           
-                          
-                            <option value="{{$unit->id}}"selected>{{$unit->name}} </option>
+                        <select class="form-control" name="unit" id="">
+                          <option>{{$product->unit}}</option>
+                        @foreach ($units as $unit)
+                        
+                            <option value="{{$unit->name}}" >{{$unit->name}} </option>
                             @endforeach
                            </select>
                         

@@ -22,18 +22,31 @@
    
            
       @foreach ($products as $product)
-          
+      @php
+      $product['image']=explode("|",$product->image);
+      @endphp
         <tr>
         <th scope="row">{{$product->id}}</th>
            <td>{{$product->name}}</td>
            <td>{{$product->price}}</td>
-           <td>{{$product->unit->name}}</td>
-           <td>{{$product->size->size}}</td>
-           <td>{{$product->color->color}}</td>
-           <td>{{$product->category->name}}</td>
+           <td>{{$product->unit}}</td>
+           <td>{{$product->size}}</td>
+           <td>{{$product->color}}</td>
+           <td>{{$product->category}}</td>
            <td>{{$product->description}}</td>
-           <td></td>
-           <td></td>
+           <td class=>
+            @foreach($product->image as $images)
+                <img src="{{asset('/image/'.$images)}}" style="width: 60px;height:60px ;">
+                @endforeach
+            </td>
+            <td class="center">
+              @if($product->status==1) 
+                <span class="label label-success">Active</span>
+
+              @else
+              <span class="label label-danger">Deactive</span>	
+              @endif
+              </td>
             <td style="text-align:center;">
                 <a href="{{url('/edit-product/'.$product->id)}}" class="btn btn-info update_productform">
                     <i class="las la-edit"></i>

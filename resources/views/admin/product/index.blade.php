@@ -41,21 +41,35 @@
             </td>
             <td class="center">
               @if($product->status==1) 
-                <span class="label label-success">Active</span>
+                <span class="btn btn-success">Active</span>
 
               @else
-              <span class="label label-danger">Deactive</span>	
+              <span class="btn btn-danger">Deactive</span>	
               @endif
               </td>
             <td style="text-align:center;">
+
+              <div class="span">
+                @if($product->status==1) 
+                <a href="{{url('/product-status'.$product->id)}}" class="btn btn-danger" >
+                  <i class="fa-solid fa-thumbs-down"></i>
+                </a>
+                @else
+                <a href="{{url('/product-status'.$product->id)}}" class="btn btn-success" >
+              
+                  <i class="fa-solid fa-thumbs-up"></i>
+                </a>
+                @endif
+
+                </div>
                 <a href="{{url('/edit-product/'.$product->id)}}" class="btn btn-info update_productform">
                     <i class="las la-edit"></i>
                 </a>
                 <br>
-                <form action="" method="POST">
+                <form action="{{url('/delete-product/'.$product->id)}}" method="POST">
                     @csrf
-                    <button type="submit" href="" class="btn btn-danger delete_product">
-                        <i class="las la-trash-alt"></i>
+                    <button type="submit" href="" class="btn btn-warning delete_product">
+                      <i class="fa-sharp fa-solid fa-trash"></i>
                     </button>
                 </form>
               

@@ -48,7 +48,7 @@
                         <label style="color: rgb(57, 114, 219);" for="form_name">Color Name</label>
                         <select class="form-control" name="color" value="">
 
-                            <option >{{implode(',',Json_decode($product->color))}}</option>
+                            <option >{{$product->color}}</option>
                          @foreach ($colors as $color)
                     
                             <option value="{{$color->color}}">{{implode(',',Json_decode($color->color))}} </option>
@@ -87,7 +87,7 @@
                         <label style="color: rgb(57, 114, 219);" for="form_name">Size Name</label>
                         <select class="form-control" name="size" id="">
                          
-                       <option >{{implode(',',Json_decode($product->size))}}</option> 
+                       <option >{{$product->size}}</option> 
                            @foreach ( $sizes as $size)
                              
                             <option value="{{$size->size}}" >{{implode(',',Json_decode($size->size))}}</option>

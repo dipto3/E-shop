@@ -64,7 +64,7 @@ Route::get('/all-product', [ProductController::class, 'index']);
 Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
 Route::post('/update-product/{id}', [ProductController::class, 'update']);
 Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
-Route::get('/product-status{id}',[ProductController::class,'change_status']);
+Route::get('/product-status{product}',[ProductController::class,'change_status']);
 
 Route::middleware([
     'auth:sanctum',

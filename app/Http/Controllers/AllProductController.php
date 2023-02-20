@@ -23,9 +23,9 @@ $products = Product::where('category',$name)->where('status',1)->get();
         return view('user.pages.products',compact('categories','products'));
     }
 
-    public function viewdetails(){
+    public function viewdetails($id){
         $categories = Category::all();
-        $products = Product::where('status',1)->get();
+        $products = Product::findOrFail($id);
         return view('user.pages.viewdetails',compact('categories','products'));
     }
 }

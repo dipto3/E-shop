@@ -28,7 +28,7 @@
 						
 					</div>
 					<div class="details col-md-6">
-						<h3 class="product-title">men's shoes fashion</h3>
+						<h3 class="product-title">{{$products->name}}</h3>
 					
 						<p class="product-description">Suspendisse quos? Tempus cras iure temporibus? Eu laudantium cubilia sem sem! Repudiandae et! Massa senectus enim minim sociosqu delectus posuere.</p>
 						<h4 class="price">current price: <span>$180</span></h4>

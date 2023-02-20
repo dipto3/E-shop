@@ -7,17 +7,9 @@ use App\Http\Controllers\UnitController;
 use App\Http\Controllers\SizeController; 
 use App\Http\Controllers\ColorController; 
 use App\Http\Controllers\ProductController; 
+use App\Http\Controllers\AllProductController; 
 
-/*
-|--------------------------------------------------------------------------
-| Web Routes
-|--------------------------------------------------------------------------
-|
-| Here is where you can register web routes for your application. These
-| routes are loaded by the RouteServiceProvider within a group which
-| contains the "web" middleware group. Now create something great!
-|
-*/
+
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'redirect']);
@@ -27,7 +19,7 @@ Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 Route::get('/admin-logout', [HomeController::class, 'admin_logout'])->name('admin.logout');
 Route::get('/user-logout', [HomeController::class, 'user_logout'])->name('user.logout');
 
-
+//Admin Panel
 Route::get('/add-category', [CategoryController::class, 'create']);
 Route::post('/store-category', [CategoryController::class, 'store']);
 Route::get('/all-category', [CategoryController::class, 'index']);
@@ -65,6 +57,21 @@ Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
 Route::post('/update-product/{id}', [ProductController::class, 'update']);
 Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
 Route::get('/product-status{product}',[ProductController::class,'change_status']);
+
+//Frontend
+Route::get('/productbycat/{name}', [AllProductController::class, 'productbycat']);
+
+
+
+
+
+
+
+
+
+
+
+
 
 Route::middleware([
     'auth:sanctum',

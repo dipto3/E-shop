@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Category;
+use App\Models\Product;
 
 class HomeController extends Controller
 {
@@ -27,7 +28,8 @@ class HomeController extends Controller
 
     public function index(){
         $categories = Category::all();
-        return view('user.home',compact('categories'));
+        $products = Product::where('status',1)->get();
+        return view('user.home',compact('categories','products'));
     }
     public function profile(){
         $categories = Category::all();

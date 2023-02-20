@@ -60,6 +60,8 @@ Route::get('/product-status{product}',[ProductController::class,'change_status']
 
 //Frontend
 Route::get('/productbycat/{name}', [AllProductController::class, 'productbycat']);
+Route::get('/allproducts', [AllProductController::class, 'allproducts']);
+Route::get('/view-details/{id}', [AllProductController::class, 'viewdetails']);
 
 
 

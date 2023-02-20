@@ -20,6 +20,19 @@
       <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" />
       <!-- responsive style -->
       <link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet" />
+       <!-- view details style -->
+       {{-- <link rel="stylesheet" href="{{asset('viewdetails/css/bootstrap.min.css')}}">
+<link rel="stylesheet" href="{{asset('viewdetails/css/font-awesome.min.css')}}">
+<link rel="stylesheet" href="{{asset('viewdetails/css/nouislider.min.css')}}">
+<link rel="stylesheet" href="{{asset('viewdetails/css/slick-theme.css')}}">
+<link rel="stylesheet" href="{{asset('viewdetails/css/slick.css')}}">
+<link rel="stylesheet" href="{{asset('viewdetails/css/style.scss')}}"> --}}
+    
+       {{-- <link rel="stylesheet" href="{{asset('viewdetails/fonts/fontawesome-webfont.ttf')}}">
+       <link rel="stylesheet" href="{{asset('viewdetails/fonts/fontawesome-webfont.woff')}}">
+       <link rel="stylesheet" href="{{asset('viewdetails/fonts/fontawesome-webfont.woff2')}}">
+       <link rel="stylesheet" href="{{asset('viewdetails/images/arrival-bg.jpg')}}">
+       <link rel="stylesheet" href="{{asset('vi')}}"> --}}
    </head>
    <body>
       <div class="hero_area">
@@ -50,5 +63,8 @@
       <script src="{{asset('frontend/js/bootstrap.js')}}"></script>
       <!-- custom js -->
       <script src="{{asset('frontend/js/custom.js')}}"></script>
+        <!-- viewdetails js -->
+
+       
    </body>
 </html>

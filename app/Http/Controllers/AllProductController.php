@@ -17,4 +17,15 @@ $products = Product::where('category',$name)->where('status',1)->get();
 // dd($products );
         return view('user.pages.product_by_cat',compact('categories','products'));
     }
+    public function allproducts(){
+        $categories = Category::all();
+        $products = Product::where('status',1)->get();
+        return view('user.pages.products',compact('categories','products'));
+    }
+
+    public function viewdetails(){
+        $categories = Category::all();
+        $products = Product::where('status',1)->get();
+        return view('user.pages.viewdetails',compact('categories','products'));
+    }
 }

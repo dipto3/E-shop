@@ -5,6 +5,8 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Size;
+use App\Models\Color;
 
 class AllProductController extends Controller
 {
@@ -26,6 +28,8 @@ $products = Product::where('category',$name)->where('status',1)->get();
     public function viewdetails($id){
         $categories = Category::all();
         $products = Product::findOrFail($id);
-        return view('user.pages.viewdetails',compact('categories','products'));
+        $sizes = Size::find($products->size);
+        $colors = Color::find($products->color);
+        return view('user.pages.viewdetails',compact('categories','products','sizes','colors'));
     }
 }

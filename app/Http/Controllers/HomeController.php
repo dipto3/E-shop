@@ -12,10 +12,11 @@ class HomeController extends Controller
 {
     public function redirect(){
         $categories = Category::all();
+        $products = Product::where('status',1)->get();
         if(Auth::id()){
             if(Auth::user()->usertype == '0')
             {
-                return view('user.home',compact('categories'));
+                return view('user.home',compact('categories','products'));
             }
             else{
                 return view('admin.home');

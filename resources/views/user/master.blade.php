@@ -19,6 +19,7 @@
       <!-- Custom styles for this template -->
       <link href="{{asset('frontend/css/style.css')}}" rel="stylesheet" />
       <!-- responsive style -->
+      <link rel="stylesheet" href="  https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.3.0/css/all.min.css">
       <link href="{{asset('frontend/css/responsive.css')}}" rel="stylesheet" />
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
@@ -114,7 +115,7 @@
     font-weight: bold; }
   
   .checked, .price span {
-    color: #ff9f1a; }
+    color: #002c3e; }
   
   .product-title, .rating, .product-description, .price, .vote, .sizes {
     margin-bottom: 15px; }
@@ -138,16 +139,16 @@
       margin-left: 20px; }
   
   .add-to-cart, .like {
-    background: #ff9f1a;
+    background: #f7444e;;
     padding: 1.2em 1.5em;
     border: none;
     text-transform: UPPERCASE;
     font-weight: bold;
-    color: #fff;
+    color: #f7444e
     -webkit-transition: background .3s ease;
             transition: background .3s ease; }
     .add-to-cart:hover, .like:hover {
-      background: #b36800;
+      background: #ce0e17;
       color: #fff; }
   
   .not-available {
@@ -191,6 +192,8 @@
               transform: scale(1); } }
   
   /*# sourceMappingURL=style.css.map */
+
+  
       </style>
 
    </head>

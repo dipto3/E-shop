@@ -8,6 +8,8 @@ use App\Http\Controllers\SizeController;
 use App\Http\Controllers\ColorController; 
 use App\Http\Controllers\ProductController; 
 use App\Http\Controllers\AllProductController; 
+use App\Http\Controllers\ContactController; 
+use App\Http\Controllers\AboutController; 
 
 
 
@@ -62,7 +64,8 @@ Route::get('/product-status{product}',[ProductController::class,'change_status']
 Route::get('/productbycat/{name}', [AllProductController::class, 'productbycat']);
 Route::get('/allproducts', [AllProductController::class, 'allproducts']);
 Route::get('/view-details/{id}', [AllProductController::class, 'viewdetails']);
-
+Route::get('/contact-us', [ContactController::class, 'contact']);
+Route::get('/about', [AboutController::class, 'about']);
 
 
 

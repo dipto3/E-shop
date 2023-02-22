@@ -13,13 +13,16 @@ class HomeController extends Controller
     public function redirect(){
         $categories = Category::all();
         $products = Product::where('status',1)->get();
+        $totalproducts = Product::where('status',1)->count();
+        $totalusers = User::where('usertype',0)->count();
+        $deactiveproducts = Product::where('status',0)->count();
         if(Auth::id()){
             if(Auth::user()->usertype == '0')
             {
                 return view('user.home',compact('categories','products'));
             }
             else{
-                return view('admin.home');
+                return view('admin.home',compact('totalproducts','totalusers','deactiveproducts'));
             }
         }
         else{

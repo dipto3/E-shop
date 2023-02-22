@@ -25,10 +25,10 @@
                    <a class="nav-link" href="{{url('/allproducts')}}">Product</a>
                 </li> 
                 <li class="nav-item">
-                   <a class="nav-link" href="blog_list.html">About</a>
+                   <a class="nav-link" href="">About</a>
                 </li>
                 <li class="nav-item">
-                   <a class="nav-link" href="contact.html">Contact us</a>
+                   <a class="nav-link" href="">Contact us</a>
                 </li>
                 
            

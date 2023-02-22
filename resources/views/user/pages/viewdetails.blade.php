@@ -61,7 +61,7 @@
                             </div>
                         </div><br>
 						<div class="action">
-							<button class="add-to-cart btn btn-default" type="button">add to cart</button>
+							<button class="btn btn-outline-danger" style="color:rgb(236, 230, 230); background-color:#f7444e" type="button">Add to cart</button>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
 					</div>

@@ -27,7 +27,10 @@
 						</ul>
 						
 					</div>
-					<div class="details col-md-6">
+					<form action="{{url('/add-cart/'.$products->id)}}" method="POST">
+						@csrf
+					<div class="details col-md-12">
+						
 						<h3 class="product-title">{{$products->name}}</h3>
 					
 						<p class="product-description">{{$products->description}}</p>
@@ -36,7 +39,7 @@
 						<div class="product-options">
 							<label>
 								Size
-								<select class="input-select">
+								<select name="size" class="input-select">
 
 								@foreach(Json_decode($products->size) as $value)
 									<option value="{{$value}}">{{$value}}</option>
@@ -45,26 +48,27 @@
 							</label>
 							<label>
 								Color
-								<select class="input-select">
+								<select name="color" class="input-select">
 
 								@foreach(Json_decode($products->color) as $value)
-									<option value="{{$value}}">{{$value}}</option>
+									<option  value="{{$value}}">{{$value}}</option>
 								 @endforeach
 								</select>
 							</label>
                             <div class="qty-label">
                                 Qty
                                 <div class="input-number">
-                                    <input type="number">
+                                    <input type="number" name="qty" value="0" min="1">
                                     
                                 </div>
                             </div>
                         </div><br>
 						<div class="action">
-							<button class="btn btn-outline-danger" style="color:rgb(236, 230, 230); background-color:#f7444e" type="button">Add to cart</button>
+							<button type="submit" class="btn btn-outline-danger" style="color:rgb(236, 230, 230); background-color:#f7444e" >Add to cart</button>
 							<button class="like btn btn-default" type="button"><span class="fa fa-heart"></span></button>
 						</div>
 					</div>
+				</form>
 				</div>
 			</div>
 		</div>

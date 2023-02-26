@@ -10,6 +10,7 @@ use App\Http\Controllers\ProductController;
 use App\Http\Controllers\AllProductController; 
 use App\Http\Controllers\ContactController; 
 use App\Http\Controllers\AboutController; 
+use App\Http\Controllers\CartController; 
 
 
 
@@ -69,7 +70,8 @@ Route::get('/about', [AboutController::class, 'about']);
 
 
 
-
+//cart
+Route::post('/add-cart/{id}', [CartController::class, 'cart_store']);
 
 
 

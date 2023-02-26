@@ -7,6 +7,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Cart;
 
 class HomeController extends Controller
 {
@@ -16,10 +17,13 @@ class HomeController extends Controller
         $totalproducts = Product::where('status',1)->count();
         $totalusers = User::where('usertype',0)->count();
         $deactiveproducts = Product::where('status',0)->count();
+        $userid = Auth::user()->id;
+        $carts = Cart::where('user_id','=',$userid)->get();
+        // $cart = Product::findOrFail($id);
         if(Auth::id()){
             if(Auth::user()->usertype == '0')
             {
-                return view('user.home',compact('categories','products'));
+                return view('user.home',compact('categories','products','carts'));
             }
             else{
                 return view('admin.home',compact('totalproducts','totalusers','deactiveproducts'));
@@ -32,12 +36,23 @@ class HomeController extends Controller
 
     public function index(){
         $categories = Category::all();
+    if(Auth::user()){
+        $user_id = Auth::user()->id;
+        $carts = Cart::where('user_id', $user_id )->get();
+    }else{
+        $users_id = Auth::user();
+        $carts = Cart::where('user_id', $users_id )->get();
+    }
+        
         $products = Product::where('status',1)->get();
-        return view('user.home',compact('categories','products'));
+        return view('user.home',compact('categories','products','carts'));
     }
     public function profile(){
         $categories = Category::all();
-        return view('user.profile',compact('categories'));
+        $useid = Auth::user()->id;
+        $carts = Cart::where('user_id','=',$useid)->get();
+        // $cart = Product::findOrFail($id);
+        return view('user.profile',compact('categories','carts'));
     }
 
     public function admin_logout(){

@@ -26,8 +26,8 @@ return new class extends Migration
             $table->string('product_id')->nullable();
             $table->string('qty')->nullable();
             $table->float('price')->nullable();
+            $table->float('total_price')->nullable();
             $table->string('image')->nullable();
-
             $table->timestamps();
         });
     }

@@ -119,6 +119,7 @@ div.product-body{
 
    display: block;
 }
+
 </style>
 <header class="header_section">
    
@@ -154,37 +155,53 @@ div.product-body{
                    <a class="nav-link" href="{{url('/contact-us')}}">Contact us</a>
                 </li>
 
-                <li class="nav-itemcart dropdown">
+                @if (Route::has('login'))
+                   @auth
+
+                <li class="nav-itemcart dropdowns">
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href=""><i class="fa-solid fa-cart-shopping"></i></a>
                   <ul class="dropdown-menu">
                      <div class="cart-dropdown">
+                        <h2  style="font-size:16px; margin-left:30%; Color:red;font-family: open sans;">CART LIST</h2>
+                        <hr>
+                      
                         <div class="cart-list">
-                           <div class="product-widget">
-                              <div class="product-imgg">
+                          
+                             
+                          {{-- @if ($carts['product_id'] != $carts['product_id']) --}}
+                             
+                          
+                           @foreach ($carts as $cart)
+                         
+                           <div class="product-widget form-row">
+                              <div class="product-imgg col">
                                  <img src="./img/product01.png" alt="">
                               </div>
-                              <div class="product-body">
-                                 <h3 class="product-namee"><a href="#">product name goes here</a></h3>
-                                 <h4 class="product-pricee"><span class="qty">1x</span>$980.00</h4>
+                              <div class="product-body col">
+                                 <h3 class="product-namee"><a href="#">{{$cart->product_name}}</a></h3>
+                                 <h4 class="product-pricee"><span class="qty">{{$cart->qty}}x</span>${{$cart->price}}</h4>
+                                 <h4 class="product-pricee"><span class="qty">{{$cart->size}} -- </span>{{$cart->color}}</h4>
                               </div>
-                              <button class="delete"><i class="fa fa-close"></i></button>
+                              <button style="height:5%; border-style: none;"  class="delete"><i  class="fa fa-close"></i></button>
                            </div>
-
-                           <div class="product-widget">
-                              <div class="product-imgg">
-                                 <img src="./img/product02.png" alt="">
-                              </div>
-                              <div class="product-body">
-                                 <h3 class="product-namee"><a href="">product name goes here</a></h3>
-                                 <h4 class="product-pricee"><span class="qty">3x</span>$980.00</h4>
-                              </div>
-                              <button class="delete"><i class="fa fa-close"></i></button>
-                           </div>
+                         
+                           @endforeach
+                           {{-- @endif --}}
+                           
                         </div>
+                        <?php $totalitem = 0;
+                        $total_cart_price = 0;
+                        ?>
+                        @foreach ($carts as $cart)
+                        <?php $totalitem =$totalitem +  $cart->qty;
+                        $total_cart_price = $total_cart_price + $cart->total_price;
+                        ?>
+                        @endforeach
                         <div class="cart-summary">
-                           <small >3 Item(s) selected</small>
-                           <h5>SUBTOTAL: $2940.00</h5>
+                           <small > {{$totalitem}} Item(s) selected</small>
+                           <h5>SUBTOTAL: ${{ $total_cart_price}}</h5>
                         </div>
+                      
                         <div class="cart-btns">
                            <a href="">View Cart</a>
                            <a href="">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
@@ -194,9 +211,6 @@ div.product-body{
                </li>
                 
            
-
-                @if (Route::has('login'))
-                   @auth
 
 
                    {{-- <form method="POST" action="{{ route('logout') }}">

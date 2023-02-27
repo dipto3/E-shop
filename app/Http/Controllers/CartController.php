@@ -54,4 +54,11 @@ if($product_sizecolor_exist){
      }
   
    }
+
+   public function remove_cart($id){
+
+      $delete_cart = Cart::find($id);
+      $delete_cart->delete();
+      return redirect()->back();
+   }
 }

@@ -186,7 +186,11 @@ div.product-body{
                                  <br>
                                  <h4 class="product-pricee"><span class="qty">{{$cart->size}} -- </span>{{$cart->color}}</h4>
                               </div>
-                              <button style="height:5%; margin-right: 10px;  border-style: none;"  class="delete"><i  class="fa fa-close"></i></button>
+                              <form action="{{url('/remove-cart/'.$cart->id)}}" method="post">
+                                 @csrf
+                                 <button type="submit" onclick="return confirm('Are you sure to remove product?')" style="height:5%; margin-right: 10px;  border-style: none;"  class="delete"><i  class="fa fa-close"></i></button>
+                              </form>
+                              
                            </div>
                            
                         </div>

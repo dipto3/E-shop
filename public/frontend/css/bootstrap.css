@@ -2869,6 +2869,7 @@ fieldset:disabled a.btn {
 .btn-outline-danger.disabled, .btn-outline-danger:disabled {
   color: #dc3545;
   background-color: transparent;
+  
 }
 
 .btn-outline-danger:not(:disabled):not(.disabled):active, .btn-outline-danger:not(:disabled):not(.disabled).active,
@@ -3060,7 +3061,7 @@ input[type="button"].btn-block {
   left: 0;
   z-index: 1000;
   display: none;
-  float: left;
+  float: right;
   min-width: 10rem;
   padding: 0.5rem 0;
   margin: 0.125rem 0 0;
@@ -3072,6 +3073,7 @@ input[type="button"].btn-block {
   background-clip: padding-box;
   border: 1px solid rgba(0, 0, 0, 0.15);
   border-radius: 0.25rem;
+  border-style: none;
 }
 
 .dropdown-menu-left {

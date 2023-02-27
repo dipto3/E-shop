@@ -37,11 +37,11 @@ position: absolute;
 .cart-dropdown {
 
   width: 300px;
-  height: 330px;
+  height: 339px;
   background: #FFF;
   padding: 15px;
   -webkit-box-shadow: 0px 0px 0px 2px #E4E7ED;
-  box-shadow: 0px 0px 0px 2px #E4E7ED;
+  box-shadow: 5px 2px 10px 10px #dc3545;
  
 
   
@@ -54,7 +54,7 @@ position: absolute;
 
 .cart-dropdown .cart-list {
   max-height: 180px;
-  overflow-y: scroll;
+  overflow: auto;
   margin-bottom: 15px;
 }
 
@@ -120,6 +120,9 @@ div.product-body{
    display: block;
 }
 
+
+
+
 </style>
 <header class="header_section">
    
@@ -162,8 +165,8 @@ div.product-body{
                   <a class="nav-link dropdown-toggle" href="#" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="true" href=""><i class="fa-solid fa-cart-shopping"></i></a>
                   <ul class="dropdown-menu">
                      <div class="cart-dropdown">
-                        <h2  style="font-size:16px; margin-left:30%; Color:red;font-family: open sans;">CART LIST</h2>
-                        <hr>
+                        <h2  style="font-size:14px; margin-left:4%;  Color:rgb(15, 2, 2);font-family: open sans;"><i class="fa-solid fa-cart-shopping"></i>  YOUR CART LIST</h2>
+                     
                       
                         <div class="cart-list">
                           
@@ -172,18 +175,21 @@ div.product-body{
                              
                           
                            @foreach ($carts as $cart)
-                         
-                           <div class="product-widget form-row">
+                         <div style="border: 1px solid rgb(236, 236, 236);">
+                           <div  class="product-widget form-row">
                               <div class="product-imgg col">
                                  <img src="./img/product01.png" alt="">
                               </div>
-                              <div class="product-body col">
+                              <div style="margin-top: 5%;" class="product-body col">
                                  <h3 class="product-namee"><a href="#">{{$cart->product_name}}</a></h3>
                                  <h4 class="product-pricee"><span class="qty">{{$cart->qty}}x</span>${{$cart->price}}</h4>
+                                 <br>
                                  <h4 class="product-pricee"><span class="qty">{{$cart->size}} -- </span>{{$cart->color}}</h4>
                               </div>
-                              <button style="height:5%; border-style: none;"  class="delete"><i  class="fa fa-close"></i></button>
+                              <button style="height:5%; margin-right: 10px;  border-style: none;"  class="delete"><i  class="fa fa-close"></i></button>
                            </div>
+                           
+                        </div>
                          
                            @endforeach
                            {{-- @endif --}}

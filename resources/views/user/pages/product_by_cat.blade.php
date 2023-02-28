@@ -38,16 +38,16 @@
                  <div class="box">
                     <div class="option_container">
                        <div class="options">
-                          <a href="" class="option1">
+                          <a href="{{url('/view-details/'.$product->id)}}" class="option1">
                        {{$product->name}}
                           </a>
-                          <a href="" class="option2">
+                          <a href="{{url('/view-details/'.$product->id)}}" class="option2">
                           Add To Cart
                           </a>
                        </div>
                     </div>
                     <div class="img-box">
-                     <a href="{{url('/view-details'.$product->id)}}">
+                     <a href="">
                         <img src="{{asset('/image/'.$images)}}" style="width:260px; height:200px;">
                     </div>
                     <div class="detail-box">

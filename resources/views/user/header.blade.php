@@ -214,7 +214,7 @@ div.product-body{
                       
                         <div class="cart-btns">
                            <a href="">View Cart</a>
-                           <a href="">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
+                           <a href="{{url('/shipping-address')}}">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                      </div>
                   </ul>

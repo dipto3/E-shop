@@ -11,7 +11,7 @@ use App\Http\Controllers\AllProductController;
 use App\Http\Controllers\ContactController; 
 use App\Http\Controllers\AboutController; 
 use App\Http\Controllers\CartController; 
-
+use App\Http\Controllers\ShippingController; 
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -74,9 +74,9 @@ Route::get('/about', [AboutController::class, 'about']);
 Route::post('/add-cart/{id}', [CartController::class, 'cart_store']);
 Route::post('/remove-cart/{id}', [CartController::class, 'remove_cart']);
 
-
-
-
+//shiping
+Route::get('/shipping-address', [ShippingController::class, 'shipping_form']);
+Route::post('/store-shipping', [ShippingController::class, 'ship_store']);
 
 
 

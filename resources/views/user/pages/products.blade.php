@@ -37,7 +37,7 @@
                       <a href="{{url('/view-details/'.$product->id)}}" class="option1">
                      {{ $product->name }}
                       </a>
-                      <a href="" class="option2">
+                      <a href="{{url('/view-details/'.$product->id)}}" class="option2">
                     Add To Cart
                       </a>
                    </div>
@@ -63,11 +63,7 @@
         
     
        </div>
-       <div class="btn-box">
-          <a href="">
-          View All products
-          </a>
-       </div>
+     
     </div>
  </section>
  <!-- end product section -->

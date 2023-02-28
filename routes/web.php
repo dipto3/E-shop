@@ -12,6 +12,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\AboutController; 
 use App\Http\Controllers\CartController; 
 use App\Http\Controllers\ShippingController; 
+use App\Http\Controllers\OrderController; 
 
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
@@ -78,7 +79,7 @@ Route::post('/remove-cart/{id}', [CartController::class, 'remove_cart']);
 Route::get('/shipping-address', [ShippingController::class, 'shipping_form']);
 Route::post('/store-shipping', [ShippingController::class, 'ship_store']);
 
-
+Route::get('/order', [OrderController::class, 'order_form']);
 
 
 Route::middleware([

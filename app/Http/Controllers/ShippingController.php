@@ -39,7 +39,7 @@ class ShippingController extends Controller
         $ship->zip_code = $request->zip;
         $ship->save();
 
-        return redirect()->back();
+        return redirect('/order');
         
 
     }

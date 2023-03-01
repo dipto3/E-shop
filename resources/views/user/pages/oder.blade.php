@@ -75,6 +75,7 @@
 }
 </style>
 	<!-- Order Details -->
+  <form action="" method="post">
     <div class="container">
       
     <div style=" margin-top:50px; margin-bottom:50px;" class="col-md-6 mx-auto order-details">
@@ -86,23 +87,33 @@
                 <div><strong>PRODUCT</strong></div>
                 <div><strong>TOTAL</strong></div>
             </div>
+            <?php
+             $total_cart_price = 0;
+            $totalitem = 0;
+            ?>
+            @foreach ($carts as $cart)
+            <?php 
+           
+             $total_cart_price = $total_cart_price + $cart->total_price;
+             ?>
+          
             <div class="order-products">
                 <div class="order-col">
-                    <div>1x Product Name Goes Here</div>
-                    <div>$980.00</div>
+                    <div>{{$cart->qty}}x {{$cart->product_name}} ({{$cart->color}} - {{$cart->size}} ) </div>
+                    <div>${{$cart->total_price}}</div>
                 </div>
-                <div class="order-col">
-                    <div>2x Product Name Goes Here</div>
-                    <div>$980.00</div>
-                </div>
+               
             </div>
+          
+            @endforeach
+          
             <div class="order-col">
-                <div>Shiping</div>
+                <div>Shiping Charge</div>
                 <div><strong>FREE</strong></div>
             </div>
             <div class="order-col">
                 <div><strong>TOTAL</strong></div>
-                <div><strong class="order-total">$2940.00</strong></div>
+                <div><strong class="order-total">${{ $total_cart_price }}</strong></div>
             </div>
         </div>
         <div class="payment-method">
@@ -110,7 +121,7 @@
                 <input type="radio" name="payment" id="payment-1">
                 <label for="payment-1">
                     <span></span>
-                    Direct Bank Transfer
+                    Cash On Delivery
                 </label>
                 <div class="caption">
                     <p></p>
@@ -144,11 +155,17 @@
                 I've read and accept the <a href="#">terms & conditions</a>
             </label>
         </div>
-        <a style="color :white;background-color: #D10024;" href="#" class="btn col-md-12">Place order</a>
-    </div>
+   
+          
+       
+          
+      
+        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="{{url('/cod-order/'.$user_id->id)}}" class="btn col-md-12">Place order</a>
+     
+      </div>
     
     </div>
-   
+  </form>
     <!-- /Order Details -->
 
 @endsection

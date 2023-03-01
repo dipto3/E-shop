@@ -8,13 +8,14 @@ use App\Models\Product;
 use App\Models\Cart;
 
 
+
 class CartController extends Controller
 {
    public function cart_store(Request $request, $id){
       
        if(Auth::id()){
         $user = Auth::user();
-  
+        
         $product = Product::find($id);
         $size=$request->size;
         $color = $request->color;

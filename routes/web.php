@@ -80,7 +80,7 @@ Route::get('/shipping-address', [ShippingController::class, 'shipping_form']);
 Route::post('/store-shipping', [ShippingController::class, 'ship_store']);
 
 Route::get('/order', [OrderController::class, 'order_form']);
-Route::get('/cod-order', [OrderController::class, 'cod_order']);
+Route::get('/cod-order{id}', [OrderController::class, 'cod_order']);
 
 Route::middleware([
     'auth:sanctum',

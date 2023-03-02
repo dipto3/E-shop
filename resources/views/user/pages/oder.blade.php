@@ -75,7 +75,7 @@
 }
 </style>
 	<!-- Order Details -->
-  <form action="" method="post">
+  
     <div class="container">
       
     <div style=" margin-top:50px; margin-bottom:50px;" class="col-md-6 mx-auto order-details">
@@ -160,12 +160,12 @@
        
           
       
-        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="{{url('/cod-order/'.$user_id->id)}}" class="btn col-md-12">Place order</a>
+        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="{{url('/cod-order'.$users->id)}}" class="btn col-md-12">Place order</a>
      
       </div>
     
     </div>
-  </form>
+   
     <!-- /Order Details -->
 
 @endsection

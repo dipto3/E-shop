@@ -118,33 +118,33 @@
         </div>
         <div class="payment-method">
             <div class="input-radio">
-                <input type="radio" name="payment" id="payment-1">
+                <input type="radio" name="cod" value="cash on delivery" id="payment-1">
                 <label for="payment-1">
                     <span></span>
                     Cash On Delivery
                 </label>
                 <div class="caption">
-                    <p></p>
+                    <p>Cash On Delivery</p>
                 </div>
             </div>
             <div class="input-radio">
-                <input type="radio" name="payment" id="payment-2">
+                <input type="radio" name="bkash" value="bkash" id="payment-2">
                 <label for="payment-2">
                     <span></span>
                    Bkash
                 </label>
                 <div class="caption">
-                    <p></p>
+                    <p>Bkash : 01234567898</p>
                 </div>
             </div>
             <div class="input-radio">
-                <input type="radio" name="payment" id="payment-3">
+                <input type="radio" name="nogod" value="nogod" id="payment-3">
                 <label for="payment-3">
                     <span></span>
-                    Paypal System
+                   Nogod
                 </label>
                 <div class="caption">
-                    <p></p>
+                    <p>Nogod : 01234567898</p>
                 </div>
             </div>
         </div>

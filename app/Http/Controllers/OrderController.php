@@ -49,9 +49,23 @@ class OrderController extends Controller
 
     foreach($udata as $data){
         $order = new Order;
-        $order->name = $data->name;
-        
+        $order->name = $sdata->rcv_name;
+        $order->email = $sdata->rcv_email;
+        $order->phone = $sdata->rcv_phone;
         $order->zip_code = $sdata->zip_code;
+        $order->address = $sdata->rcv_add;
+        $order->city = $sdata->rcv_city;
+        $order->district = $sdata->rcv_district;
+        $order->user_id = $sdata->rcv_uid;
+        $order->product_name = $data->product_name;
+        $order->product_id = $data->product_id;
+        $order->qty = $data->qty;
+        $order->size = $data->size;
+        $order->color = $data->color;
+        $order->total_price = $data->total_price;
+        $order->image = $data->image;
+        $order->payment_status = 
+        $order->delivery_status =
         $order->save();
 
         $cart_id = $data->id;

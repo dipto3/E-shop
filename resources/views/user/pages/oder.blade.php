@@ -116,9 +116,11 @@
                 <div><strong class="order-total">${{ $total_cart_price }}</strong></div>
             </div>
         </div>
+        <form action="{{url('/cod-order'.$users->id)}}" method="post">
+          @csrf
         <div class="payment-method">
             <div class="input-radio">
-                <input type="radio" name="cod" value="cash on delivery" id="payment-1">
+                <input type="radio" name="payment" value="cash on delivery" id="payment-1">
                 <label for="payment-1">
                     <span></span>
                     Cash On Delivery
@@ -128,7 +130,7 @@
                 </div>
             </div>
             <div class="input-radio">
-                <input type="radio" name="bkash" value="bkash" id="payment-2">
+                <input type="radio" name="payment" value="bkash" id="payment-2">
                 <label for="payment-2">
                     <span></span>
                    Bkash
@@ -138,7 +140,7 @@
                 </div>
             </div>
             <div class="input-radio">
-                <input type="radio" name="nogod" value="nogod" id="payment-3">
+                <input type="radio" name="payment" value="nogod" id="payment-3">
                 <label for="payment-3">
                     <span></span>
                    Nogod
@@ -160,8 +162,8 @@
        
           
       
-        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="{{url('/cod-order'.$users->id)}}" class="btn col-md-12">Place order</a>
-     
+        <button style="color :rgb(255, 255, 255);background-color: #dc3545;" type="submit" class="btn col-md-12">Place order</button>
+      </form>
       </div>
     
     </div>

@@ -29,7 +29,7 @@ class OrderController extends Controller
 
     }
 
-    public function cod_order($id){
+    public function cod_order(Request $request, $id){
         $user = Auth::user();
         $userid = $user->id;
         // $dataa = Shipdetails::find($id);
@@ -64,8 +64,8 @@ class OrderController extends Controller
         $order->color = $data->color;
         $order->total_price = $data->total_price;
         $order->image = $data->image;
-        $order->payment_status = 
-        $order->delivery_status =
+        $order->payment_status = $request->payment;
+        $order->delivery_status = 'processing';
         $order->save();
 
         $cart_id = $data->id;

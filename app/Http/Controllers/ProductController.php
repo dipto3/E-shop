@@ -8,6 +8,7 @@ use App\Models\Size;
 use App\Models\color;
 use App\Models\unit;
 use App\Models\Product;
+use DB;
 
 class ProductController extends Controller
 {
@@ -156,6 +157,18 @@ class ProductController extends Controller
         $product->update(['status'=>1]);
         }
        return redirect()->back();
+   }
+
+   public function chng_stts(Request $request){
+
+    DB::table('products')->where('id',$request->id)->update([
+        'status'=>$request->status
+     ]);
+
+     return response()->json([
+        'code'=>'200',
+        'message'=>'status changed successfully',
+     ]);
    }
 
 

@@ -78,7 +78,7 @@
   
     <div class="container">
       
-    <div style=" margin-top:50px; margin-bottom:50px;" class="col-md-6 mx-auto order-details">
+    <div style=" margin-top:50px; margin-bottom:50px;" class="col-md-8 mx-auto order-details">
         <div class="section-title text-center">
             <h3 class="title">Your Order</h3>
         </div>
@@ -116,40 +116,8 @@
                 <div><strong class="order-total">${{ $total_cart_price }}</strong></div>
             </div>
         </div>
-        <form action="{{url('/cod-order'.$users->id)}}" method="post">
-          @csrf
-        <div class="payment-method">
-            <div class="input-radio">
-                <input type="radio" name="payment" value="cash on delivery" id="payment-1">
-                <label for="payment-1">
-                    <span></span>
-                    Cash On Delivery
-                </label>
-                <div class="caption">
-                    <p>Cash On Delivery</p>
-                </div>
-            </div>
-            <div class="input-radio">
-                <input type="radio" name="payment" value="bkash" id="payment-2">
-                <label for="payment-2">
-                    <span></span>
-                   Bkash
-                </label>
-                <div class="caption">
-                    <p>Bkash : 01234567898</p>
-                </div>
-            </div>
-            <div class="input-radio">
-                <input type="radio" name="payment" value="nogod" id="payment-3">
-                <label for="payment-3">
-                    <span></span>
-                   Nogod
-                </label>
-                <div class="caption">
-                    <p>Nogod : 01234567898</p>
-                </div>
-            </div>
-        </div>
+     
+        
         <div class="input-checkbox">
             <input type="checkbox" id="terms">
             <label for="terms">
@@ -160,12 +128,15 @@
    
           
        
-          
+        
       
-        <button style="color :rgb(255, 255, 255);background-color: #dc3545;" type="submit" class="btn col-md-12">Place order</button>
-      </form>
-      </div>
-    
+        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="{{url('/cod-order'.$users->id)}}" class="btn col-md-3">Cash on Delivery</a>
+        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="" class="btn col-md-3">Pay using Card</a>
+     
+        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="" class="btn col-md-3">Pay using Bkash</a> 
+       
+      
+    </div>
     </div>
    
     <!-- /Order Details -->

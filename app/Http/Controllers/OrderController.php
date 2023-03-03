@@ -64,26 +64,19 @@ class OrderController extends Controller
         $order->color = $data->color;
         $order->total_price = $data->total_price;
         $order->image = $data->image;
-        $order->payment_status = $request->payment;
+        $order->payment_status = 'cash on delivery';
         $order->delivery_status = 'processing';
         $order->save();
 
         $cart_id = $data->id;
         $cartdlt = Cart::find( $cart_id );
         $cartdlt->delete();
-
-        
-        
-   
        
     }
    return redirect()->back();
    
-
-
     }
    
-
     }
 
 

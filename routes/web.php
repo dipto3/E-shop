@@ -60,8 +60,9 @@ Route::get('/all-product', [ProductController::class, 'index']);
 Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
 Route::post('/update-product/{id}', [ProductController::class, 'update']);
 Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
-Route::get('/product-status{product}',[ProductController::class,'change_status']);
+// Route::get('/product-status{product}',[ProductController::class,'change_status']);
 
+Route::post('/tog-stts', [ProductController::class, 'chng_stts'])->name('status');
 //Frontend
 Route::get('/productbycat/{name}', [AllProductController::class, 'productbycat']);
 Route::get('/allproducts', [AllProductController::class, 'allproducts']);
@@ -80,7 +81,8 @@ Route::get('/shipping-address', [ShippingController::class, 'shipping_form']);
 Route::post('/store-shipping', [ShippingController::class, 'ship_store']);
 
 Route::get('/order', [OrderController::class, 'order_form']);
-Route::post('/cod-order{id}', [OrderController::class, 'cod_order']);
+Route::get('/cod-order{id}', [OrderController::class, 'cod_order']);
+
 
 Route::middleware([
     'auth:sanctum',

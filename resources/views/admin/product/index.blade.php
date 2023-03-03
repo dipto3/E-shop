@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="table-responsive pt-3">
-    <table class="table table-dark">
+    <table class="table table-dark" id="example1">
     <thead>
         <tr>
           <th style="width: 5%;" scope="col">ID</th>
@@ -40,16 +40,23 @@
                 @endforeach
             </td>
             <td class="center">
-              @if($product->status==1) 
+              {{-- @if($product->status==1) 
                 <span class="btn btn-success">Active</span>
 
               @else
               <span class="btn btn-danger">Deactive</span>	
-              @endif
+              @endif --}}
+
+              <label class="switch">
+                <input class="switch_change" name="status" id = "{{$product->id}}" 
+                value="{{$product->status}}" data-onstyle="info" 
+                type="checkbox" @php if ($product->status == 1) echo "checked";@endphp> 
+                <span class="slider round"></span>
+              </label>
               </td>
             <td style="text-align:center;">
 
-              <div class="span">
+              {{-- <div class="span">
                 @if($product->status==1) 
                 <a href="{{url('/product-status'.$product->id)}}" class="btn btn-danger" >
                   <i class="fa-solid fa-thumbs-down"></i>
@@ -61,7 +68,7 @@
                 </a>
                 @endif
 
-                </div>
+                </div> --}}
                 <a href="{{url('/edit-product/'.$product->id)}}" class="btn btn-info update_productform">
                     <i class="las la-edit"></i>
                 </a>
@@ -78,5 +85,36 @@
         @endforeach
      </tbody>
  </table>
+
 </div>
 @endsection
+@push('js')
+<script>
+
+  $(document).ready(function (){
+      $("#example1").DataTable()
+  });
+  $('.switch_change').on('change',function(e) {
+      e.preventDefault();
+      var status = $(this).prop('checked') == true ? 1 : 0;
+      var id = $(this).attr('id');
+  
+      $.ajax({
+        
+          url: '{{ url("/tog-stts")}}',
+          type: "POST",
+          data: {
+              _token: "{{csrf_token()}}",
+              status: status,
+              id: id
+          },
+        
+          success: function (data) {
+          
+              toastr.success(data.message);
+          }
+      });
+  });
+  
+</script>
+@endpush

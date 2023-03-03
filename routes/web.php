@@ -81,8 +81,9 @@ Route::get('/shipping-address', [ShippingController::class, 'shipping_form']);
 Route::post('/store-shipping', [ShippingController::class, 'ship_store']);
 
 Route::get('/order', [OrderController::class, 'order_form']);
-Route::get('/cod-order{id}', [OrderController::class, 'cod_order']);
-
+Route::get('/cod-order', [OrderController::class, 'cod_order']);
+Route::get('/stripe/{total_cart_price}', [OrderController::class, 'stripe']);
+Route::post('stripe/{total_cart_price}',[OrderController::class,  'stripePost'])->name('stripe.post');
 
 Route::middleware([
     'auth:sanctum',

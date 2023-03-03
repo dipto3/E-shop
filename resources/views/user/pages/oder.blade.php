@@ -130,8 +130,8 @@
        
         
       
-        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="{{url('/cod-order'.$users->id)}}" class="btn col-md-3">Cash on Delivery</a>
-        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="" class="btn col-md-3">Pay using Card</a>
+        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="{{url('/cod-order')}}" class="btn col-md-3">Cash on Delivery</a>
+        <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="{{url('/stripe',$total_cart_price)}}" class="btn col-md-3">Pay using Card</a>
      
         <a style="color :rgb(255, 255, 255);background-color: #dc3545;" href="" class="btn col-md-3">Pay using Bkash</a> 
        

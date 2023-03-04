@@ -9,7 +9,7 @@ use App\Models\Size;
 use App\Models\Color;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
-
+use Brian2694\Toastr\Facades\Toastr;
 class AllProductController extends Controller
 {
     public function productbycat($name){

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>Laravel 9 - Stripe Payment Gateway Integration Example - ItSolutionStuff.com</title>
+   
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.7/css/bootstrap.min.css" />
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 
@@ -19,7 +19,7 @@
     
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
     
-
+    <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
 
   
 
@@ -27,12 +27,12 @@
 <body>
     <div class="hero_area">
         <!-- header section strats -->
-        @include('user.header')
+        <span style="font-size:18px;"> @include('user.header')</span>
+  
         <!-- end header section -->
 <div class="row">
     
-    <h4 color>N.B>This is a testing site developed by Dipto</h4>
-    
+  
     <div class="row">
         <div class="col-md-6 col-md-offset-3">
             <div class="panel panel-default credit-card-box">
@@ -59,8 +59,8 @@
                         @csrf
     
                         <div class='form-row row'>
-                            <div class='col-xs-12 form-group required'>
-                                <label class='control-label'>Name on Card</label> <input
+                            <div  class='col-xs-12 form-group required'>
+                                <label  class='control-label'>Name on Card</label> <input
                                     class='form-control' size='4' type='text'>
                             </div>
                         </div>
@@ -184,4 +184,15 @@ $(function() {
      
 });
 </script>
+<script src="{{asset('frontend/js/jquery-3.4.1.min.js')}}"></script>
+<!-- popper js -->
+<script src="{{asset('frontend/js/popper.min.js')}}"></script>
+<!-- bootstrap js -->
+<script src="{{asset('frontend/js/bootstrap.js')}}"></script>
+<!-- custom js -->
+<script src="{{asset('frontend/js/custom.js')}}"></script>
+
+<script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+<script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+{!! Toastr::message() !!}
 </html>

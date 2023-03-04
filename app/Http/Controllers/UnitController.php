@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Unit;
+use Brian2694\Toastr\Facades\Toastr;
 class UnitController extends Controller
 {
     public function create(){
@@ -15,6 +16,7 @@ class UnitController extends Controller
         $unit->name = $request->name;
         $unit->description = $request->description;
 
+        Toastr::success('Unit Added', '', ["positionClass" => "toast-top-right"]);
         $unit->save();
         return redirect()->back();
     }
@@ -33,6 +35,7 @@ class UnitController extends Controller
         $unit->name = $request->name;
         $unit->description = $request->description;
 
+        Toastr::success('Unit Updated', '', ["positionClass" => "toast-top-right"]);
         $unit->save();
         return redirect()->back();
     }
@@ -40,6 +43,8 @@ class UnitController extends Controller
     public function destroy($id){
         $unit = Unit::find($id);
         $unit->delete();
+
+        Toastr::warning('Unit Removed', '', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 }

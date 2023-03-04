@@ -9,7 +9,7 @@ use App\Models\color;
 use App\Models\unit;
 use App\Models\Product;
 use DB;
-
+use Brian2694\Toastr\Facades\Toastr;
 class ProductController extends Controller
 {
     public function create(){
@@ -57,6 +57,8 @@ class ProductController extends Controller
         }
         $product ->save();
 
+
+        Toastr::success('Product Added', '', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 
@@ -118,6 +120,8 @@ class ProductController extends Controller
         }
         $product ->save();
 
+
+        Toastr::success('Product Updated', '', ["positionClass" => "toast-top-right"]);
         return redirect('/all-product');
     }
     // public function update(Request $request, Product $product)
@@ -143,19 +147,23 @@ class ProductController extends Controller
     public function destroy($id){
         $product = Product::find($id);
         $product->delete();
+
+        Toastr::warning('Product Removed', '', ["positionClass" => "toast-top-right"]);
          return redirect()->back();
 
     }
-    public function change_status(Product $product)
-    {
-      if($product->status==1){
-        $product->update(['status'=>0]);
-        }
-       else{
-        $product->update(['status'=>1]);
-        }
-       return redirect()->back();
-   }
+//     public function change_status(Product $product)
+//     {
+//       if($product->status==1){
+//         $product->update(['status'=>0]);
+//         }
+//        else{
+//         $product->update(['status'=>1]);
+//         }
+
+      
+//        return redirect()->back();
+//    }
 
    public function chng_stts(Request $request){
 
@@ -163,10 +171,13 @@ class ProductController extends Controller
         'status'=>$request->status
      ]);
 
+
+   
      return response()->json([
         'code'=>'200',
         'message'=>'status changed successfully',
      ]);
+     Toastr::info('', '', ["positionClass" => "toast-top-right"]);
    }
 
 

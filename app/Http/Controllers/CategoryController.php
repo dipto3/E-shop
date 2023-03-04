@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\Category;
 
+use Brian2694\Toastr\Facades\Toastr;
 class CategoryController extends Controller
 {
     public function create(){
@@ -15,8 +16,9 @@ class CategoryController extends Controller
         $category = new Category();
         $category->name = $request->name;
         $category->description = $request->description;
-
+       
         $category->save();
+        Toastr::success('Category Added', '', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 
@@ -35,13 +37,16 @@ class CategoryController extends Controller
         $category->name = $request->name;
         $category->description = $request->description;
 
+       
         $category->save();
+        Toastr::success('Category Updated', '', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 
     public function destroy($id){
         $category = Category::find($id);
         $category->delete();
+        Toastr::warning('Category Removed', '', ["positionClass" => "toast-top-right"]);
         return redirect()->back();
     }
 }

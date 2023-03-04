@@ -27,7 +27,9 @@
       <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
       <link rel="stylesheet" href="{{asset('nouislider.min.css')}}">
       <link rel="stylesheet" href="{{asset('slick-theme.css')}}">
-    
+      
+      <link rel="stylesheet" href="http://cdn.bootcss.com/toastr.js/latest/css/toastr.min.css">
+
       <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
 
       <style>
@@ -231,6 +233,8 @@
       <!-- custom js -->
       <script src="{{asset('frontend/js/custom.js')}}"></script>
 
-    
+      <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
+      <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+      {!! Toastr::message() !!}
    </body>
 </html>

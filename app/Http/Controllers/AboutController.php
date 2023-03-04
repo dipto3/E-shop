@@ -7,6 +7,7 @@ use App\Models\Category;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
 
+
 class AboutController extends Controller
 {
    public function about(){

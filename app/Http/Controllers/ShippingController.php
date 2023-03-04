@@ -9,6 +9,8 @@ use App\Models\Cart;
 use App\Models\User;
 use App\Models\Shipdetails;
 
+use Brian2694\Toastr\Facades\Toastr;
+
 class ShippingController extends Controller
 {
     public function shipping_form(){
@@ -40,7 +42,8 @@ class ShippingController extends Controller
         $ship->rcv_district = $request->district;
         $ship->zip_code = $request->zip;
         $ship->save();
-        
+
+        Toastr::info('Shipping address saved ', '', ["positionClass" => "toast-top-right"]);
         return redirect('/order');
       }else{
         $ship = new Shipdetails();
@@ -53,7 +56,7 @@ class ShippingController extends Controller
         $ship->rcv_district = $request->district;
         $ship->zip_code = $request->zip;
         $ship->save();
-
+        Toastr::info('Shipping address saved ', '', ["positionClass" => "toast-top-right"]);
         return redirect('/order');
         
   

@@ -10,7 +10,7 @@ use App\Models\Shipdetails;
 use DB;
 use Session;
 use Stripe;
-
+use Brian2694\Toastr\Facades\Toastr;
 
 use Illuminate\Support\Facades\Auth;
 
@@ -69,6 +69,7 @@ class OrderController extends Controller
         $cartdlt->delete();
        
     }
+    Toastr::success('Order placed ', '', ["positionClass" => "toast-top-right"]);
    return redirect()->back();
    
     }
@@ -128,16 +129,16 @@ class OrderController extends Controller
         $order->payment_status = 'Paid by card(stripe)';
         $order->delivery_status = 'processing';
         $order->save();
-
+       
         $cart_id = $data->id;
         $cartdlt = Cart::find( $cart_id );
         $cartdlt->delete();
        
     }
-
+    Toastr::success('Your order is placed  ', 'Payment successful!', ["positionClass" => "toast-top-right"]);
         Session::flash('success', 'Payment successful!');
               
-        return back();
+        return redirect('/order');
     }
    
     }

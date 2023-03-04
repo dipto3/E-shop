@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Category;
 use App\Models\Cart;
 use Illuminate\Support\Facades\Auth;
-
+use Brian2694\Toastr\Facades\Toastr;
 class ContactController extends Controller
 {
     public function contact(){

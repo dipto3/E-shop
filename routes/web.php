@@ -64,7 +64,7 @@ Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
 Route::post('/tog-stts', [ProductController::class, 'chng_stts'])->name('status');
 
 Route::get('/all-order', [AllorderController::class, 'show_order']);
-
+Route::get('/order-update/{id}', [AllorderController::class, 'update']);
 
 //Frontend
 Route::get('/productbycat/{name}', [AllProductController::class, 'productbycat']);

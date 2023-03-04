@@ -1,4 +1,4 @@
-<!DOCTYPE html>ico
+<!DOCTYPE html>
 <html lang="en">
 
 <head>

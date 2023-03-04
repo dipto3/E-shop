@@ -11,8 +11,16 @@ class AllorderController extends Controller
 {
     public function show_order(){
 
-        
+
         $orders = Order::all();
         return view('admin.orders.allorder',compact('orders'));
+    }
+    public function update($id){
+
+    $order = Order::find($id);
+    $order-> delivery_status  = 'Delivered';
+    $order->save();
+
+     return redirect()->back();
     }
 }

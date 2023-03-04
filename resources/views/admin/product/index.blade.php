@@ -2,7 +2,7 @@
 
 @section('content')
 <div class="table-responsive pt-3">
-    <table class="table table-dark" id="example1">
+    <table class="table table-dark table-hover" id="example1">
     <thead>
         <tr>
           <th style="width: 5%;" scope="col">ID</th>

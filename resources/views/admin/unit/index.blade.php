@@ -1,7 +1,8 @@
 @extends('admin.master')
 
 @section('content')
-<table class="table table-bordered">
+<div class="table-responsive pt-3">
+<table class="table table-dark table-hover">
     <thead>
         <tr>
           <th style="width: 5%;" scope="col">ID</th>
@@ -34,4 +35,5 @@
     
      </tbody>
  </table>
+</div>
 @endsection

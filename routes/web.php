@@ -13,7 +13,7 @@ use App\Http\Controllers\AboutController;
 use App\Http\Controllers\CartController; 
 use App\Http\Controllers\ShippingController; 
 use App\Http\Controllers\OrderController; 
-
+use App\Http\Controllers\AllorderController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'redirect']);
@@ -61,8 +61,11 @@ Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
 Route::post('/update-product/{id}', [ProductController::class, 'update']);
 Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
 // Route::get('/product-status{product}',[ProductController::class,'change_status']);
-
 Route::post('/tog-stts', [ProductController::class, 'chng_stts'])->name('status');
+
+Route::get('/all-order', [AllorderController::class, 'show_order']);
+
+
 //Frontend
 Route::get('/productbycat/{name}', [AllProductController::class, 'productbycat']);
 Route::get('/allproducts', [AllProductController::class, 'allproducts']);

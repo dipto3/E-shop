@@ -319,6 +319,14 @@
        <h2>
           Our <span>products</span>
        </h2>
+       <label>
+         Sort By:
+         <select class="input-select">
+            <option value="0">Popular</option>
+            <option value="1">Position</option>
+         </select>
+      </label>
+
     </div>
     <div class="row">
       @foreach($products as $product)

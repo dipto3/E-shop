@@ -18,10 +18,6 @@
         <x-jet-section-border />
     @endif
 
-
-
- 
-
-
+    
 </div>
 @endsection

@@ -18,7 +18,7 @@ class CategoryController extends Controller
         $category->description = $request->description;
        
         $category->save();
-        Toastr::success('Category Added', '', ["positionClass" => "toast-top-right"]);
+        
         return redirect()->back();
     }
 

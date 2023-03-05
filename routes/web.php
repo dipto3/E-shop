@@ -14,6 +14,7 @@ use App\Http\Controllers\CartController;
 use App\Http\Controllers\ShippingController; 
 use App\Http\Controllers\OrderController; 
 use App\Http\Controllers\AllorderController;
+use App\Http\Controllers\BillingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'redirect']);
@@ -65,6 +66,9 @@ Route::post('/tog-stts', [ProductController::class, 'chng_stts'])->name('status'
 
 Route::get('/all-order', [AllorderController::class, 'show_order']);
 Route::get('/order-update/{id}', [AllorderController::class, 'update']);
+
+Route::get('/billing-add', [BillingController::class, 'form']);
+Route::post('/billing-store', [BillingController::class, 'store']);
 
 //Frontend
 Route::get('/productbycat/{name}', [AllProductController::class, 'productbycat']);

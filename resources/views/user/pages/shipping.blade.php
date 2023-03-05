@@ -2,17 +2,7 @@
 
 @section('content')
      <!-- inner page section -->
-     <section class="inner_page_head">
-        <div class="container_fuild">
-           <div class="row">
-              <div class="col-md-12">
-                 <div class="full">
-                    <h3>Shipping Address</h3>
-                 </div>
-              </div>
-           </div>
-        </div>
-     </section>
+
      <!-- end inner page section -->
 
           <!-- Form section -->
@@ -20,7 +10,48 @@
             <div class="container">
             
                <div class="row">
-                  <div class="col-lg-8 offset-lg-2">
+                  <div class="col col-lg-6">
+                     <section class="inner_page_head">
+                        <div class="container_fuild">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="full">
+                                    <h3>Billing Address</h3>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </section>
+                     <div class="full">
+                        <form action="" method="POST">
+                            @csrf
+                           <fieldset>
+                            <input type="text" value="" placeholder="Enter full name" name="name" required />
+                            <input type="email" placeholder="Enter email address" name="email" required />
+                            <input type="text" placeholder="Enter phone number" name="phone" required />
+                            <input type="text" placeholder="Enter shipping address (House no.,Street,area)" name="address" required />
+                            <input type="text" placeholder="Enter city" name="city" required />
+                            <input type="text" placeholder="Enter district" name="district" required />
+                            <input type="text" placeholder="Enter zip code" name="zip" required />
+                           
+                           </fieldset>
+                        </form>
+                     </div>
+                  </div>
+
+
+                  <div class="col col-lg-6 ">
+                     <section class="inner_page_head">
+                        <div class="container_fuild">
+                           <div class="row">
+                              <div class="col-md-12">
+                                 <div class="full">
+                                    <h3>Shipping Address</h3>
+                                 </div>
+                              </div>
+                           </div>
+                        </div>
+                     </section>
                      <div class="full">
                         <form action="{{url('/store-shipping')}}" method="POST">
                             @csrf

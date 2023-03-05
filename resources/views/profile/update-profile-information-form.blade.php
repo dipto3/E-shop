@@ -59,6 +59,8 @@
             <x-jet-input-error for="name" class="mt-2" />
         </div>
 
+
+
         <!-- Email -->
         <div class="col-span-6 sm:col-span-4">
             <x-jet-label for="email" value="{{ __('Email') }}" />
@@ -82,6 +84,7 @@
             @endif
         </div>
     </x-slot>
+    
 
     <x-slot name="actions">
         <x-jet-action-message class="mr-3" on="saved">
@@ -92,4 +95,6 @@
             {{ __('Save') }}
         </x-jet-button>
     </x-slot>
+
+
 </x-jet-form-section>

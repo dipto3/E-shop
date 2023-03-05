@@ -48,8 +48,10 @@
                 <td>
                   @if ($order->delivery_status == 'processing')
                   <a href="{{url('/order-update/'.$order->id)}}" onclick="return confirm('Are you sure this product is delivered?')" class="btn btn-success">Deliverd</a>
+
+                  <a href="{{url('/order-remove/'.$order->id)}}" onclick="return confirm('Are you sure to cancek this product?')" class="btn btn-danger">Cancel</a>
                   @else
-                  <h6>Already Delivered</h6>
+                  <h6>Nothing to action</h6>
                   @endif
                   
                 </td>

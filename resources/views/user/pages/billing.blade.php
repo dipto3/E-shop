@@ -12,7 +12,7 @@
                     <form action="{{url('/billing-store')}}" method="POST">
                         @csrf
                        <fieldset>
-                        <input type="text" value="" placeholder="Enter full name" name="name" required />
+                        <input type="text" id="bill_name"  placeholder="Enter full name" name="name" required />
                         <input type="email" placeholder="Enter email address" name="email" required />
                         <input type="text" placeholder="Enter phone number" name="phone" required />
                         <input type="text" placeholder="Enter shipping address (House no.,Street,area)" name="address" required />

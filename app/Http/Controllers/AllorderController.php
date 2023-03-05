@@ -23,4 +23,12 @@ class AllorderController extends Controller
 
      return redirect()->back();
     }
+    public function cancel($id){
+        $order = Order::find($id);
+    $order-> delivery_status  = 'Cancel By Admin';
+    $order->save();
+
+     return redirect()->back();
+
+    }
 }

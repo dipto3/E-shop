@@ -17,9 +17,9 @@ class ShippingController extends Controller
     public function shipping_form(){
       $foruserid = Auth::user();
       $user_id = $foruserid->id;
-      // $user = Billing::where('uid',$user_id)->get('id')->first();
-  
-      $bill = Billing::find($user_id);
+      $bill = Billing::where('uid',$user_id)->first();
+ 
+      // $bill = Billing::find($user_id);
       // if(Auth::user()){
       //   $user_id = Auth::user()->id;
       //   $user = Billing::where('uid',$user_id)->first();

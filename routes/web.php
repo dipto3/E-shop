@@ -66,6 +66,7 @@ Route::post('/tog-stts', [ProductController::class, 'chng_stts'])->name('status'
 
 Route::get('/all-order', [AllorderController::class, 'show_order']);
 Route::get('/order-update/{id}', [AllorderController::class, 'update']);
+Route::get('/order-remove/{id}', [AllorderController::class, 'cancel']);
 
 Route::get('/billing-add', [BillingController::class, 'form']);
 Route::post('/billing-store', [BillingController::class, 'store']);
@@ -89,6 +90,8 @@ Route::post('/store-shipping', [ShippingController::class, 'ship_store']);
 
 Route::get('/order', [OrderController::class, 'order_form']);
 Route::get('/cod-order', [OrderController::class, 'cod_order']);
+Route::get('/order-list', [OrderController::class, 'order_list']);
+Route::get('/order-delete/{id}', [OrderController::class, 'order_delete']);
 Route::get('/stripe/{total_cart_price}', [OrderController::class, 'stripe']);
 Route::post('stripe/{total_cart_price}',[OrderController::class,  'stripePost'])->name('stripe.post');
 

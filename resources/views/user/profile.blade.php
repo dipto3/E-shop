@@ -4,16 +4,51 @@
 
 
 <div class="max-w-7xl mx-auto py-10 sm:px-6 lg:px-8">
-    <div class="row col-md-12">
+   
 
-        <div class="btn-group-vertical">
-           <a href="{{url('/billing-add')}}" class=" btn btn-info">Billing Address</a>
-           <button style="background-color: rgb(241, 236, 247); color:black;" class=" btn btn-success ">Your Cart</button>
-           <button class=" btn btn-success">Your Wishlist</button>
+
+    <div class="row col-md-12">
+        <div class="col col-md-6">
+            <P>Profile Information</p>
+            <p style="color:rgb(155, 148, 148); font-size:14px;">Update your account's profile information.</p>
+
+            <div class="row col-md-12" style="margin-top: 5%; border: 1px red;">
+
+                <div style="" class="btn-group-vertical">
+                   <a style="background-color: rgb(241, 236, 247); color:black;" href="{{url('/billing-add')}}" class=" btn ">Billing Address</a>
+                   <a style=" background-color: rgb(241, 236, 247); color:black;" href="" class=" btn  ">Your Cart</a>
+                   <a style="background-color: rgb(241, 236, 247); color:black;" href="" class=" btn ">Your Wishlist</a>
+                   <a style="background-color: rgb(241, 236, 247); color:black;" href="{{url('/order-list')}}" class=" btn ">Your Order</a>
+                </div>
+               
+            </div>
         </div>
-       
+
+        <form class="col col-md-6">
+            
+            <div class="form-icon">
+                <span><i class="icon icon-user"></i></span>
+            </div>
+            <div style="" class="form-group">
+                <input type="text" class="form-control item" id="username" placeholder="Username">
+            </div>
+            <div class="form-group">
+                <input type="password" class="form-control item" id="password" placeholder="Password">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="email" placeholder="Email">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="phone-number" placeholder="Phone Number">
+            </div>
+            <div class="form-group">
+                <input type="text" class="form-control item" id="birth-date" placeholder="Birth Date">
+            </div>
+            <div class="form-group">
+                <button type="button" class="btn btn-block create-account">sss</button>
+            </div>
+        </form>
     </div>
-    <br><br><br><br>
 {{--     
     @if (Laravel\Fortify\Features::canUpdateProfileInformation())
         @livewire('profile.update-profile-information-form')

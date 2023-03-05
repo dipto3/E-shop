@@ -140,6 +140,34 @@ class OrderController extends Controller
               
         return redirect('/order');
     }
+
+
+    public function order_list(){
+
+        $categories = Category::all();
+ 
+        if(Auth::user()){
+          $user_id = Auth::user()->id;
+          $carts = Cart::where('user_id', $user_id )->get();
+      }else{
+          $users_id = Auth::user();
+          $carts = Cart::where('user_id', $users_id )->get();
+      }
+
+      $user = Auth::user();
+      $userid = $user->id;
+      $orderlists = Order::where('user_id',$userid)->get();
+
+        return view('user.pages.orderlist',compact('categories','carts','orderlists'));
+    }
+    public function order_delete($id){
+
+        $dltorder = Order::find($id);
+        $dltorder->delivery_status = 'Order Cancel By User';
+        $dltorder->save();
+        return redirect()->back();
+
+    }
    
     }
 

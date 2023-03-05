@@ -28,8 +28,10 @@ class BillingController extends Controller
 
     $foruserid = Auth::user();
     $user_id = $foruserid->id;
+    $user_exist = Billing::where('uid',$user_id)->get('id')->first();
+    if($user_exist){
 
-    $billing = new Billing();
+    $billing = Billing::find($user_exist)->first();
     $billing->name = $request->name;
     $billing->uid = $foruserid->id;
     $billing->email = $request->email;
@@ -41,5 +43,19 @@ class BillingController extends Controller
     $billing->save();
 
     return redirect()->back();
+    }else{
+        $billing = new Billing;
+        $billing->name = $request->name;
+        $billing->uid = $foruserid->id;
+        $billing->email = $request->email;
+        $billing->phone = $request->phone;
+        $billing->add = $request->address ;
+        $billing->city = $request->city;
+        $billing->district = $request->district;
+        $billing->zip_code = $request->zip;
+        $billing->save();
+
+        return redirect()->back();
+    }
    }
 }

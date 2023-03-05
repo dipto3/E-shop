@@ -224,6 +224,33 @@
          
          </p>
       </div>
+<script>
+  $(document).ready(function(){
+
+    $("#billtoship").click(function(){
+
+      if(this.checked){
+        $("#ship_name").val($("#bill_name").val());
+        $("#ship_email").val($("#bill_email").val());
+        $("#ship_phone").val($("#bill_phone").val());
+        $("#ship_add").val($("#bill_add").val());
+        $("#ship_city").val($("#bill_city").val());
+        $("#ship_district").val($("#bill_district").val());
+        $("#ship_zip").val($("#bill_zip").val());
+      }else{
+        $("#ship_name").val('');
+        $("#ship_email").val('');
+        $("#ship_phone").val('');
+        $("#ship_add").val('');
+        $("#ship_city").val('');
+        $("#ship_district").val('');
+        $("#ship_zip").val('');
+      }
+    });
+
+  });
+</script>
+
       <!-- jQery -->
       <script src="{{asset('frontend/js/jquery-3.4.1.min.js')}}"></script>
       <!-- popper js -->

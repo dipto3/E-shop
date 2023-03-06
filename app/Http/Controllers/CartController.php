@@ -69,8 +69,10 @@ if($product_sizecolor_exist){
       return redirect()->back();
    }
    public function view(){
+
       $categories = Category::all();
  
+      
       if(Auth::user()){
         $user_id = Auth::user()->id;
         $carts = Cart::where('user_id', $user_id )->get();
@@ -78,7 +80,22 @@ if($product_sizecolor_exist){
         $users_id = Auth::user();
         $carts = Cart::where('user_id', $users_id )->get();
     }
+
+   
+      // $user_id = Auth::user()->id;
+      // $carts = Cart::where('product_id', $user_id )->where('user_id', $user_id )->get();
+
       return view('user.pages.viewcart',compact('categories','carts'));
+   }
+
+   public function qty_chng($id,Request $request){
+
+
+      $up_qty = Cart::find($id);
+      $up_qty->qty = $request->qty;
+      $up_qty->total_price = $request->qty * $up_qty->price;
+      $up_qty->save();
+      return redirect()->back();
    }
 
 }

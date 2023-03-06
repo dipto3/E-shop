@@ -29,7 +29,8 @@
                         </thead>
                         <tbody>
                             @foreach ($carts as $cart)
-
+<form action="{{url('/qty-chng/'.$cart->id)}}" method="POST">
+    @csrf
 
                             <tr>
                                 <td class="hidden-xs">
@@ -40,44 +41,54 @@
                                 <td><a href="#">{{$cart->product_name}}</a>
                                 </td>
                                 <td>
-                                    <select name="">
-                                        <option value="">S</option>
-                                        <option value="" selected="selected">M</option>
-                                    </select>
+                                 
+                                        <a href="">{{$cart->size}}</a>
+                                     
+                                
                                 </td>
                                 <td>
-                                    <select name="">
-                                        <option value="" selected="selected">Red</option>
-                                        <option value="">Blue</option>
-                                    </select>
-                                </td>
+                                 
+                                    <a href="">{{$cart->color}}</a>
+                                 
+                            
+                            </td>
                                 <td>
-                                    <div class="input-group bootstrap-touchspin"><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-down" type="button">-</button></span><span class="input-group-addon bootstrap-touchspin-prefix" style="display: none;"></span><input type="number" name="" min="1" value="0" class="input-qty form-control text-center" style="display: block;"><span class="input-group-addon bootstrap-touchspin-postfix" style="display: none;"></span><span class="input-group-btn"><button class="btn btn-default bootstrap-touchspin-up" type="button">+</button></span></div>
+                                    
+                                <input style="width: 120px;" name="qty" value="{{$cart->qty}}" type="number">
                                 </td>
-                                <td class="price">$ 20.63</td>
-                                <td>$ 41.26</td>
+                                <td class="price">$ {{$cart->price}}</td>
+                                <td>$ {{$cart->total_price}}</td>
                                 <td class="text-center">
-                                    <a href="#" class="remove_cart" rel="1">
+                                    <a href="{{url('/remove-cart/'.$cart->id)}}" onclick="return confirm('Are you sure to remove product?')" class="remove_cart" rel="1">
                                         <i class="fa fa-trash-o"></i>
                                     </a>
                                 </td>
                             </tr>
 
                             @endforeach
+
+                            <?php $totalitem = 0;
+                        $total_cart_price = 0;
+                        ?>
+                        @foreach ($carts as $cart)
+                        <?php $totalitem =$totalitem +  $cart->qty;
+                        $total_cart_price = $total_cart_price + $cart->total_price;
+                        ?>
+                        @endforeach
                             <tr>
-                                <td colspan="6" align="right">Total</td>
-                                <td class="total" colspan="2"><b>$ 163.47</b>
+                                <td colspan="6" align="right">Subtotal</td>
+                                <td class="total" colspan="2"><b>${{$total_cart_price}} </b>
                                 </td>
                             </tr>
                         </tbody>
                     </table>
                 </div>
                 <div class="btn-group btns-cart">
-                    <a href=""  class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> Continue Shopping</a>
-                    <a href="" style="background-color: rgb(51, 160, 66); color:white;" class="btn ">Update Cart</a>
-                    <a href="" style="background-color: rgb(218, 84, 84); color:bisque;"class="btn ">Checkout <i class="fa fa-arrow-circle-right"></i></a>
+                    <a href="{{url('/allproducts')}}"  class="btn btn-info"><i class="fa fa-arrow-circle-left"></i> Continue Shopping</a>
+                    <button type="submit" style="background-color: rgb(51, 160, 66); color:white;" class="btn ">Update Cart</button>
+                    <a href="{{url('/shipping-address')}}" style="background-color: rgb(218, 84, 84); color:bisque;"class="btn ">Checkout <i class="fa fa-arrow-circle-right"></i></a>
                 </div>
-    
+            </form>
             </div>
         </div>
         <!-- End Cart -->

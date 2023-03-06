@@ -6,6 +6,9 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Category;
+
+
 
 use Brian2694\Toastr\Facades\Toastr;
 
@@ -65,4 +68,17 @@ if($product_sizecolor_exist){
       $delete_cart->delete();
       return redirect()->back();
    }
+   public function view(){
+      $categories = Category::all();
+ 
+      if(Auth::user()){
+        $user_id = Auth::user()->id;
+        $carts = Cart::where('user_id', $user_id )->get();
+    }else{
+        $users_id = Auth::user();
+        $carts = Cart::where('user_id', $users_id )->get();
+    }
+      return view('user.pages.viewcart',compact('categories','carts'));
+   }
+
 }

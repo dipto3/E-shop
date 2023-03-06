@@ -176,7 +176,7 @@ div.product-body{
                           
                            @foreach ($carts as $cart)
                          <div style="border: 1px solid rgb(236, 236, 236);">
-                           <div  class="product-widget form-row">
+                           <div  class="product-endforeachwidget form-row">
                               <div class="product-imgg col">
                                  <img src="./img/product01.png" alt="">
                               </div>
@@ -213,7 +213,7 @@ div.product-body{
                         </div>
                       
                         <div class="cart-btns">
-                           <a href="">View Cart</a>
+                           <a href="{{url('/view-cart')}}">View Cart</a>
                            <a href="{{url('/shipping-address')}}">Checkout  <i class="fa fa-arrow-circle-right"></i></a>
                         </div>
                      </div>

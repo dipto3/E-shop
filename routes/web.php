@@ -83,6 +83,7 @@ Route::get('/about', [AboutController::class, 'about']);
 //cart
 Route::post('/add-cart/{id}', [CartController::class, 'cart_store']);
 Route::post('/remove-cart/{id}', [CartController::class, 'remove_cart']);
+Route::get('/view-cart', [CartController::class, 'view']);
 
 //shiping
 Route::get('/shipping-address', [ShippingController::class, 'shipping_form']);

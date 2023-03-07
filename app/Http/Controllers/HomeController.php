@@ -9,6 +9,9 @@ use App\Models\Category;
 use App\Models\Product;
 use App\Models\Cart;
 use Brian2694\Toastr\Facades\Toastr;
+use RealRashid\SweetAlert\Facades\Alert;
+
+
 class HomeController extends Controller
 {
     public function redirect(){

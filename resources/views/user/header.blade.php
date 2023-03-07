@@ -188,7 +188,7 @@ div.product-body{
                               </div>
                               {{-- <form action="{{url('/remove-cart/'.$cart->id)}}" method="post">
                                  @csrf --}}
-                                 <a href="{{url('/remove-cart/'.$cart->id)}}" onclick="return confirm('Are you sure to remove product?')" style="height:5%; margin-right: 10px;  border-style: none;"  class="delete"><i  class="fa fa-close"></i></a>
+                                 <a href="{{url('/remove-cart/'.$cart->id)}}" onclick=" confirmation(event)" style="height:5%; margin-right: 10px;  border-style: none;"  class="delete"><i  class="fa fa-close"></i></a>
                               {{-- </form> --}}
                               
                            </div>

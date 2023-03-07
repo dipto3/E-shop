@@ -37,7 +37,7 @@
         </td>
         <td>
             @if($orderlist->delivery_status == 'processing')
-            <a href="{{url('/order-delete/'.$orderlist->id)}}" onclick="return confirm('Are you sure to this cancel the order?')" class="btn btn-danger">Cancel Order</a>
+            <a href="{{url('/order-delete/'.$orderlist->id)}}" onclick=" confirmation(event)" class="btn btn-danger">Cancel Order</a>
             @else
             <h5>Nothing to action</h5>
             @endif
@@ -48,4 +48,5 @@
   </table>
 
 </div>
+
 @endsection

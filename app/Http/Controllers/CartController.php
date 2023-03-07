@@ -12,6 +12,7 @@ use App\Models\Category;
 
 use Brian2694\Toastr\Facades\Toastr;
 
+use RealRashid\SweetAlert\Facades\Alert;
 class CartController extends Controller
 {
    public function cart_store(Request $request, $id){
@@ -32,6 +33,7 @@ if($product_sizecolor_exist){
    $cart->qty =  $qty + $request->qty;
    $cart->total_price = $product->price * $cart->qty;
    $cart->save();
+   alert::success('Product in cart');
    Toastr::success('Product in cart ', '', ["positionClass" => "toast-top-right"]);
    return redirect()->back();
 
@@ -51,6 +53,8 @@ if($product_sizecolor_exist){
    $cart->total_price = $product->price * $request->qty;
    $cart->image = $product->image;
    $cart->save();
+
+   Alert::success('Product in cart','Success');
    Toastr::success('Product in cart', 'Success!', ["positionClass" => "toast-top-right"]);
    return redirect()->back();
 }
@@ -63,7 +67,7 @@ if($product_sizecolor_exist){
    }
 
    public function remove_cart($id){
-      Toastr::warning('Cart deleted ', '', ["positionClass" => "toast-top-right"]);
+      Alert::success('Cart item removed');
       $delete_cart = Cart::find($id);
       $delete_cart->delete();
       return redirect()->back();

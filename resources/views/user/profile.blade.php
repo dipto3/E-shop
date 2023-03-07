@@ -32,29 +32,25 @@
             <div style="" class="form-group">
                 <input type="text" class="form-control item" id="username" placeholder="Username">
             </div>
-            <div class="form-group">
-                <input type="password" class="form-control item" id="password" placeholder="Password">
-            </div>
+         
             <div class="form-group">
                 <input type="text" class="form-control item" id="email" placeholder="Email">
             </div>
             <div class="form-group">
                 <input type="text" class="form-control item" id="phone-number" placeholder="Phone Number">
             </div>
+          
             <div class="form-group">
-                <input type="text" class="form-control item" id="birth-date" placeholder="Birth Date">
-            </div>
-            <div class="form-group">
-                <button type="button" class="btn btn-block create-account">sss</button>
+                <button type="button" class="btn btn-block create-account">Update</button>
             </div>
         </form>
     </div>
-{{--     
+    
     @if (Laravel\Fortify\Features::canUpdateProfileInformation())
         @livewire('profile.update-profile-information-form')
 
         <x-jet-section-border />
-    @endif --}}
+    @endif
 
     @if (Laravel\Fortify\Features::enabled(Laravel\Fortify\Features::updatePasswords()))
         <div class="mt-10 sm:mt-0">

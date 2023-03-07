@@ -17,8 +17,8 @@ use App\Http\Controllers\AllorderController;
 use App\Http\Controllers\BillingController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
-Route::get('/home', [HomeController::class, 'redirect']);
-Route::get('/home', [HomeController::class, 'redirect']);
+Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth','verified');
+// Route::get('/home', [HomeController::class, 'redirect']);
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 
 Route::get('/admin-logout', [HomeController::class, 'admin_logout'])->name('admin.logout');

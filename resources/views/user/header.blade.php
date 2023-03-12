@@ -175,10 +175,14 @@ div.product-body{
                              
                           
                            @foreach ($carts as $cart)
+                           @php 
+                           $cart['image'] = explode('|',$cart->image);
+                               $images = $cart->image[0];
+                       @endphp
                          <div style="border: 1px solid rgb(236, 236, 236);">
                            <div  class="product-endforeachwidget form-row">
                               <div class="product-imgg col">
-                                 <img src="./img/product01.png" alt="">
+                                 <img src="{{asset('/image/'.$images)}}">
                               </div>
                               <div style="margin-top: 5%;" class="product-body col">
                                  <h3 class="product-namee"><a href="#">{{$cart->product_name}}</a></h3>

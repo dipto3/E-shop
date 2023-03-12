@@ -15,6 +15,7 @@ use Brian2694\Toastr\Facades\Toastr;
 class ShippingController extends Controller
 {
     public function shipping_form(){
+      $bills = Auth::user();
       $foruserid = Auth::user();
       $user_id = $foruserid->id;
       $bill = Billing::where('uid',$user_id)->first();
@@ -34,7 +35,7 @@ class ShippingController extends Controller
           $users_id = Auth::user();
           $carts = Cart::where('user_id', $users_id )->get();
       }
-        return view('user.pages.shipping',compact('categories','carts','bill'));
+        return view('user.pages.shipping',compact('categories','carts','bill','bills'));
     }
     public function ship_store(Request $request,Billing $bill){
        

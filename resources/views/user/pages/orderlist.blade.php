@@ -5,6 +5,7 @@
 <table class="table table-striped">
     <thead>
       <tr>
+        
         <th scope="col">Order id</th>
         <th scope="col">Product name</th>
         <th scope="col">Size</th>
@@ -50,3 +51,4 @@
 </div>
 
 @endsection
+

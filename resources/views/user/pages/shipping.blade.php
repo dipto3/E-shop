@@ -27,13 +27,13 @@
                             @csrf
                          
                            <fieldset>
-                            <input type="text" id="bill_name" value="{{$bill->name}}" placeholder="Enter full name" name="name" required />
-                            <input type="email" id="bill_email" value="{{$bill->email}}"placeholder="Enter email address" name="email" required />
-                            <input type="text"  id="bill_phone"value="{{$bill->phone}}" placeholder="Enter phone number" name="phone" required />
-                            <input type="text"  id="bill_add" value="{{$bill->add}}"placeholder="Enter shipping address (House no.,Street,area)" name="address" required />
-                            <input type="text" id="bill_city"value="{{$bill->city}}" placeholder="Enter city" name="city" required />
-                            <input type="text" id="bill_district" value="{{$bill->district}}" placeholder="Enter district" name="district" required />
-                            <input type="text" id="bill_zip"value="{{$bill->zip_code}}" placeholder="Enter zip code" name="zip" required />
+                            <input type="text" id="bill_name" value="{{$bills->name}}" placeholder="Enter full name" name="name" required />
+                            <input type="email" id="bill_email" value="{{$bills->email}}"placeholder="Enter email address" name="email" required />
+                            <input type="text"  id="bill_phone"value="{{$bills->phone}}" placeholder="Enter phone number" name="phone" required />
+                            <input type="text"  id="bill_add" value="{{$bills->address}}"placeholder="Enter shipping address (House no.,Street,area)" name="address" required />
+                            <input type="text" id="bill_city"value="{{$bills->city}}" placeholder="Enter city" name="city" required />
+                            <input type="text" id="bill_district" value="{{$bills->district}}" placeholder="Enter district" name="district" required />
+                            <input type="text" id="bill_zip"value="{{$bills->zip_code}}" placeholder="Enter zip code" name="zip" required />
                        <div class="col-md-12 row">
                         <div class="">
                               <input  class="form-control" type="checkbox" id="billtoship">  </div>

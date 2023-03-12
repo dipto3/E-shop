@@ -86,7 +86,8 @@ if($product_sizecolor_exist){
     }
 
    
-      // $user_id = Auth::user()->id;
+      // $users_id = Auth::user()->id;
+      // $cart = Cart::where('user_id', $users_id )->get();
       // $carts = Cart::where('product_id', $user_id )->where('user_id', $user_id )->get();
 
       return view('user.pages.viewcart',compact('categories','carts'));

@@ -7,6 +7,7 @@
       <!-- Mobile Metas -->
       <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
       <!-- Site Metas -->
+      <meta name="csrf-token" content="{{ csrf_token() }}">
       <meta name="keywords" content="" />
       <meta name="description" content="" />
       <meta name="author" content="" />
@@ -229,6 +230,50 @@
          
          </p>
       </div>
+      
+      <script src="https://code.jquery.com/jquery-3.6.4.min.js" integrity="sha256-oP6HI9z1XaZNBrJURtCoUT5SUnxFr8s3BzRl+cbzUq8=" crossorigin="anonymous"></script>
+      <script>
+          $.ajaxSetup({
+      headers: {
+          'X-CSRF-TOKEN': $('meta[name="csrf-token"]').attr('content')
+      }
+      });
+      </script>
+
+
+<script>
+  $(document).ready(function(){
+    $(document).on('click','.add',function(e){
+
+            e.preventDefault();
+            let email = $('#email').val();
+          
+            // console.log(email);
+
+            $.ajax({
+                url:"{{route('add.email')}}",
+                method:'post',
+                data:{email:email},
+                success:function(res){
+
+                    if(res.status == 'success'){
+                  
+                    $('#subscriber').load(location.href+' #subscriber');
+
+                }
+                },error:function(err){
+                    let error = err.responseJSON;
+                $.each(error.errors , function(index,value){
+                    $(".errormgs").append('<span class="text-danger">'+value+'</span>'+'<br>')
+                });
+                }
+            });
+        })
+
+  });
+</script>
+
+
 <script>
   $(document).ready(function(){
 

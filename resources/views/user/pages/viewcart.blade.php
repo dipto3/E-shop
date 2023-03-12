@@ -29,13 +29,16 @@
                         </thead>
                         <tbody>
                             @foreach ($carts as $cart)
-<form action="{{url('/qty-chng/'.$cart->id)}}" method="POST">
-    @csrf
+<form action="{{url('/qty-chng/'.$cart->id)}}" method="POST" enctype="multipart/form-data">
+    @csrf 
+
 
                             <tr>
                                 <td class="hidden-xs">
                                     <a href="#">
-                                        <img src="https://www.bootdey.com/image/200x200/" alt="Adidas Men Red Printed T-shirt" title="" width="47" height="47">
+                                      
+                                        <img src="{{asset('/image'.$cart->image)}}">
+                                       
                                     </a>
                                 </td>
                                 <td><a href="#">{{$cart->product_name}}</a>

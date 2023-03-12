@@ -385,9 +385,12 @@
                    <h3>Subscribe To Get Discount Offers</h3>
                 </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-                <form action="">
-                   <input type="email" placeholder="Enter your email">
-                   <button>
+                <form action="{{url('/subs-store')}}" method="POST" id="subscriber">
+
+                  @csrf
+                  <div class="errormgs"></div>
+                   <input type="email" name="email" id="email" placeholder="Enter your email">
+                   <button class="add">
                    subscribe
                    </button>
                 </form>

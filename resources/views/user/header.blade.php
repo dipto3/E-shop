@@ -182,8 +182,9 @@ div.product-body{
                          <div style="border: 1px solid rgb(236, 236, 236);">
                            <div  class="product-endforeachwidget form-row">
                               <div class="product-imgg col">
-        
+         
                                   <img src="{{asset('/image/'.$images)}}" style="">
+                                
                               </div>
                               <div style="margin-top: 5%;" class="product-body col">
                                  <h3 class="product-namee"><a href="#">{{$cart->product_name}}</a></h3>

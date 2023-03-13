@@ -16,6 +16,7 @@ use App\Http\Controllers\OrderController;
 use App\Http\Controllers\AllorderController;
 use App\Http\Controllers\BillingController;
 use App\Http\Controllers\SubscriberController;
+use App\Http\Controllers\BannerController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth','verified');
@@ -78,6 +79,10 @@ Route::get('/allproducts', [AllProductController::class, 'allproducts']);
 Route::get('/view-details/{id}', [AllProductController::class, 'viewdetails']);
 Route::get('/contact-us', [ContactController::class, 'contact']);
 Route::get('/about', [AboutController::class, 'about']);
+
+//banner
+Route::get('/banner-form', [BannerController::class, 'add']);
+Route::post('/banner-store', [BannerController::class, 'store']);
 
 Route::post('/subs-store', [SubscriberController::class, 'store'])->name('email');
 

@@ -17,7 +17,7 @@
         <div class="collapse" id="ui-category">
           <ul class="nav flex-column sub-menu">
             <li class="nav-item"> <a class="nav-link" href="{{url('/banner-form')}}">Add </a></li>
-            <li class="nav-item"> <a class="nav-link" href="">Edit</a></li>
+            <li class="nav-item"> <a class="nav-link" href="{{url('/all-banner')}}">All</a></li>
           </ul>
         </div>
       </li>

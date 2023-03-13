@@ -83,7 +83,12 @@ Route::get('/about', [AboutController::class, 'about']);
 //banner
 Route::get('/banner-form', [BannerController::class, 'add']);
 Route::post('/banner-store', [BannerController::class, 'store']);
+Route::get('/all-banner', [BannerController::class, 'index']);
+Route::get('/banner-edit/{id}', [BannerController::class, 'edit']);
+Route::post('/banner-update/{id}', [BannerController::class, 'update']);
+Route::post('/banner-remove/{id}', [BannerController::class, 'destroy']);
 
+//subscribe
 Route::post('/subs-store', [SubscriberController::class, 'store'])->name('email');
 
 //cart

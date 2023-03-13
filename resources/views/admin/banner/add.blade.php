@@ -16,7 +16,7 @@
         <div class="card-body bg-light">
    
         <div class = "container">
-        <form id=""  action="{{url('/banner-store')}}" method="POST" enctype="multipart/form-data">
+        <form action="{{url('/banner-store')}}" method="POST" enctype="multipart/form-data">
             @csrf
 
         
@@ -27,7 +27,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Heading</label>
-                        <input id="heading" type="text" name="heading" class="form-control" placeholder="Please enter heading..." required="required" data-error="Firstname is required.">
+                        <input id="heading" type="text" name="heading" class="form-control" placeholder="Please enter heading..." =>
                         
                     </div>
                 </div>
@@ -44,7 +44,7 @@
                 <div class="col-md-12">
                     <div class="form-group">
                         <label style="color: rgb(57, 114, 219);" for="form_name">Image</label>
-                        <input name="image" type="file" class="form-control"  multiple required>
+                        <input name="image" type="file" class="form-control"   required>
                         
                     </div>
                 </div>

@@ -79,7 +79,7 @@ Route::get('/view-details/{id}', [AllProductController::class, 'viewdetails']);
 Route::get('/contact-us', [ContactController::class, 'contact']);
 Route::get('/about', [AboutController::class, 'about']);
 
-Route::post('/subs-store', [SubscriberController::class, 'store'])->name('add.email');
+Route::post('/subs-store', [SubscriberController::class, 'store'])->name('email');
 
 //cart
 Route::post('/add-cart/{id}', [CartController::class, 'cart_store']);

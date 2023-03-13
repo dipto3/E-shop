@@ -25,7 +25,7 @@
       <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
       <link href="https://fonts.googleapis.com/css?family=Open+Sans:400,700" rel="stylesheet">
       <link href="//maxcdn.bootstrapcdn.com/bootstvrap/3.3.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+      
       <link rel="stylesheet" href="{{asset('nouislider.min.css')}}">
       <link rel="stylesheet" href="{{asset('slick-theme.css')}}">
       
@@ -148,7 +148,7 @@
       margin-left: 20px; }
   
   .add-to-cart, .like {
-    background: #f7444e;;
+    background: #f7444e;
     padding: 1.2em 1.5em;
     border: none;
     text-transform: UPPERCASE;
@@ -242,6 +242,7 @@
 
 
 <script>
+ 
   $(document).ready(function(){
     $(document).on('click','.add',function(e){
 
@@ -249,10 +250,11 @@
             let email = $('#email').val();
           
             // console.log(email);
-
+    
+     
             $.ajax({
-                url:"{{route('add.email')}}",
-                method:'post',
+                url:"{{route('email')}}",
+                method:'POST',
                 data:{email:email},
                 success:function(res){
 
@@ -339,6 +341,7 @@
 
       <script src="http://cdn.bootcss.com/jquery/2.2.4/jquery.min.js"></script>
       <script src="http://cdn.bootcss.com/toastr.js/latest/js/toastr.min.js"></script>
+      <script src="//maxcdn.bootstrapcdn.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
       {!! Toastr::message() !!}
    </body>
 </html>

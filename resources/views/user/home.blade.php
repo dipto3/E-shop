@@ -15,14 +15,14 @@
                    <div class="col-md-7 col-lg-6 ">
                     
                       <div class="detail-box">
-                         <h1>
-                            <span>
+                        <h1>
+                            
                             Sale 20% Off
-                            </span>
+                            
                             <br>
                             On Everything
                          </h1>
-                         <p>
+                         <p style="font-size:18px; ">
                             Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
                          </p>
                          <div class="btn-box">
@@ -35,56 +35,8 @@
                 </div>
              </div>
           </div>
-          <div class="carousel-item ">
-             <div class="container ">
-                <div class="row">
-                   <div class="col-md-7 col-lg-6 ">
-                      <div class="detail-box">
-                         <h1>
-                            <span>
-                            Sale 20% Off
-                            </span>
-                            <br>
-                            On Everything
-                         </h1>
-                         <p>
-                            Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
-                         </p>
-                         <div class="btn-box">
-                            <a href="" class="btn1">
-                            Shop Now
-                            </a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
-          <div class="carousel-item">
-             <div class="container ">
-                <div class="row">
-                   <div class="col-md-7 col-lg-6 ">
-                      <div class="detail-box">
-                         <h1>
-                            <span>
-                            Sale 20% Off
-                            </span>
-                            <br>
-                            On Everything
-                         </h1>
-                         <p>
-                            Explicabo esse amet tempora quibusdam laudantium, laborum eaque magnam fugiat hic? Esse dicta aliquid error repudiandae earum suscipit fugiat molestias, veniam, vel architecto veritatis delectus repellat modi impedit sequi.
-                         </p>
-                         <div class="btn-box">
-                            <a href="" class="btn1">
-                            Shop Now
-                            </a>
-                         </div>
-                      </div>
-                   </div>
-                </div>
-             </div>
-          </div>
+          
+          
        </div>
        <div class="container">
           <ol class="carousel-indicators">
@@ -385,12 +337,12 @@
                    <h3>Subscribe To Get Discount Offers</h3>
                 </div>
                 <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor</p>
-                <form action="{{url('/subs-store')}}" method="POST" id="subscriber">
+                <form action="" method="POST" id="subscriber">
 
                   @csrf
                   <div class="errormgs"></div>
                    <input type="email" name="email" id="email" placeholder="Enter your email">
-                   <button class="add">
+                   <button type="button" class="add">
                    subscribe
                    </button>
                 </form>

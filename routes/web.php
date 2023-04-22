@@ -20,6 +20,7 @@ use App\Http\Controllers\BannerController;
 
 Route::get('/', [HomeController::class, 'index'])->name('home');
 Route::get('/home', [HomeController::class, 'redirect'])->middleware('auth','verified');
+Route::get('/users', [HomeController::class, 'dash']);
 // Route::get('/home', [HomeController::class, 'redirect']);
 Route::get('/profile', [HomeController::class, 'profile'])->name('profile');
 

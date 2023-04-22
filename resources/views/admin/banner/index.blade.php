@@ -8,7 +8,7 @@
           <th style="width: 5%;" scope="col">ID</th>
           <th style="width: 20%;"scope="col">Heading</th>
           <th style="width: 40%;"scope="col">Description</th>
-          <th style="width: 20%;"scope="col">Image</th>
+  
           <th style="width: 15%;"scope="col">Action</th>
         </tr>
       </thead>
@@ -20,7 +20,7 @@
             <th scope="row">{{$banner->id}}</th>
             <td>{{$banner->heading}}</td>
             <td>{{$banner->description}}</td>
-            <td><img style="height:120px; width:120px;"src="{{asset('/storage/bannerimg/'.$banner->image)}}" alt=""></td>
+            {{-- <td><img style="height:120px; width:120px;"src="{{asset('/storage/bannerimg/'.$banner->image)}}" alt=""></td> --}}
             <td  style="text-align:center;">
                 <a href="{{url('/banner-edit/'.$banner->id)}}" class="btn btn-info update_productform">
                     <i class="las la-edit"></i>

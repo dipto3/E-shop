@@ -8,6 +8,7 @@ use App\Models\User;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Cart;
+use App\Models\Banner;
 use Brian2694\Toastr\Facades\Toastr;
 use RealRashid\SweetAlert\Facades\Alert;
 
@@ -36,9 +37,10 @@ class HomeController extends Controller
             return redirect()->back();
         }
     }
-    
 
     public function index(){
+        $banners = Banner::all();
+
         $categories = Category::all();
     if(Auth::user()){
         $user_id = Auth::user()->id;
@@ -49,7 +51,7 @@ class HomeController extends Controller
     }
         
         $products = Product::where('status',1)->get();
-        return view('user.home',compact('categories','products','carts'));
+        return view('user.home',compact('categories','products','carts','banners'));
     }
     public function profile(){
         $categories = Category::all();

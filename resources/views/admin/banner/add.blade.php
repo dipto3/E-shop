@@ -34,22 +34,7 @@
               
             </div>
           
-
-           
-
-    
-
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Image</label>
-                        <input name="image" type="file" class="form-control"   required>
-                        
-                    </div>
-                </div>
-              
-            </div>
+      
             
             <div class="row">
                 <div class="col-md-12">

@@ -40,17 +40,7 @@
                         </div>
 
                 </div>
-                <div class="row">
-                    <div class="col-md-12">
-                        <div class="form-group">
-                            <label style="color: rgb(57, 114, 219);" for="form_name">Image</label>
-                            <input name="image" type="file" class="form-control" >
-                            
-                        </div>
-                    </div>
-                  
-                </div>
-
+                
                 <div class="col-md-12">
                     
                     <input  type="submit" class="btn btn-success btn-send  pt-2 btn-block

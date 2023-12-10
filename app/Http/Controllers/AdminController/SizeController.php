@@ -47,15 +47,6 @@ class SizeController extends Controller
         $size = Size::where('id', $id)->update([
             'name' => json_encode($sizes),
         ]);
-
-        //     $sizes = explode(',',$request->name);
-        //     $size->update([
-
-        //        'size' =>  json_encode($sizes),
-
-        //    ]);
-        //    if($size)
-
         return redirect()->back();
     }
 

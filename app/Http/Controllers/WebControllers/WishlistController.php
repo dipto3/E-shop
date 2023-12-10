@@ -7,9 +7,9 @@ use App\Models\Cart;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\Wishlist;
-use Auth;
+
 use Illuminate\Support\Facades\DB;
-// use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Auth;
 use RealRashid\SweetAlert\Facades\Alert;
 
 class WishlistController extends Controller
@@ -46,8 +46,7 @@ class WishlistController extends Controller
             $user_id = Auth::user()->id;
             $carts = Cart::where('user_id', $user_id)->get();
         } else {
-            $users_id = Auth::user();
-            $carts = Cart::where('user_id', $users_id)->get();
+            $carts = [];
         }
         $settings = DB::table('settings')->get();
         $setting = [];

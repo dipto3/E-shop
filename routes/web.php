@@ -118,19 +118,21 @@ Route::get('/order-remove/{id}', [OrderController::class, 'cancel']);
 Route::group(['middleware' => 'auth'], function () {
 
     Route::post('/wishlist/{id}', [WishlistController::class, 'add_wishlist'])->name('wishlist.store');
-    Route::get('/all-wishlist', [WishlistController::class, 'all_wishlist']);
+    Route::get('/all-wishlist', [WishlistController::class, 'all_wishlist'])->name('all.wishlist');
     Route::get('/delete-wishlist/{id}', [\App\Http\Controllers\WebControllers\WishlistController::class, 'destroy']);
 
     Route::post('/add_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'add_cart'])->name('cart.store');
     Route::get('/hotdeal-products', [UserController::class, 'hotdeal'])->name('hotdeal.shop');
 
-    Route::get('/delete_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'delete_cart']);
+    Route::get('/delete_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'delete_cart'])->name('delete.cart');
 
-    Route::get('/shipping-address', [ShippingController::class, 'form']);
+
     Route::get('/view-cart', [CartController::class, 'view_cart']);
-    Route::post('/shipping-store', [ShippingController::class, 'ship_store']);
 
-    Route::get('/account-dashboard', [\App\Http\Controllers\WebControllers\ProfileController::class, 'dashboard']);
+    Route::get('/shipping-address', [ShippingController::class, 'form'])->name('shipping.address');
+    Route::post('/shipping-store', [ShippingController::class, 'ship_store'])->name('shipping.address.store');
+
+    Route::get('/account-dashboard', [\App\Http\Controllers\WebControllers\ProfileController::class, 'dashboard'])->name('profile.dashboard');
     Route::post('/profile-update', [\App\Http\Controllers\WebControllers\ProfileController::class, 'profile_update']);
     Route::get('/profile', [\App\Http\Controllers\WebControllers\ProfileController::class, 'index']);
     Route::get('/billing-address', [\App\Http\Controllers\WebControllers\ProfileController::class, 'bill_add']);
@@ -138,8 +140,8 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/all-orders', [\App\Http\Controllers\WebControllers\ProfileController::class, 'orders']);
     Route::get('/order-cancel/{id}', [OrderController::class, 'cancelbyuser']);
 
-    Route::get('/checkout', [OrderController::class, 'user_all_order']);
-    Route::get('/cod-order', [OrderController::class, 'cod_order']);
+    Route::get('/checkout', [OrderController::class, 'user_all_order'])->name('checkout');
+    Route::get('/cod-order', [OrderController::class, 'cod_order'])->name('cod.order');
 
     Route::get('/order-placed', [OrderController::class, 'order_placed']);
 });

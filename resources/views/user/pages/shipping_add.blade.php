@@ -63,7 +63,7 @@
                     </div>
                  </section>
                  <div class="full">
-                    <form action="{{url('/shipping-store')}}" method="POST">
+                    <form action="{{route('shipping.address.store')}}" method="POST">
                         @csrf
                        <fieldset>
                           <input type="text" id="ship_name" value="" placeholder="Enter receivers full name" name="name" required style="width: 95%;margin-bottom:5px;padding:10px 15px;  border:1px solid black;"/>

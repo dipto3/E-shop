@@ -177,7 +177,7 @@
                                 <a href="javascript:;"><i class="bi bi-basket3"></i></a>
                                 <a href=""><i class="bi bi-zoom-in"></i></a>
                                 </div>
-                                <a href="{{ url('/product-details/' . $product->id) }}">
+                                <a href="{{ route('product.details' , $product->id) }}">
                                 <img src="{{ asset('/image/' . $product->image) }}" class="card-img-top" alt="...">
                                 </a>
                             </div>
@@ -222,15 +222,9 @@
              </div>
            </div>
         </div><!--end row-->
-
-
      </div>
    </section>
     <!--start product details-->
-
-
-
-
   </div>
 
 @endsection

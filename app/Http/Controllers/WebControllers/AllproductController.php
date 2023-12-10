@@ -23,8 +23,7 @@ class AllproductController extends Controller
             $user_id = Auth::user()->id;
             $carts = Cart::where('user_id', $user_id)->get();
         } else {
-            $users_id = Auth::user();
-            $carts = Cart::where('user_id', $users_id)->get();
+            $carts = [];
         }
         $settings = DB::table('settings')->get();
         $setting = [];
@@ -54,8 +53,7 @@ class AllproductController extends Controller
             $carts = Cart::where('user_id', $user_id)->get();
         // $wishlists = Wishlist::where('user_id', $user_id)->count();
         } else {
-            $users_id = Auth::user();
-            $carts = Cart::where('user_id', $users_id)->get();
+            $carts = [];
         }
         $products = Product::where('status', 1)->get();
         $settings = DB::table('settings')->get();

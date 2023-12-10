@@ -56,8 +56,7 @@ class ProductdetailsController extends Controller
             $user_id = Auth::user()->id;
             $carts = Cart::where('user_id', $user_id)->get();
         } else {
-            $users_id = Auth::user();
-            $carts = Cart::where('user_id', $users_id)->get();
+            $carts = [];
         }
 
         return view('user.pages.productdetails', compact('products', 'setting', 'categories', 'carts', 'sizes'));

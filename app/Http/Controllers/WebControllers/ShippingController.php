@@ -37,28 +37,29 @@ class ShippingController extends Controller
         $user_exist = Shipdetails::where('rcv_uid', $user_id)->get('id')->first();
         if ($user_exist) {
             $ship = Shipdetails::find($user_exist)->first();
-            $ship->rcv_name = $request->name;
-            $ship->rcv_uid = $foruserid->id;
-            $ship->rcv_email = $request->email;
-            $ship->rcv_phone = $request->phone;
-            $ship->rcv_add = $request->add;
-            $ship->rcv_city = $request->city;
-            $ship->rcv_district = $request->district;
-            $ship->zip_code = $request->zip;
-            $ship->save();
-
+            $ship->update([
+                'rcv_name' => $request->name,
+                'rcv_uid' => $foruserid->id,
+                'rcv_email' => $request->email,
+                'rcv_phone' => $request->phone,
+                'rcv_add' => $request->add,
+                'rcv_city' => $request->city,
+                'rcv_district' => $request->district,
+                'zip_code' => $request->zip
+            ]);
             return redirect('/checkout');
         } else {
-            $ship = new Shipdetails();
-            $ship->rcv_name = $request->name;
-            $ship->rcv_uid = $foruserid->id;
-            $ship->rcv_email = $request->email;
-            $ship->rcv_phone = $request->phone;
-            $ship->rcv_add = $request->add;
-            $ship->rcv_city = $request->city;
-            $ship->rcv_district = $request->district;
-            $ship->zip_code = $request->zip;
-            $ship->save();
+            $ship = Shipdetails::create([
+                'rcv_name' => $request->name,
+                'rcv_uid' => $foruserid->id,
+                'rcv_email' => $request->email,
+                'rcv_phone' => $request->phone,
+                'rcv_add' => $request->add,
+                'rcv_city' => $request->city,
+                'rcv_district' => $request->district,
+                'zip_code' => $request->zip
+            ]);
+          
 
             return redirect('/checkout');
         }

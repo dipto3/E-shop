@@ -1,22 +1,22 @@
 <?php
 
-use App\Http\Controllers\OrderController;
+use App\Http\Controllers\AdminController\OrderController;
 use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\UserController;
-use App\Http\Controllers\AdminController;
-use App\Http\Controllers\CategoryController;
-use App\Http\Controllers\SizeController;
-use App\Http\Controllers\ColorController;
+use App\Http\Controllers\WebControllers\UserController;
+use App\Http\Controllers\AdminController\AdminController;
+use App\Http\Controllers\AdminController\CategoryController;
+use App\Http\Controllers\AdminController\SizeController;
+use App\Http\Controllers\AdminController\ColorController;
 use App\Http\Controllers\SubscribeController;
-use App\Http\Controllers\PageController;
+use App\Http\Controllers\AdminController\PageController;
 use App\Http\Controllers\WebControllers\PageController as WPageController;
 use App\Http\Controllers\WebControllers\CartController;
 use App\Http\Controllers\WebControllers\WishlistController;
 use App\Http\Controllers\WebControllers\ShippingController;
-use App\Http\Controllers\ProductController;
-use App\Http\Controllers\HotdealController;
-use App\Http\Controllers\SettingController;
-use App\Http\Controllers\AllproductController;
+use App\Http\Controllers\AdminController\ProductController;
+use App\Http\Controllers\AdminController\HotdealController;
+use App\Http\Controllers\AdminController\SettingController;
+use App\Http\Controllers\WebControllers\AllproductController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,7 +40,7 @@ use Illuminate\Support\Facades\Route;
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 // Route::post('/add_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'add_cart']);
 // Route::get('login', [UserController::class, 'login'])->name('user.index');
 Route::get('/', [UserController::class, 'frontpage']);
@@ -55,67 +55,67 @@ Route::get('/page', [PageController::class, 'index'])->name('page');
 //Admin
 Route::get('/backend-admin', [AdminController::class, 'form']);
 Route::post('/backend-check', [AdminController::class, 'login']);
-    // Route::get('/dashboard', [AdminController::class, 'dashboard']);
-    Route::get('/subscribe', [AdminController::class, 'subscribe']);
-    Route::post('/delete_subscribe/{id}', [AdminController::class, 'subs_delete']);
-    //category
-    Route::get('/category', [CategoryController::class, 'create']);
-    Route::post('/store-category', [CategoryController::class, 'store']);
-    Route::get('/all-category', [CategoryController::class, 'index']);
-    Route::get('/edit-category/{id}', [CategoryController::class, 'edit']);
-    Route::post('/update-category/{id}', [CategoryController::class, 'update']);
-    Route::post('/delete-category/{id}', [CategoryController::class, 'destroy']);
-    //Size-admin
-    Route::get('/size', [SizeController::class, 'create']);
-    Route::post('/store-size', [SizeController::class, 'store']);
-    Route::get('/all-size', [SizeController::class, 'index']);
-    Route::get('/edit-size/{id}', [SizeController::class, 'edit']);
-    Route::post('/update-size/{id}', [SizeController::class, 'update']);
-    Route::post('/delete-size/{id}', [SizeController::class, 'destroy']);
-    //Color-admin
-    Route::get('/color', [ColorController::class, 'create']);
-    Route::post('/store-color', [ColorController::class, 'store']);
-    Route::get('/all-color', [ColorController::class, 'index'])->name('admin.color');
-    Route::get('/edit-color/{id}', [ColorController::class, 'edit']);
-    Route::post('/update-color/{id}', [ColorController::class, 'update']);
-    Route::post('/delete-color/{id}', [ColorController::class, 'destroy']);
-    //product-admin
-    Route::get('/product', [ProductController::class, 'create']);
-    Route::post('/store-product', [ProductController::class, 'store']);
-    Route::get('/all-product', [ProductController::class, 'index']);
-    Route::post('/tog-stts', [ProductController::class, 'chng_stts'])->name('status');
-    Route::post('/tog-deals', [ProductController::class, 'chng_deals'])->name('deals');
-    Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
-    Route::post('/update-product/{id}', [ProductController::class, 'update']);
-    Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
-    //admin page
-    Route::get('/create-page', [PageController::class, 'create_page']);
-    Route::post('/store-page', [PageController::class, 'store_page']);
-    Route::get('/all-page', [PageController::class, 'index_page'])->name('admin.page');
-    Route::get('/edit-page/{id}', [PageController::class, 'edit_page']);
-    Route::post('/update-page/{id}', [PageController::class, 'update_page']);
-    Route::post('/delete-page/{id}', [PageController::class, 'destroy_page']);
-    Route::get('/pages/{pageSlug}', [WPageController::class, 'findPageBySlug']);
-    //
-    //shipping
-    //hotdeal-admin
-    Route::get('/hot_deal', [HotdealController::class, 'create']);
-    Route::post('/store-hot_deal', [HotdealController::class, 'store']);
-    Route::get('/all-hot_deal', [HotdealController::class, 'index'])->name('admin.hotdeal');
-    Route::get('/edit-hot_deal/{id}', [HotdealController::class, 'edit']);
-    Route::post('/update-hot_deal/{id}', [HotdealController::class, 'update']);
-    Route::post('/delete-hot_deal/{id}', [HotdealController::class, 'destroy']);
-    //order admin
-    Route::get('/orders', [OrderController::class, 'index'])->name('list');
-    //admin setting
-    Route::get('/all-setting', [SettingController::class, 'index'])->name('admin.setting');
-    Route::post('/update-setting', [SettingController::class, 'update'])->name('admin.update.setting');
+// Route::get('/dashboard', [AdminController::class, 'dashboard']);
+Route::get('/subscribe', [AdminController::class, 'subscribe']);
+Route::post('/delete_subscribe/{id}', [AdminController::class, 'subs_delete']);
+//category...
+Route::get('/category', [CategoryController::class, 'create']);
+Route::post('/store-category', [CategoryController::class, 'store']);
+Route::get('/all-category', [CategoryController::class, 'index']);
+Route::get('/edit-category/{id}', [CategoryController::class, 'edit']);
+Route::post('/update-category/{id}', [CategoryController::class, 'update']);
+Route::post('/delete-category/{id}', [CategoryController::class, 'destroy']);
+//Size-admin
+Route::get('/size', [SizeController::class, 'create']);
+Route::post('/store-size', [SizeController::class, 'store']);
+Route::get('/all-size', [SizeController::class, 'index']);
+Route::get('/edit-size/{id}', [SizeController::class, 'edit']);
+Route::post('/update-size/{id}', [SizeController::class, 'update']);
+Route::post('/delete-size/{id}', [SizeController::class, 'destroy']);
+//Color-admin
+Route::get('/color', [ColorController::class, 'create']);
+Route::post('/store-color', [ColorController::class, 'store']);
+Route::get('/all-color', [ColorController::class, 'index'])->name('admin.color');
+Route::get('/edit-color/{id}', [ColorController::class, 'edit']);
+Route::post('/update-color/{id}', [ColorController::class, 'update']);
+Route::post('/delete-color/{id}', [ColorController::class, 'destroy']);
+//product-admin
+Route::get('/product', [ProductController::class, 'create']);
+Route::post('/store-product', [ProductController::class, 'store']);
+Route::get('/all-product', [ProductController::class, 'index']);
+Route::post('/tog-stts', [ProductController::class, 'chng_stts'])->name('status');
+Route::post('/tog-deals', [ProductController::class, 'chng_deals'])->name('deals');
+Route::get('/edit-product/{id}', [ProductController::class, 'edit']);
+Route::post('/update-product/{id}', [ProductController::class, 'update']);
+Route::post('/delete-product/{id}', [ProductController::class, 'destroy']);
+//admin page
+Route::get('/create-page', [PageController::class, 'create_page']);
+Route::post('/store-page', [PageController::class, 'store_page']);
+Route::get('/all-page', [PageController::class, 'index_page'])->name('admin.page');
+Route::get('/edit-page/{id}', [PageController::class, 'edit_page']);
+Route::post('/update-page/{id}', [PageController::class, 'update_page']);
+Route::post('/delete-page/{id}', [PageController::class, 'destroy_page']);
+Route::get('/pages/{pageSlug}', [WPageController::class, 'findPageBySlug']);
+//
+//shipping
+//hotdeal-admin
+Route::get('/hot_deal', [HotdealController::class, 'create']);
+Route::post('/store-hot_deal', [HotdealController::class, 'store']);
+Route::get('/all-hot_deal', [HotdealController::class, 'index'])->name('admin.hotdeal');
+Route::get('/edit-hot_deal/{id}', [HotdealController::class, 'edit']);
+Route::post('/update-hot_deal/{id}', [HotdealController::class, 'update']);
+Route::post('/delete-hot_deal/{id}', [HotdealController::class, 'destroy']);
+//order admin
+Route::get('/orders', [OrderController::class, 'index'])->name('list');
+//admin setting
+Route::get('/all-setting', [SettingController::class, 'index'])->name('admin.setting');
+Route::post('/update-setting', [SettingController::class, 'update'])->name('admin.update.setting');
 
-    Route::get('/order-synced/{id}', [OrderController::class, 'sync']);
-    Route::get('/order-update/{id}', [OrderController::class, 'update']);
-    Route::get('/order-remove/{id}', [OrderController::class, 'cancel']);
+Route::get('/order-synced/{id}', [OrderController::class, 'sync']);
+Route::get('/order-update/{id}', [OrderController::class, 'update']);
+Route::get('/order-remove/{id}', [OrderController::class, 'cancel']);
 
-    // Route::get('/logout', [AdminController::class, 'logout']);
+// Route::get('/logout', [AdminController::class, 'logout']);
 
 //hot deal
 // Route::resource('/hot_deal', HotdealController::class);
@@ -126,7 +126,7 @@ Route::post('/backend-check', [AdminController::class, 'login']);
 
 
 
-Route::get('/logout', [AdminController::class,'logout']);
+Route::get('/logout', [AdminController::class, 'logout']);
 // Route::get('/search-product/{name}', [AllproductController::class, 'search_ranges'])->name('search');
 
 
@@ -166,6 +166,6 @@ Route::get('/product-details/{id}', [\App\Http\Controllers\WebControllers\Produc
 Route::get('/shop', [AllproductController::class, 'shop']);
 
 // Route::group(['middleware' => 'admin'], function () {
-    Route::get('/dashboard', [AdminController::class, 'dashboard']);
+Route::get('/dashboard', [AdminController::class, 'dashboard']);
 // });
 //   Route::get('/dashboard', [AdminController::class, 'dashboard']);

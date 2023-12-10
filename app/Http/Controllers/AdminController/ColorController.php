@@ -1,51 +1,54 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminController;
+
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use App\Models\Color;
 use Illuminate\Support\Facades\File;
-use Illuminate\Http\Request;
 
 class ColorController extends Controller
 {
-    public function index(){
+    public function index()
+    {
         $colors = Color::all();
 
         return view('admin.color.index', compact('colors'));
     }
 
-    public function create(){
+    public function create()
+    {
 
         return view('admin.color.create');
     }
 
-    public function store(Request $request){
+    public function store(Request $request)
+    {
         $data = $this->validate($request, [
             'color' => 'required',
             'image' => 'sometimes',
         ]);
         $uploadPath = 'color';
-            if ($request->file('image')) {
-                $file = $request->file('image');
-                $filename = date('YmdHi') . $file->getClientOriginalName();
-                $file->move(public_path('images/color'), $filename);
-                $data['image'] = $filename;
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $file->move(public_path('images/color'), $filename);
+            $data['image'] = $filename;
 
-                if (Color::create($data)) {
-                    return redirect()->route('admin.color')
-                        ->with('alert', [
-                            'type' => 'success',
-                            'message' => 'Updated',
-                        ]);
-                }
-
+            if (Color::create($data)) {
+                return redirect()->route('admin.color')
+                    ->with('alert', [
+                        'type' => 'success',
+                        'message' => 'Updated',
+                    ]);
             }
+        }
     }
     public function edit($id)
 
     {
         $color = Color::find($id);
         return view('admin.color.edit', compact('color'));
-
     }
     public function update(Request $request, $id)
     {
@@ -78,7 +81,7 @@ class ColorController extends Controller
     {
         $color = Color::find($id);
         $imagePath = public_path('images/color/' . $color->image);
-//        dd($imagePath);
+        //        dd($imagePath);
         if (File::exists($imagePath)) {
             unlink($imagePath);
         }

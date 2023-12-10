@@ -1,24 +1,30 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminController;
 
+use App\Http\Controllers\Controller;
 use Session;
+
 use Illuminate\Http\Request;
-Use App\Models\Admin;
-Use App\Models\Subscribe;
+use App\Models\Admin;
+use App\Models\Subscribe;
 use App\Models\Category;
 use App\Models\Product;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-Use Illuminate\Support\Facades\Redirect;
+use Illuminate\Support\Facades\Redirect;
 use App\Http\Requests\LoginRequest;
 use Brian2694\Toastr\Facades\Toastr;
 use Hash;
 use DB;
+// use Illuminate\Contracts\Session\Session as SessionSession;
+// use Illuminate\Support\Facades\Session as FacadesSession;
+// use Symfony\Component\HttpFoundation\Session\Session;
 
 class AdminController extends Controller
 {
-    public function form(){
+    public function form()
+    {
 
         return view('admin.login');
     }
@@ -40,14 +46,15 @@ class AdminController extends Controller
     //     }
     // }
 
-    public function login(Request $request){
+    public function login(Request $request)
+    {
 
         $credentials = [
             'email' => $request['email'],
             'password' => $request['password'],
         ];
-// dd($credentials);
-        if(Auth::guard('admin')->attempt($credentials)) {
+        // dd($credentials);
+        if (Auth::guard('admin')->attempt($credentials)) {
             // $user = Auth::admin();
 
             return redirect('/dashboard');
@@ -56,35 +63,38 @@ class AdminController extends Controller
         return redirect('/backend-admin');
     }
 
-    public function dashboard(){
+    public function dashboard()
+    {
 
         $categories = Category::all();
-        $products = Product::where('status',1)->get();
-        $totalproducts = Product::where('status',1)->count();
-        $hotdealproducts = Product::where('hot_deal',1)->count();
+        $products = Product::where('status', 1)->get();
+        $totalproducts = Product::where('status', 1)->count();
+        $hotdealproducts = Product::where('hot_deal', 1)->count();
         $totalusers = User::count();
         $totalcategory = Category::count();
-        $deactiveproducts = Product::where('status',0)->count();
+        $deactiveproducts = Product::where('status', 0)->count();
 
-        return view('admin.dashboard',compact('totalproducts','totalusers','deactiveproducts','hotdealproducts','totalcategory'));
+        return view('admin.dashboard', compact('totalproducts', 'totalusers', 'deactiveproducts', 'hotdealproducts', 'totalcategory'));
     }
 
-    public function logout(){
+    public function logout()
+    {
         Session::flush();
         return redirect('/backend-admin');
     }
 
-    public function subscribe(){
+    public function subscribe()
+    {
         // $result = array();
         // $result['subscribe'] = DB::table('subscribes')->get();
         $subscribes = Subscribe::all();
-        return view('admin.subscribe.index',compact('subscribes'));
+        return view('admin.subscribe.index', compact('subscribes'));
     }
 
-    public function subs_delete($id){
+    public function subs_delete($id)
+    {
         $subscribe = Subscribe::find($id);
         $subscribe->delete();
         return redirect()->back();
     }
-
 }

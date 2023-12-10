@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\AdminController;
 
+use App\Http\Controllers\Controller;
 use App\AppTrait\FileTrait;
 use App\Facades\AppFacade;
 use Illuminate\Http\Request;
@@ -12,7 +13,7 @@ use Illuminate\Support\Facades\File;
 
 class HotdealController extends Controller
 {
-    /**
+       /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response

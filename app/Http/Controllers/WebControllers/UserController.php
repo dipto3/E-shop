@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\WebControllers;
 
+use App\Http\Controllers\Controller;
 use App\Models\Hotdeal;
 use App\Models\Page;
 use App\Models\Cart;
@@ -20,7 +21,6 @@ class UserController extends Controller
 {
     public function login()
     {
-
         return view('user.login');
     }
 
@@ -50,7 +50,6 @@ class UserController extends Controller
             'setting' => $setting,
         ];
         $topsell = Order::with('products')->orderBy('id', 'DESC')->get();
-
 
         // $topsell = Order::select('product_id')->orderBy('qty', 'desc')->get('qty');
         // dd($topsell);
@@ -88,7 +87,6 @@ class UserController extends Controller
         //     $users_id = Auth::user();
         //     $carts = Cart::where('user_id', $users_id )->get();
         // }
-
 
         //
 

@@ -3,11 +3,9 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Hotdeal;
-use App\Models\Category;
 use App\Http\Requests\CategoryRequest;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Category;
+use Illuminate\Http\Request;
 
 class CategoryController extends Controller
 {
@@ -24,6 +22,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ]);
+
         return redirect()->back();
     }
 
@@ -31,11 +30,14 @@ class CategoryController extends Controller
     {
 
         $categories = Category::all();
+
         return view('admin.category.index', compact('categories'));
     }
+
     public function edit($id)
     {
         $category = Category::find($id);
+
         return view('admin.category.edit', compact('category'));
     }
 
@@ -46,6 +48,7 @@ class CategoryController extends Controller
             'name' => $request->name,
             'description' => $request->description,
         ]);
+
         return redirect()->back();
     }
 

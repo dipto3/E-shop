@@ -1,4 +1,4 @@
-@extends('user.master')
+@extends('user.layouts.master')
 @section('user.content')
     <div class="page-content">
         <?php

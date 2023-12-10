@@ -3,18 +3,14 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use App\Models\Order;
-use Illuminate\Http\Request;
-use App\Models\Category;
-use App\Models\Setting;
 use App\Models\Cart;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
-use App\Models\Billing;
+use App\Models\Category;
+use App\Models\Order;
 use App\Models\Shipdetails;
-use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Carbon;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class OrderController extends Controller
 {
@@ -51,6 +47,7 @@ class OrderController extends Controller
 
         return view('admin.order.index', compact('orders'));
     }
+
     public function sync($id)
     {
 
@@ -65,15 +62,16 @@ class OrderController extends Controller
     {
 
         $order = Order::find($id);
-        $order->delivery_status  = 'Delivered';
+        $order->delivery_status = 'Delivered';
         $order->save();
 
         return redirect()->back();
     }
+
     public function cancel($id)
     {
         $order = Order::find($id);
-        $order->delivery_status  = 'Cancel';
+        $order->delivery_status = 'Cancel';
         $order->save();
 
         return redirect()->back();
@@ -82,12 +80,11 @@ class OrderController extends Controller
     public function cancelbyuser($id)
     {
         $order = Order::find($id);
-        $order->delivery_status  = 'Cancel by user';
+        $order->delivery_status = 'Cancel by user';
         $order->save();
 
         return redirect()->back();
     }
-
 
     public function user_all_order()
     {
@@ -101,7 +98,7 @@ class OrderController extends Controller
             $carts = Cart::where('user_id', $users_id)->get();
         }
         $settings = DB::table('settings')->get();
-        $setting = array();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }
@@ -113,7 +110,6 @@ class OrderController extends Controller
     {
         $user = Auth::user();
         $userid = $user->id;
-
 
         $sdata = Shipdetails::where('rcv_uid', $userid)->first();
         // dd($sdata);
@@ -164,10 +160,11 @@ class OrderController extends Controller
             $carts = Cart::where('user_id', $users_id)->get();
         }
         $settings = DB::table('settings')->get();
-        $setting = array();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }
+
         return view('user.pages.thanku', compact('categories', 'setting', 'carts'));
     }
 }

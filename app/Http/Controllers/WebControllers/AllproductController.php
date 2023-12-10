@@ -3,14 +3,12 @@
 namespace App\Http\Controllers\WebControllers;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Product;
-use App\Models\Category;
 use App\Models\Cart;
+use App\Models\Category;
 use App\Models\Hotdeal;
-use Illuminate\Support\Facades\DB;
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-
+use Illuminate\Support\Facades\DB;
 
 class AllproductController extends Controller
 {
@@ -29,7 +27,7 @@ class AllproductController extends Controller
             $carts = Cart::where('user_id', $users_id)->get();
         }
         $settings = DB::table('settings')->get();
-        $setting = array();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }
@@ -43,6 +41,7 @@ class AllproductController extends Controller
         $routeName = $name;
 
         $hotdeal = Product::where('hot_deal', 1)->get();
+
         return view('user.pages.product_by_cat', compact('categories', 'products', 'carts', 'hotdeal', 'setting', 'routeName'));
     }
 
@@ -53,14 +52,14 @@ class AllproductController extends Controller
         if (Auth::user()) {
             $user_id = Auth::user()->id;
             $carts = Cart::where('user_id', $user_id)->get();
-            // $wishlists = Wishlist::where('user_id', $user_id)->count();
+        // $wishlists = Wishlist::where('user_id', $user_id)->count();
         } else {
             $users_id = Auth::user();
             $carts = Cart::where('user_id', $users_id)->get();
         }
         $products = Product::where('status', 1)->get();
         $settings = DB::table('settings')->get();
-        $setting = array();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }
@@ -70,8 +69,6 @@ class AllproductController extends Controller
         $data = [
             'setting' => $setting,
         ];
-
-
 
         return view('user.pages.shop', compact('categories', 'hotdeals', 'carts', 'setting', 'products'));
     }

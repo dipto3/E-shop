@@ -3,12 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\Models\Subscribe;
-
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-use Brian2694\Toastr\Facades\Toastr;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class SubscribeController extends Controller
 {
@@ -26,7 +23,6 @@ class SubscribeController extends Controller
             'email' => $request->email,
             'created_at' => $mytime,
         ]);
-
 
         //        dispatch(new SubscribeMailJob($request->subscribe_email))->delay(now()->addSecond(5));
 

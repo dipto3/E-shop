@@ -22,7 +22,6 @@ use Illuminate\Support\Facades\Auth;
 
 trait AuthTrait
 {
-
     /**
      * @return mixed
      */
@@ -53,7 +52,6 @@ trait AuthTrait
     }
 
     /**
-     * @param $permission
      * @return void
      */
     public function givePermissionTo($permission)
@@ -62,14 +60,12 @@ trait AuthTrait
     }
 
     /**
-     * @param $role
      * @return void
      */
     public function assignRole($role)
     {
         $this->getUser()->assignRole($role);
     }
-
 
     /**
      * @return mixed
@@ -96,6 +92,4 @@ trait AuthTrait
     {
         return $this->getUser()->getPermissionsViaRoles();
     }
-
-
 }

@@ -1,22 +1,23 @@
 <?php
 
-use App\Http\Controllers\AdminController\OrderController;
-use App\Http\Controllers\ProfileController;
-use App\Http\Controllers\WebControllers\UserController;
+use App\Http\Controllers\AdminController\AdminAuthController;
 use App\Http\Controllers\AdminController\AdminController;
 use App\Http\Controllers\AdminController\CategoryController;
-use App\Http\Controllers\AdminController\SizeController;
 use App\Http\Controllers\AdminController\ColorController;
-use App\Http\Controllers\SubscribeController;
-use App\Http\Controllers\AdminController\PageController;
-use App\Http\Controllers\WebControllers\PageController as WPageController;
-use App\Http\Controllers\WebControllers\CartController;
-use App\Http\Controllers\WebControllers\WishlistController;
-use App\Http\Controllers\WebControllers\ShippingController;
-use App\Http\Controllers\AdminController\ProductController;
 use App\Http\Controllers\AdminController\HotdealController;
+use App\Http\Controllers\AdminController\OrderController;
+use App\Http\Controllers\AdminController\PageController;
+use App\Http\Controllers\AdminController\ProductController;
 use App\Http\Controllers\AdminController\SettingController;
+use App\Http\Controllers\AdminController\SizeController;
+use App\Http\Controllers\ProfileController;
+use App\Http\Controllers\SubscribeController;
 use App\Http\Controllers\WebControllers\AllproductController;
+use App\Http\Controllers\WebControllers\CartController;
+use App\Http\Controllers\WebControllers\PageController as WPageController;
+use App\Http\Controllers\WebControllers\ShippingController;
+use App\Http\Controllers\WebControllers\UserController;
+use App\Http\Controllers\WebControllers\WishlistController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -40,7 +41,7 @@ use Illuminate\Support\Facades\Route;
 //     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 // });
 
-require __DIR__ . '/auth.php';
+require __DIR__.'/auth.php';
 // Route::post('/add_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'add_cart']);
 // Route::get('login', [UserController::class, 'login'])->name('user.index');
 Route::get('/', [UserController::class, 'frontpage']);
@@ -53,9 +54,11 @@ Route::post('/check-subscribe-mail', [SubscribeController::class, 'checkMail'])-
 Route::get('/page', [PageController::class, 'index'])->name('page');
 
 //Admin
-Route::get('/backend-admin', [AdminController::class, 'form']);
-Route::post('/backend-check', [AdminController::class, 'login']);
-// Route::get('/dashboard', [AdminController::class, 'dashboard']);
+Route::get('/backend-admin', [AdminAuthController::class, 'form']);
+Route::post('/backend-check', [AdminAuthController::class, 'login']);
+Route::get('/logout', [AdminAuthController::class, 'logout']);
+
+Route::get('/dashboard', [AdminController::class, 'dashboard'])->name('dashboard');
 Route::get('/subscribe', [AdminController::class, 'subscribe']);
 Route::post('/delete_subscribe/{id}', [AdminController::class, 'subs_delete']);
 //category...
@@ -115,20 +118,12 @@ Route::get('/order-synced/{id}', [OrderController::class, 'sync']);
 Route::get('/order-update/{id}', [OrderController::class, 'update']);
 Route::get('/order-remove/{id}', [OrderController::class, 'cancel']);
 
-// Route::get('/logout', [AdminController::class, 'logout']);
-
 //hot deal
 // Route::resource('/hot_deal', HotdealController::class);
 //Category-admin
 // Route::post('/order', [OrderController::class, 'index'])->name('order');
 
-//Frontend
-
-
-
-Route::get('/logout', [AdminController::class, 'logout']);
 // Route::get('/search-product/{name}', [AllproductController::class, 'search_ranges'])->name('search');
-
 
 //frontend
 Route::group(['middleware' => 'auth'], function () {
@@ -136,7 +131,6 @@ Route::group(['middleware' => 'auth'], function () {
     Route::post('/wishlist/{id}', [WishlistController::class, 'add_wishlist']);
     Route::get('/all-wishlist', [WishlistController::class, 'all_wishlist']);
     Route::get('/delete-wishlist/{id}', [\App\Http\Controllers\WebControllers\WishlistController::class, 'destroy']);
-
 
     Route::post('/add_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'add_cart']);
     Route::get('/hotdeal_shop/{name}', [\App\Http\Controllers\UserController::class, 'hotdeal']);
@@ -164,8 +158,3 @@ Route::get('/carts', [CartController::class, 'carts']);
 Route::get('/productbycat/{name}', [AllproductController::class, 'productbycat'])->name('hello');
 Route::get('/product-details/{id}', [\App\Http\Controllers\WebControllers\ProductdetailsController::class, 'viewdetails']);
 Route::get('/shop', [AllproductController::class, 'shop']);
-
-// Route::group(['middleware' => 'admin'], function () {
-Route::get('/dashboard', [AdminController::class, 'dashboard']);
-// });
-//   Route::get('/dashboard', [AdminController::class, 'dashboard']);

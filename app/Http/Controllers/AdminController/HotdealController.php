@@ -3,17 +3,15 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use App\AppTrait\FileTrait;
-use App\Facades\AppFacade;
-use Illuminate\Http\Request;
 use App\Models\Hotdeal;
 use App\Models\Page;
-use Illuminate\Support\Facades\Redirect;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
+use Illuminate\Support\Facades\Redirect;
 
 class HotdealController extends Controller
 {
-       /**
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
@@ -22,6 +20,7 @@ class HotdealController extends Controller
     {
         // compact('hotdeal')
         $hotdeal = Hotdeal::all();
+
         return view('admin.hotdeal.index', compact('hotdeal'));
     }
 
@@ -38,40 +37,39 @@ class HotdealController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
-        {
-            $data = $this->validate($request, [
-                'frst_desp' => 'sometimes',
-                'scnd_desp' => 'sometimes',
-                'image' => 'sometimes',
-            ]);
-            $uploadPath = 'hotdeal';
-            if ($request->file('image')) {
-                $file = $request->file('image');
-                $filename = date('YmdHi') . $file->getClientOriginalName();
-                $file->move(public_path('images/hotdeal'), $filename);
-                $data['image'] = $filename;
 
-                if (Hotdeal::create($data)) {
-                    return redirect()->route('admin.hotdeal')
-                        ->with('alert', [
-                            'type' => 'success',
-                            'message' => 'Updated',
-                        ]);
-                }
+        $data = $this->validate($request, [
+            'frst_desp' => 'sometimes',
+            'scnd_desp' => 'sometimes',
+            'image' => 'sometimes',
+        ]);
+        $uploadPath = 'hotdeal';
+        if ($request->file('image')) {
+            $file = $request->file('image');
+            $filename = date('YmdHi').$file->getClientOriginalName();
+            $file->move(public_path('images/hotdeal'), $filename);
+            $data['image'] = $filename;
 
+            if (Hotdeal::create($data)) {
+                return redirect()->route('admin.hotdeal')
+                    ->with('alert', [
+                        'type' => 'success',
+                        'message' => 'Updated',
+                    ]);
             }
+
         }
+
     }
 
     /**
      * Display the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -82,14 +80,14 @@ class HotdealController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function edit($id)
-
     {
         // $page = Page::find($id);
         $hotdeal = Hotdeal::find($id);
+
         return view('admin.hotdeal.edit', compact('hotdeal'));
 
     }
@@ -97,8 +95,7 @@ class HotdealController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
@@ -110,11 +107,10 @@ class HotdealController extends Controller
 
         if ($request->file('image')) {
             $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/images/hotdeal'), $filename);
 
-
-            $imagePath = public_path('images/hotdeal/' . $hotdeal->image);
+            $imagePath = public_path('images/hotdeal/'.$hotdeal->image);
             $hotdeal['image'] = $filename;
             if (File::exists($imagePath)) {
                 unlink($imagePath);
@@ -129,8 +125,8 @@ class HotdealController extends Controller
         //     }
         //  }
 
-
         $hotdeal->save();
+
         return redirect()->route('admin.hotdeal')
             ->with('alert', [
                 'type' => 'success',
@@ -161,20 +157,19 @@ class HotdealController extends Controller
         // $hotdeal->scnd_desp = $request->scnd_desp;
         // $hotdeal->image = $request->image;
 
-
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param int $id
+     * @param  int  $id
      * @return \Illuminate\Http\Response
      */
     public function destroy($id)
     {
         $hotdeal = Hotdeal::find($id);
-        $imagePath = public_path('images/hotdeal/' . $hotdeal->image);
-//        dd($imagePath);
+        $imagePath = public_path('images/hotdeal/'.$hotdeal->image);
+        //        dd($imagePath);
         if (File::exists($imagePath)) {
             unlink($imagePath);
         }

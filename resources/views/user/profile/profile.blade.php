@@ -1,4 +1,7 @@
-@extends('user.master')
+@extends('user.layouts.master')
+@section('title')
+Profile
+@endsection
 @section('user.content')
 
 <div class="page-content">

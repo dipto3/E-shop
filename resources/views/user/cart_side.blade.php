@@ -30,7 +30,7 @@ aria-labelledby="offcanvasRightLabel">
 
     <div class="d-flex align-items-center gap-3">
       <div class="bottom-product-img">
-        <a href="product-details.html">
+        <a href="">
           <img src="{{ asset('/image/' . $cart->image) }}" width="60" alt="">
         </a>
       </div>

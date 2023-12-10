@@ -3,66 +3,14 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use Session;
-
-use Illuminate\Http\Request;
-use App\Models\Admin;
-use App\Models\Subscribe;
 use App\Models\Category;
 use App\Models\Product;
+use App\Models\Subscribe;
 use App\Models\User;
-use Illuminate\Support\Facades\Auth;
-use Illuminate\Support\Facades\Redirect;
-use App\Http\Requests\LoginRequest;
-use Brian2694\Toastr\Facades\Toastr;
-use Hash;
 use DB;
-// use Illuminate\Contracts\Session\Session as SessionSession;
-// use Illuminate\Support\Facades\Session as FacadesSession;
-// use Symfony\Component\HttpFoundation\Session\Session;
 
 class AdminController extends Controller
 {
-    public function form()
-    {
-
-        return view('admin.login');
-    }
-
-
-    // public function login(Request $request){
-    //     $email=$request->email;
-    //     $password=bcrypt($request->password);
-    //     $result=Admin::where('email',$email)->where('password',$password)->first();
-    //     if($result){
-    //         Session::put('name', $result->name);
-    //         Session::put('id', $result->id);
-    //             // Toastr::success('You are Logged in', 'Welcome', ["positionClass" => "toast-top-right"]);
-    //             return redirect('/dashboard');
-    //     }
-    //     else{
-    //         // Toastr::error('Invalid Credentials', 'Opps!', ["positionClass" => "toast-top-right"]);
-    //         return redirect('/backend-admin');
-    //     }
-    // }
-
-    public function login(Request $request)
-    {
-
-        $credentials = [
-            'email' => $request['email'],
-            'password' => $request['password'],
-        ];
-        // dd($credentials);
-        if (Auth::guard('admin')->attempt($credentials)) {
-            // $user = Auth::admin();
-
-            return redirect('/dashboard');
-        }
-
-        return redirect('/backend-admin');
-    }
-
     public function dashboard()
     {
 
@@ -77,17 +25,12 @@ class AdminController extends Controller
         return view('admin.dashboard', compact('totalproducts', 'totalusers', 'deactiveproducts', 'hotdealproducts', 'totalcategory'));
     }
 
-    public function logout()
-    {
-        Session::flush();
-        return redirect('/backend-admin');
-    }
-
     public function subscribe()
     {
         // $result = array();
         // $result['subscribe'] = DB::table('subscribes')->get();
         $subscribes = Subscribe::all();
+
         return view('admin.subscribe.index', compact('subscribes'));
     }
 
@@ -95,6 +38,7 @@ class AdminController extends Controller
     {
         $subscribe = Subscribe::find($id);
         $subscribe->delete();
+
         return redirect()->back();
     }
 }

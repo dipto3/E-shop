@@ -4,10 +4,11 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-use App\Models\Order;
+
 class Product extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'name',
         'category',
@@ -21,7 +22,8 @@ class Product extends Model
         'description',
     ];
 
-    public function order_details(){
+    public function order_details()
+    {
         return $this->belongsTo(Order_details::class, 'product_id', 'id');
     }
     // public function order()
@@ -40,6 +42,5 @@ class Product extends Model
     // public function user(){
     //     return $this->belongsTo(User::class,'id');
     // }
-
 
 }

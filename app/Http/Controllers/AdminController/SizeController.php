@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Size;
 use App\Http\Requests\SizeRequest;
-use Brian2694\Toastr\Facades\Toastr;
+use App\Models\Size;
+use Illuminate\Http\Request;
 
 class SizeController extends Controller
 {
@@ -23,6 +22,7 @@ class SizeController extends Controller
         $size = Size::create([
             'name' => json_encode($sizes),
         ]);
+
         return redirect()->back();
     }
 
@@ -30,12 +30,14 @@ class SizeController extends Controller
     {
 
         $sizes = Size::all();
+
         return view('admin.size.index', compact('sizes'));
     }
 
     public function edit($id)
     {
         $size = Size::find($id);
+
         return view('admin.size.edit', compact('size'));
     }
 
@@ -43,10 +45,10 @@ class SizeController extends Controller
     {
         $sizes = explode(',', $request->name);
         $size = Size::where('id', $id)->update([
-            'name' =>  json_encode($sizes),
+            'name' => json_encode($sizes),
         ]);
 
-        //     $sizes = explode(',',$request->name); 
+        //     $sizes = explode(',',$request->name);
         //     $size->update([
 
         //        'size' =>  json_encode($sizes),
@@ -61,6 +63,7 @@ class SizeController extends Controller
     {
         $size = Size::find($id);
         $size->delete();
+
         return redirect()->back();
     }
 }

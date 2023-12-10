@@ -3,14 +3,13 @@
 namespace App\Http\Controllers\WebControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Product;
-use App\Models\Category;
 use App\Models\Cart;
-use App\Models\Size;
+use App\Models\Category;
 use App\Models\Color;
-use Illuminate\Support\Facades\DB;
-use Illuminate\Http\Request;
+use App\Models\Product;
+use App\Models\Size;
 use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\DB;
 
 class ProductdetailsController extends Controller
 {
@@ -36,9 +35,10 @@ class ProductdetailsController extends Controller
     //
     // }
 
-    public function viewdetails($id){
-        $settings = DB::table('settings')->get() ;
-        $setting = array();
+    public function viewdetails($id)
+    {
+        $settings = DB::table('settings')->get();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }
@@ -46,21 +46,20 @@ class ProductdetailsController extends Controller
         $result['setting'] = $setting;
 
         $data = [
-            'setting' => $setting ,
-        ] ;
+            'setting' => $setting,
+        ];
 
         $products = Product::findOrFail($id);
         $sizes = Size::find($products->size);
         $categories = Category::all();
-        if(Auth::user()){
+        if (Auth::user()) {
             $user_id = Auth::user()->id;
-            $carts = Cart::where('user_id', $user_id )->get();
-        }else{
+            $carts = Cart::where('user_id', $user_id)->get();
+        } else {
             $users_id = Auth::user();
-            $carts = Cart::where('user_id', $users_id )->get();
+            $carts = Cart::where('user_id', $users_id)->get();
         }
 
-
-        return view('user.pages.productdetails',compact('products','setting','categories', 'carts','sizes'));
+        return view('user.pages.productdetails', compact('products', 'setting', 'categories', 'carts', 'sizes'));
     }
 }

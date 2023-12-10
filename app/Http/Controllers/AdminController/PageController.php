@@ -3,15 +3,15 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
-use App\Models\Hotdeal;
 use App\Models\Page;
+use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
     public function index_page()
     {
         $pages = Page::all();
+
         return view('admin.page.index', compact('pages'));
     }
 
@@ -42,6 +42,7 @@ class PageController extends Controller
     public function edit_page($id)
     {
         $page = Page::find($id);
+
         return view('admin.page.edit', compact('page'));
     }
 
@@ -53,6 +54,7 @@ class PageController extends Controller
         $page->frst_desp = $request->frst_desp;
         $page->scnd_desp = $request->scnd_desp;
         $page->save();
+
         return redirect()->route('admin.page')
             ->with('alert', [
                 'type' => 'success',
@@ -64,6 +66,7 @@ class PageController extends Controller
     {
         $page = Page::find($id);
         $page->delete();
+
         return redirect()->route('admin.page');
     }
 }

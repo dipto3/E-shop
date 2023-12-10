@@ -1,5 +1,5 @@
 
-@extends('user.master')
+@extends('user.layouts.master')
 {{-- /shipping-address --}}
 @section('user.content')
            <!--end breadcrumb-->

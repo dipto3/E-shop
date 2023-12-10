@@ -8,10 +8,11 @@ use Illuminate\Database\Eloquent\Model;
 class Hotdeal extends Model
 {
     use HasFactory;
+
     protected $fillable = [
         'frst_desp',
         'scnd_desp',
-        'image'
-       
+        'image',
+
     ];
 }

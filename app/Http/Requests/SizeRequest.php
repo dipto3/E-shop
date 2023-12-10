@@ -25,14 +25,14 @@ class SizeRequest extends FormRequest
     {
         return [
             'name' => 'required',
-          
+
         ];
     }
 
     public function messages()
     {
-        return [ 
-            
+        return [
+
             'name.reuired' => 'Category name is required!',
         ];
     }

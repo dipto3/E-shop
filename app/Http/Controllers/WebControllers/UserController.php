@@ -3,19 +3,15 @@
 namespace App\Http\Controllers\WebControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Hotdeal;
-use App\Models\Page;
 use App\Models\Cart;
-use App\Models\Product;
-use App\Models\Order;
-use App\Models\Setting;
-// use DB;
-use Illuminate\Http\Request;
-
 use App\Models\Category;
-use Illuminate\Support\Facades\DB;
+use App\Models\Hotdeal;
+use App\Models\Order;
+// use DB;
+
+use App\Models\Product;
 use Illuminate\Support\Facades\Auth;
-use RealRashid\SweetAlert\Facades\Alert;
+use Illuminate\Support\Facades\DB;
 
 class UserController extends Controller
 {
@@ -32,14 +28,14 @@ class UserController extends Controller
         if (Auth::user()) {
             $user_id = Auth::user()->id;
             $carts = Cart::where('user_id', $user_id)->get();
-            // $wishlists = Wishlist::where('user_id', $user_id)->count();
+        // $wishlists = Wishlist::where('user_id', $user_id)->count();
         } else {
             $users_id = Auth::user();
             $carts = Cart::where('user_id', $users_id)->get();
         }
         $products = Product::orderBy('id', 'DESC')->limit(6)->get();
         $settings = DB::table('settings')->get();
-        $setting = array();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }
@@ -55,8 +51,10 @@ class UserController extends Controller
         // dd($topsell);
 
         $allProduct = Product::all();
+
         return view('user.home', compact('categories', 'hotdeals', 'carts', 'setting', 'products', 'topsell', 'allProduct'));
     }
+
     public function frontpage()
     {
 
@@ -93,7 +91,7 @@ class UserController extends Controller
         // $category = Category::orderBy('id', 'desc')->first();
 
         $settings = DB::table('settings')->get();
-        $setting = array();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }
@@ -118,7 +116,7 @@ class UserController extends Controller
 
         // $topsell = Order::with('products')->orderBy('id', 'DESC')->get();
 
-        return view('user.home', compact('categories', 'hotdeals', 'hotdeal', 'carts', 'setting', 'products',  'allProduct'));
+        return view('user.home', compact('categories', 'hotdeals', 'hotdeal', 'carts', 'setting', 'products', 'allProduct'));
     }
 
     public function hotdeal($name)
@@ -135,7 +133,7 @@ class UserController extends Controller
             $carts = Cart::where('user_id', $users_id)->get();
         }
         $settings = DB::table('settings')->get();
-        $setting = array();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }

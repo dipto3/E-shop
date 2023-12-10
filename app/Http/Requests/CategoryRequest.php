@@ -31,12 +31,11 @@ class CategoryRequest extends FormRequest
 
     public function messages()
     {
-        return [ 
+        return [
             'name.exist' => '',
             'name.reuired' => 'Category name is required!',
-           
+
             'description.reuired' => 'Description is required!',
         ];
     }
 }
-

@@ -3,10 +3,9 @@
 namespace App\Http\Controllers\WebControllers;
 
 use App\Http\Controllers\Controller;
-use App\Models\Page;
 use App\Models\Cart;
-use Illuminate\Http\Request;
 use App\Models\Category;
+use App\Models\Page;
 use Illuminate\Support\Facades\DB;
 
 class PageController extends Controller
@@ -26,16 +25,15 @@ class PageController extends Controller
         // $data = [
         //     'setting' => $setting ,
         // ] ;
-        return view('user.page',compact('categories'));
+        return view('user.page', compact('categories'));
     }
-
 
     public function findPageBySlug($findSlug)
     {
         $categories = Category::all();
-        $carts= Cart::all();
-        $settings = DB::table('settings')->get() ;
-        $setting = array();
+        $carts = Cart::all();
+        $settings = DB::table('settings')->get();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }
@@ -43,11 +41,11 @@ class PageController extends Controller
         $result['setting'] = $setting;
 
         $data = [
-            'setting' => $setting ,
-        ] ;
-        $pageInfo=Page::where('slug',$findSlug)->first();
-        if($pageInfo){
-            return view('user.pages.custom-page',compact('categories','pageInfo','setting', 'carts'));
+            'setting' => $setting,
+        ];
+        $pageInfo = Page::where('slug', $findSlug)->first();
+        if ($pageInfo) {
+            return view('user.pages.custom-page', compact('categories', 'pageInfo', 'setting', 'carts'));
         }
 
     }

@@ -3,15 +3,13 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
+use App\Http\Requests\ProductRequest;
 use App\Models\Category;
-use App\Models\Size;
 use App\Models\Color;
 use App\Models\Product;
-use Brian2694\Toastr\Facades\Toastr;
-use App\Http\Requests\ProductRequest;
+use App\Models\Size;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use RealRashid\SweetAlert\Facades\Alert;
 
 class ProductController extends Controller
 {
@@ -20,6 +18,7 @@ class ProductController extends Controller
         $categories = Category::all();
         $sizes = Size::all();
         $colors = Color::all();
+
         return view('admin.product.create', compact('categories', 'sizes', 'colors'));
     }
 
@@ -35,13 +34,13 @@ class ProductController extends Controller
         $product->discount_price = $request->discountprice;
         $product->description = $request->description;
 
-        $images = array();
+        $images = [];
         if ($files = $request->file('file')) {
             $i = 0;
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();
                 $fileNameExtract = explode('.', $name);
-                $filename =  $fileNameExtract[0];
+                $filename = $fileNameExtract[0];
                 $filename .= time();
                 $filename .= $i;
                 $filename .= '.';
@@ -51,13 +50,15 @@ class ProductController extends Controller
                 $i++;
             }
 
-            $product['image'] = implode("|", $images);
+            $product['image'] = implode('|', $images);
             $product->save();
+
             return redirect()->back();
         } else {
-            echo "error";
+            echo 'error';
         }
         $product->save();
+
         return redirect()->back();
     }
 
@@ -65,6 +66,7 @@ class ProductController extends Controller
     {
 
         $products = Product::all();
+
         return view('admin.product.index', compact('products'));
     }
 
@@ -79,9 +81,10 @@ class ProductController extends Controller
     public function chng_stts(Request $request)
     {
 
-       DB::table('products')->where('id', $request->id)->update([
-            'status' => $request->status
+        DB::table('products')->where('id', $request->id)->update([
+            'status' => $request->status,
         ]);
+
         return response()->json([
             'code' => '200',
             'message' => 'status changed successfully',
@@ -92,8 +95,9 @@ class ProductController extends Controller
     {
 
         DB::table('products')->where('id', $request->id)->update([
-            'hot_deal' => $request->hotdeals
+            'hot_deal' => $request->hotdeals,
         ]);
+
         return response()->json([
             'code' => '200',
             'message' => 'Hotdeal changed successfully',
@@ -117,7 +121,7 @@ class ProductController extends Controller
     public function update(Request $request, $id)
     {
         // dd($request->all());
-        $product =  Product::find($id);
+        $product = Product::find($id);
         $product->name = $request->name;
         $product->category = $request->category;
         $product->size = $request->size;
@@ -126,13 +130,13 @@ class ProductController extends Controller
         $product->discount_price = $request->discountprice;
         $product->description = $request->description;
 
-        $images = array();
+        $images = [];
         if ($files = $request->file('file')) {
             $i = 0;
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();
                 $fileNameExtract = explode('.', $name);
-                $filename =  $fileNameExtract[0];
+                $filename = $fileNameExtract[0];
                 $filename .= time();
                 $filename .= $i;
                 $filename .= '.';
@@ -141,14 +145,12 @@ class ProductController extends Controller
                 $images[] = $filename;
                 $i++;
             }
-            $product['image'] = implode("|", $images);
+            $product['image'] = implode('|', $images);
             $product->save();
         } else {
-            echo "error";
+            echo 'error';
         }
         $product->save();
-
-
 
         return redirect()->back();
     }

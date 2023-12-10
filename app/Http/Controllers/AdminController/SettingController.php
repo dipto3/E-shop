@@ -5,7 +5,6 @@ namespace App\Http\Controllers\AdminController;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Http\Request;
-
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Storage;
 
@@ -15,7 +14,7 @@ class SettingController extends Controller
     {
 
         $settings = DB::table('settings')->get();
-        $setting = array();
+        $setting = [];
         foreach ($settings as $key => $value) {
             $setting[$value->name] = $value->value;
         }
@@ -25,14 +24,14 @@ class SettingController extends Controller
         $data = [
             'setting' => $setting,
         ];
+
         return view('admin.setting.index')->with($data);
     }
 
     public function Update(Request $request)
     {
 
-
-        $index =  $request->all();
+        $index = $request->all();
         //
         //        if ($request->hasFile('habout_img3')) {
         //            $uploadPath = 'admin';
@@ -65,11 +64,11 @@ class SettingController extends Controller
         //
         //        }
 
-        foreach ($index  as $key => $value) {
+        foreach ($index as $key => $value) {
             $update_settings = DB::table('settings')
                 ->where('name', '=', $key)
                 ->update([
-                    'value' => $value
+                    'value' => $value,
                 ]);
         }
 

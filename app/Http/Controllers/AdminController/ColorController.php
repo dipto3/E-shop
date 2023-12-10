@@ -3,8 +3,8 @@
 namespace App\Http\Controllers\AdminController;
 
 use App\Http\Controllers\Controller;
-use Illuminate\Http\Request;
 use App\Models\Color;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\File;
 
 class ColorController extends Controller
@@ -31,7 +31,7 @@ class ColorController extends Controller
         $uploadPath = 'color';
         if ($request->file('image')) {
             $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('images/color'), $filename);
             $data['image'] = $filename;
 
@@ -44,12 +44,14 @@ class ColorController extends Controller
             }
         }
     }
-    public function edit($id)
 
+    public function edit($id)
     {
         $color = Color::find($id);
+
         return view('admin.color.edit', compact('color'));
     }
+
     public function update(Request $request, $id)
     {
 
@@ -57,11 +59,10 @@ class ColorController extends Controller
         $color->color = $request->color;
         if ($request->file('image')) {
             $file = $request->file('image');
-            $filename = date('YmdHi') . $file->getClientOriginalName();
+            $filename = date('YmdHi').$file->getClientOriginalName();
             $file->move(public_path('/images/color'), $filename);
 
-
-            $imagePath = public_path('images/color/' . $color->image);
+            $imagePath = public_path('images/color/'.$color->image);
             $color['image'] = $filename;
             if (File::exists($imagePath)) {
                 unlink($imagePath);
@@ -70,6 +71,7 @@ class ColorController extends Controller
             unset($color['image']);
         }
         $color->save();
+
         return redirect()->route('admin.color')
             ->with('alert', [
                 'type' => 'success',
@@ -80,7 +82,7 @@ class ColorController extends Controller
     public function destroy($id)
     {
         $color = Color::find($id);
-        $imagePath = public_path('images/color/' . $color->image);
+        $imagePath = public_path('images/color/'.$color->image);
         //        dd($imagePath);
         if (File::exists($imagePath)) {
             unlink($imagePath);

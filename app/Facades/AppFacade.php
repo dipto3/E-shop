@@ -13,9 +13,6 @@ use Illuminate\Support\Facades\Facade;
  */
 class AppFacade extends Facade
 {
-    /**
-     * @return string
-     */
     protected static function getFacadeAccessor(): string
     {
         return 'DecathlonAppFacade';

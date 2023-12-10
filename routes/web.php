@@ -31,21 +31,10 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/dashboard', function () {
-//     return view('dashboard');
-// })->middleware(['auth', 'verified'])->name('dashboard');
-
-// Route::middleware('auth')->group(function () {
-//     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
-//     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
-//     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-// });
-
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';
 // Route::post('/add_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'add_cart']);
 // Route::get('login', [UserController::class, 'login'])->name('user.index');
 Route::get('/', [UserController::class, 'frontpage']);
-Route::get('/home', [UserController::class, 'home']);
 
 // Route::post('/subscribe-us', 'SubscribeController@subscribe')->name('subscribe.us');
 // Route::post('/check-subscribe-mail', 'SubscribeController@checkMail')->name('subscribe.check');
@@ -128,12 +117,12 @@ Route::get('/order-remove/{id}', [OrderController::class, 'cancel']);
 //frontend
 Route::group(['middleware' => 'auth'], function () {
 
-    Route::post('/wishlist/{id}', [WishlistController::class, 'add_wishlist']);
+    Route::post('/wishlist/{id}', [WishlistController::class, 'add_wishlist'])->name('wishlist.store');
     Route::get('/all-wishlist', [WishlistController::class, 'all_wishlist']);
     Route::get('/delete-wishlist/{id}', [\App\Http\Controllers\WebControllers\WishlistController::class, 'destroy']);
 
-    Route::post('/add_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'add_cart']);
-    Route::get('/hotdeal_shop/{name}', [\App\Http\Controllers\UserController::class, 'hotdeal']);
+    Route::post('/add_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'add_cart'])->name('cart.store');
+    Route::get('/hotdeal-products', [UserController::class, 'hotdeal'])->name('hotdeal.shop');
 
     Route::get('/delete_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'delete_cart']);
 
@@ -156,5 +145,5 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::get('/carts', [CartController::class, 'carts']);
 Route::get('/productbycat/{name}', [AllproductController::class, 'productbycat'])->name('hello');
-Route::get('/product-details/{id}', [\App\Http\Controllers\WebControllers\ProductdetailsController::class, 'viewdetails']);
+Route::get('/product-details/{id}', [\App\Http\Controllers\WebControllers\ProductdetailsController::class, 'viewdetails'])->name('product.details');
 Route::get('/shop', [AllproductController::class, 'shop']);

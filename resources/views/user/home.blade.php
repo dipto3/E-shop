@@ -1,254 +1,269 @@
 @extends('user.layouts.master')
 @section('user.content')
+    <div class="page-content">
 
-<div class="page-content">
-
-    <!--start carousel-->
-    <section class="slider-section">
-      <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
-        <div class="carousel-indicators">
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
-            aria-current="true"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></button>
-          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"></button>
-        </div>
-        <div class="carousel-inner">
-        @foreach ($hotdeals as $hotdeal)
-          <div class="carousel-item active bg-primary">
-            <div class="row d-flex align-items-center">
-              <div class="col d-none d-lg-flex justify-content-center">
-                <div class="">
-                  <h1 class="h1 text-white fw-bold">{{$hotdeal->frst_desp}}</h1>
-                  <p class="text-white fw-bold"><i>{{$hotdeal->scnd_desp}}</i></p>
-                  <div class=""><a class="btn btn-dark btn-ecomm" href="{{url('/hotdeal_shop/{name}')}}">Shop Now</a>
-                  </div>
+        <!--start carousel-->
+        <section class="slider-section">
+            <div id="carouselExampleCaptions" class="carousel slide" data-bs-ride="carousel">
+                <div class="carousel-indicators">
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+                        aria-current="true"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="3"></button>
+                    <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="4"></button>
                 </div>
-              </div>
-              <div class="col">
-                <img src="{{ asset('images/hotdeal/'.$hotdeal->image) }}" class="img-fluid" alt="...">
-              </div>
+                <div class="carousel-inner">
+                    @foreach ($hotdeals as $hotdeal)
+                        <div class="carousel-item active bg-primary">
+                            <div class="row d-flex align-items-center">
+                                <div class="col d-none d-lg-flex justify-content-center">
+                                    <div class="">
+                                        <h1 class="h1 text-white fw-bold">{{ $hotdeal->frst_desp }}</h1>
+                                        <p class="text-white fw-bold"><i>{{ $hotdeal->scnd_desp }}</i></p>
+                                        <div class=""><a class="btn btn-dark btn-ecomm"
+                                                href="{{ route('hotdeal.shop') }}">Shop Now</a>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col">
+                                    <img src="{{ asset('images/hotdeal/' . $hotdeal->image) }}" class="img-fluid"
+                                        alt="...">
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
+                <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="prev">
+                    <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Previous</span>
+                </button>
+                <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+                    data-bs-slide="next">
+                    <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                    <span class="visually-hidden">Next</span>
+                </button>
             </div>
-          </div>
-        @endforeach
-        </div>
-        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="prev">
-          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Previous</span>
-        </button>
-        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
-          data-bs-slide="next">
-          <span class="carousel-control-next-icon" aria-hidden="true"></span>
-          <span class="visually-hidden">Next</span>
-        </button>
-      </div>
-    </section>
-    <!--end carousel-->
+        </section>
+        <!--end carousel-->
 
 
-    <!--start Featured Products slider-->
-    <section class="section-padding">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 h3 fw-bold">Featured Products</h3>
-          <p class="mb-0 text-capitalize">The purpose of our featured products</p>
-        </div>
-        <div class="product-thumbs">
+        <!--start Featured Products slider-->
+        <section class="section-padding">
+            <div class="container">
+                <div class="text-center pb-3">
+                    <h3 class="mb-0 h3 fw-bold">Featured Products</h3>
+                    <p class="mb-0 text-capitalize">The purpose of our featured products</p>
+                </div>
+                <div class="product-thumbs">
 
-            @foreach ($allProduct as $product)
-          <div class="card">
-            <div class="position-relative overflow-hidden">
-              <div
-                class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                    class="bi bi-zoom-in"></i></a>
-              </div>
-              <a href="product-details.html">
-                <img src="{{ asset('/image/' . $product->image) }}" class="card-img-top" alt="...">
-              </a>
+                    @foreach ($allProduct as $product)
+                        <div class="card">
+                            <div class="position-relative overflow-hidden">
+                                <div
+                                    class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                    <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                    <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                  
+                                </div>
+                                <a href="{{ route('product.details', $product->id) }}">
+                                    <img src="{{ asset('/image/' . $product->image) }}" class="card-img-top" alt="...">
+                                </a>
+                            </div>
+                            <div class="card-body">
+                                <div class="product-info text-center">
+                                    <h6 class="mb-1 fw-bold product-name"><a
+                                            href="{{ route('product.details' , $product->id) }}">{{ $product->name }}</a>
+                                    </h6>
+                                    @if ($product->discount_price)
+                                        <p class="mb-0 h6 fw-bold product-price">&#2547; {{ $product->discount_price }}<del
+                                                class="product-old-price">{{ $product->price }}</del></p>
+                                    @else
+                                        <p class="mb-0 h6 fw-bold product-price">&#2547; {{ $product->price }}</p>
+                                    @endif
+                                </div>
+                            </div>
+                        </div>
+                    @endforeach
+                </div>
             </div>
-            <div class="card-body">
-              <div class="product-info text-center">
-                <h6 class="mb-1 fw-bold product-name"><a href="{{ url('/product-details/' . $product->id) }}">{{ $product->name }}</a></h6>
-                @if ($product->discount_price)
-                <p class="mb-0 h6 fw-bold product-price">&#2547; {{ $product->discount_price }}<del class="product-old-price">{{ $product->price }}</del></p>
-                @else
-                <p class="mb-0 h6 fw-bold product-price">&#2547; {{ $product->price }}</p>
-                @endif
-              </div>
-            </div>
-          </div>
-          @endforeach
-        </div>
-      </div>
-    </section>
-    <!--end Featured Products slider-->
+        </section>
+        <!--end Featured Products slider-->
 
 
-    <!--start tabular product-->
-    <section class="product-tab-section section-padding bg-light">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 h3 fw-bold">Latest Products</h3>
-          <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
-        </div>
-        <div class="row">
-          <div class="col-auto mx-auto">
-            <div class="product-tab-menu table-responsive">
-              <ul class="nav nav-pills flex-nowrap" id="pills-tab" role="tablist">
-              </ul>
-            </div>
-          </div>
-        </div>
-        <hr>
-        <div class="tab-content tabular-product">
-          <div class="tab-pane fade show active" id="new-arrival">
-            <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
-              @foreach ($products as $product)
-              <div class="col">
-                <div class="card">
-                    {{-- <div class="ribban">New Season</div> --}}
-                  <div class="position-relative overflow-hidden">
-                    <div
-                      class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
-                      <a href="javascript:;"><i class="bi bi-heart"></i></a>
-                      <a href="javascript:;"><i class="bi bi-basket3"></i></a>
-                      <a href="javascript:;" data-bs-toggle="modal" data-bs-target="#QuickViewModal"><i
-                          class="bi bi-zoom-in"></i></a>
+        <!--start tabular product-->
+        <section class="product-tab-section section-padding bg-light">
+            <div class="container">
+                <div class="text-center pb-3">
+                    <h3 class="mb-0 h3 fw-bold">Latest Products</h3>
+                    <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
+                </div>
+                <div class="row">
+                    <div class="col-auto mx-auto">
+                        <div class="product-tab-menu table-responsive">
+                            <ul class="nav nav-pills flex-nowrap" id="pills-tab" role="tablist">
+                            </ul>
+                        </div>
                     </div>
-                    <a href="product-details.html">
-                      <img src="{{ asset('/image/' . $product->image) }}" class="card-img-top" alt="...">
-                    </a>
-                  </div>
-                  <div class="card-body">
-                    <div class="product-info text-center">
-                      <h5 class="mb-1 fw-bold product-name">{{ $product->name}}</h5>
-                      <h6 class="mb-1 fw-bold product-name">{{ $product->category}}</h6>
-                      @if ($product->discount_price)
-                      <div class="row">
-                      <div class="col h6 fw-bold">&#2547;{{ $product->discount_price }}</div>
-                      <div class="col h6 fw-light text-muted text-decoration-line-through">&#2547;{{ $product->price }}</div>
+                </div>
+                <hr>
+                <div class="tab-content tabular-product">
+                    <div class="tab-pane fade show active" id="new-arrival">
+                        <div class="row row-cols-2 row-cols-md-3 row-cols-lg-4 row-cols-xl-4 row-cols-xxl-5 g-4">
+                            @foreach ($products as $product)
+                                <div class="col">
+                                    <div class="card">
+                                        {{-- <div class="ribban">New Season</div> --}}
+                                        <div class="position-relative overflow-hidden">
+                                            <div
+                                                class="product-options d-flex align-items-center justify-content-center gap-2 mx-auto position-absolute bottom-0 start-0 end-0">
+                                                <a href="javascript:;"><i class="bi bi-heart"></i></a>
+                                                <a href="javascript:;"><i class="bi bi-basket3"></i></a>
+                                           
+                                            </div>
+                                            <a href="{{ route('product.details', $product->id) }}">
+                                                <img src="{{ asset('/image/' . $product->image) }}" class="card-img-top"
+                                                    alt="...">
+                                            </a>
+                                        </div>
+                                        <div class="card-body">
+                                            <div class="product-info text-center">
+                                                <h5 class="mb-1 fw-bold product-name">{{ $product->name }}</h5>
+                                                <h6 class="mb-1 fw-bold product-name">{{ $product->category }}</h6>
+                                                @if ($product->discount_price)
+                                                    <div class="row">
+                                                        <div class="col h6 fw-bold">&#2547;{{ $product->discount_price }}
+                                                        </div>
+                                                        <div
+                                                            class="col h6 fw-light text-muted text-decoration-line-through">
+                                                            &#2547;{{ $product->price }}</div>
+                                                    </div>
+                                                @else
+                                                    <div class="h6 fw-bold">&#2547;{{ $product->price }}</div>
+                                                @endif
+
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            @endforeach
+
+                        </div>
                     </div>
-                      @else
-                      <div class="h6 fw-bold">&#2547;{{ $product->price }}</div>
-                      @endif
 
+
+
+                </div>
+            </div>
+        </section>
+        <!--end tabular product-->
+
+
+        <!--start features-->
+        <section class="product-thumb-slider section-padding">
+            <div class="container">
+                <div class="text-center pb-3">
+                    <h3 class="mb-0 h3 fw-bold">What We Offer!</h3>
+                    <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
+                </div>
+                <div class="row row-cols-1 row-cols-lg-4 g-4">
+                    <div class="col d-flex">
+                        <div class="card depth border-0 rounded-0 border-bottom border-primary border-3 w-100">
+                            <div class="card-body text-center">
+                                <div class="h1 fw-bold my-2 text-primary">
+                                    <i class="bi bi-truck"></i>
+                                </div>
+                                <h5 class="fw-bold">Free Delivery</h5>
+                                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain
+                                    of itself.</p>
+                            </div>
+                        </div>
                     </div>
-                  </div>
+                    <div class="col d-flex">
+                        <div class="card depth border-0 rounded-0 border-bottom border-danger border-3 w-100">
+                            <div class="card-body text-center">
+                                <div class="h1 fw-bold my-2 text-danger">
+                                    <i class="bi bi-credit-card"></i>
+                                </div>
+                                <h5 class="fw-bold">Secure Payment</h5>
+                                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain
+                                    of itself.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="card depth border-0 rounded-0 border-bottom border-success border-3 w-100">
+                            <div class="card-body text-center">
+                                <div class="h1 fw-bold my-2 text-success">
+                                    <i class="bi bi-minecart-loaded"></i>
+                                </div>
+                                <h5 class="fw-bold">Free Returns</h5>
+                                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain
+                                    of itself.</p>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col d-flex">
+                        <div class="card depth border-0 rounded-0 border-bottom border-warning border-3 w-100">
+                            <div class="card-body text-center">
+                                <div class="h1 fw-bold my-2 text-warning">
+                                    <i class="bi bi-headset"></i>
+                                </div>
+                                <h5 class="fw-bold">24/7 Support</h5>
+                                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain
+                                    of itself.</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-              </div>
-              @endforeach
-
+                <!--end row-->
             </div>
-          </div>
+        </section>
+        <!--end features-->
 
 
-
-        </div>
-      </div>
-    </section>
-    <!--end tabular product-->
-
-
-    <!--start features-->
-    <section class="product-thumb-slider section-padding">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 h3 fw-bold">What We Offer!</h3>
-          <p class="mb-0 text-capitalize">The purpose of lorem ipsum</p>
-        </div>
-        <div class="row row-cols-1 row-cols-lg-4 g-4">
-          <div class="col d-flex">
-            <div class="card depth border-0 rounded-0 border-bottom border-primary border-3 w-100">
-              <div class="card-body text-center">
-                <div class="h1 fw-bold my-2 text-primary">
-                  <i class="bi bi-truck"></i>
+        <!--start special product-->
+        <section class="section-padding bg-section-2">
+            <div class="container">
+                <div class="card border-0 rounded-0 p-3 depth">
+                    <div class="row align-items-center justify-content-center">
+                        <div class="col-lg-6 text-center">
+                            <img src="assets/images/extra-images/promo-large.webp" class="img-fluid rounded-0"
+                                alt="...">
+                        </div>
+                        <div class="col-lg-6">
+                            <div class="card-body">
+                                <h3 class="fw-bold">New Features of Trending Products</h3>
+                                <ul class="list-group list-group-flush">
+                                    <li class="list-group-item bg-transparent px-0">Contrary to popular belief, Lorem Ipsum
+                                        is not simply
+                                        random text.</li>
+                                    <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the
+                                        Internet tend.
+                                    </li>
+                                    <li class="list-group-item bg-transparent px-0">There are many variations of passages
+                                        of Lorem Ipsum
+                                        available.</li>
+                                    <li class="list-group-item bg-transparent px-0">There are many variations of passages
+                                        available.</li>
+                                </ul>
+                                <div class="buttons mt-4 d-flex flex-column flex-lg-row gap-3">
+                                    <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Buy Now</a>
+                                    <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3">View
+                                        Details</a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                <h5 class="fw-bold">Free Delivery</h5>
-                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
-              </div>
             </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card depth border-0 rounded-0 border-bottom border-danger border-3 w-100">
-              <div class="card-body text-center">
-                <div class="h1 fw-bold my-2 text-danger">
-                  <i class="bi bi-credit-card"></i>
-                </div>
-                <h5 class="fw-bold">Secure Payment</h5>
-                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card depth border-0 rounded-0 border-bottom border-success border-3 w-100">
-              <div class="card-body text-center">
-                <div class="h1 fw-bold my-2 text-success">
-                  <i class="bi bi-minecart-loaded"></i>
-                </div>
-                <h5 class="fw-bold">Free Returns</h5>
-                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
-              </div>
-            </div>
-          </div>
-          <div class="col d-flex">
-            <div class="card depth border-0 rounded-0 border-bottom border-warning border-3 w-100">
-              <div class="card-body text-center">
-                <div class="h1 fw-bold my-2 text-warning">
-                  <i class="bi bi-headset"></i>
-                </div>
-                <h5 class="fw-bold">24/7 Support</h5>
-                <p class="mb-0">Nor again is there anyone who loves or pursues or desires to obtain pain of itself.</p>
-              </div>
-            </div>
-          </div>
-        </div>
-        <!--end row-->
-      </div>
-    </section>
-    <!--end features-->
+        </section>
+        <!--start special product-->
 
 
-    <!--start special product-->
-    <section class="section-padding bg-section-2">
-      <div class="container">
-        <div class="card border-0 rounded-0 p-3 depth">
-          <div class="row align-items-center justify-content-center">
-            <div class="col-lg-6 text-center">
-              <img src="assets/images/extra-images/promo-large.webp" class="img-fluid rounded-0" alt="...">
-            </div>
-            <div class="col-lg-6">
-              <div class="card-body">
-                <h3 class="fw-bold">New Features of Trending Products</h3>
-                <ul class="list-group list-group-flush">
-                  <li class="list-group-item bg-transparent px-0">Contrary to popular belief, Lorem Ipsum is not simply
-                    random text.</li>
-                  <li class="list-group-item bg-transparent px-0">All the Lorem Ipsum generators on the Internet tend.
-                  </li>
-                  <li class="list-group-item bg-transparent px-0">There are many variations of passages of Lorem Ipsum
-                    available.</li>
-                    <li class="list-group-item bg-transparent px-0">There are many variations of passages
-                      available.</li>
-                </ul>
-                <div class="buttons mt-4 d-flex flex-column flex-lg-row gap-3">
-                  <a href="javascript:;" class="btn btn-lg btn-dark btn-ecomm px-5 py-3">Buy Now</a>
-                  <a href="javascript:;" class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3">View Details</a>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-    <!--start special product-->
-
-
-    <!--start Brands-->
-    {{-- <section class="section-padding">
+        <!--start Brands-->
+        {{-- <section class="section-padding">
       <div class="container">
         <div class="text-center pb-3">
           <h3 class="mb-0 h3 fw-bold">Shop By Brands</h3>
@@ -351,42 +366,42 @@
         </div>
       </div>
     </section> --}}
-    <!--end Brands-->
+        <!--end Brands-->
 
 
-    <!--start cartegory slider-->
-    <section class="cartegory-slider section-padding bg-section-2">
-      <div class="container">
-        <div class="text-center pb-3">
-          <h3 class="mb-0 h3 fw-bold">Top selling product</h3>
-          <p class="mb-0 text-capitalize">Select your favorite categories and purchase</p>
-        </div>
-        <div class="cartegory-box">
-            {{--  @foreach ($topSellProducts as $top)  --}}
-                <a href="shop-grid-type-4.html">
-                    <div class="card">
-                    <div class="card-body">
-                        <div class="overflow-hidden">
-                        {{--  <img src="{{ asset('/image/' . $top->image) }}" class="card-img-top rounded-0" alt="...">  --}}
+        <!--start cartegory slider-->
+        <section class="cartegory-slider section-padding bg-section-2">
+            <div class="container">
+                <div class="text-center pb-3">
+                    <h3 class="mb-0 h3 fw-bold">Top selling product</h3>
+                    <p class="mb-0 text-capitalize">Select your favorite categories and purchase</p>
+                </div>
+                <div class="cartegory-box">
+                    {{--  @foreach ($topSellProducts as $top)  --}}
+                    <a href="shop-grid-type-4.html">
+                        <div class="card">
+                            <div class="card-body">
+                                <div class="overflow-hidden">
+                                    {{--  <img src="{{ asset('/image/' . $top->image) }}" class="card-img-top rounded-0" alt="...">  --}}
+                                </div>
+                                <div class="text-center">
+                                    <h5 class="mb-1 cartegory-name mt-3 fw-bold"></h5>
+                                    <h6 class="mb-0 product-number fw-bold">856 Products</h6>
+                                </div>
+                            </div>
                         </div>
-                        <div class="text-center">
-                        <h5 class="mb-1 cartegory-name mt-3 fw-bold"></h5>
-                        <h6 class="mb-0 product-number fw-bold">856 Products</h6>
-                        </div>
-                    </div>
-                    </div>
-                </a>
-                {{--  @endforeach  --}}
+                    </a>
+                    {{--  @endforeach  --}}
 
 
-        </div>
-      </div>
-    </section>
-    <!--end cartegory slider-->
+                </div>
+            </div>
+        </section>
+        <!--end cartegory slider-->
 
 
-    <!--start blog-->
-    {{-- <section class="section-padding">
+        <!--start blog-->
+        {{-- <section class="section-padding">
       <div class="container">
         <div class="text-center pb-3">
           <h3 class="mb-0 fw-bold">Latest Blog</h3>
@@ -454,9 +469,8 @@
         </div>
       </div>
     </section> --}}
-    <!--end blog-->
+        <!--end blog-->
 
 
-  </div>
-  @endsection
-
+    </div>
+@endsection

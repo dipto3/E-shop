@@ -16,17 +16,18 @@
                     <div class="col-12 col-xl-7">
                         <div class="product-images">
                             <div class="product-zoom-images">
-                                <form action="{{ url('/add_cart/' . $products->id) }}" method="post" enctype="multipart/form-data">
+                                <form action="{{ route('cart.store', $products->id) }}" method="post"
+                                    enctype="multipart/form-data">
                                     @csrf
                                     <div class="row row-cols-2 g-3">
                                         <div class="col">
                                             <div class="img-thumb-container overflow-hidden position-relative"
-                                                data-fancybox="gallery" data-src="assets/images/product-images/01.jpg">
+                                                data-fancybox="gallery" data-src="">
                                                 <img src="{{ asset('/image/' . $products->image) }}" class="img-fluid"
                                                     alt="">
                                             </div>
                                         </div>
-                                        
+
                                     </div><!--end row-->
                             </div>
                         </div>
@@ -137,7 +138,7 @@
                                 <button type="submit" class="btn btn-lg btn-dark btn-ecomm px-5 py-3 col-lg-6"><i
                                         class="bi bi-basket2 me-2"></i>Add to Bag</button>
                                 </form>
-                                <form action="{{ url('/wishlist/' . $products->id) }}" method="post">
+                                <form action="{{ route('wishlist.store', $products->id) }}" method="post">
                                     @csrf
                                     <button class="btn btn-lg btn-outline-dark btn-ecomm px-5 py-3"><i
                                             class="bi bi-suit-heart me-2"></i>Wishlist</button>

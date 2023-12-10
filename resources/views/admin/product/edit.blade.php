@@ -1,165 +1,88 @@
 @extends('admin.master')
-
-@section('content')
-<div class="container">
-    <div class=" text-center mt-5 ">
-
-        <h3 style="color: royalblue;" >Add Category Form</h3>
-            
-        
-    </div>
-
-
-<div class="row ">
-  <div class="col-lg-7 mx-auto">
-    <div class="card mt-2 mx-auto p-4 bg-light">
-        <div class="card-body bg-light">
-   
-        <div class = "container">
+@section('admin.content')
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title" style="color:rgb(0, 138, 202);font-size:25px; text-align:center;">Edit Product</h4>
+        <p class="card-description">
+            Please fill out the form below.
+        </p>
         <form id="contact-form" role="form" action="{{url('/update-product/'.$product->id)}}" method="POST" enctype="multipart/form-data">
-            @csrf
+          @csrf
+          <div class="form-group">
+            <label for="">Product Name</label>
+            <input type="text" class="form-control" name="name" value="{{$product->name}}">
+            @error('name')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+          </div>
+          <div class="form-group">
+            <label for="exampleSelectGender">Product Category</label>
+              <select class="form-control" name="category">
+                <option>{{$product->category}}</option>
+                @foreach ($categories as $category)
+                <option value="{{$category->name}}">{{$category->name}}</option>
+                @endforeach
 
-        <div class="controls">
+              </select>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Product Name</label>
-                        <input id="form_name" type="text" name="product" class="form-control" value="{{$product->name}}">
-                        
-                    </div>
-                </div>
-              
+
             </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Product price</label>
-                        <input id="form_name" type="text" name="price" class="form-control"  value="{{$product->price}}">
-                        
-                    </div>
-                </div>
-              
-            </div>
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Color Name</label>
-                        <select class="form-control" name="color" value="">
-
-                            <option >{{$product->color}}</option>
-                         @foreach ($colors as $color)
-                    
-                            <option value="{{$color->color}}">{{implode(',',Json_decode($color->color))}} </option>
-                            @endforeach
-                           </select>
-                        
-                    </div>
-                </div>
-              
+            <div class="form-group">
+                <label for="exampleSelectGender">Product Size</label>
+                  <select class="form-control" name="size">
+                    <option>{{$product->size}}</option>
+                    @foreach ($sizes as $size)
+                            <option value="{{$size->name}}">{{$size->name}}</option>
+                    @endforeach
+                  </select>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Category Name</label>
-                        <select class="form-control" name="category" value="">
-
-                            <option>{{$product->category}}</option>
-                        @foreach ($categories as $category)
-                    
-                            <option value="{{$category->name}}"> {{$category->name}}</option>
-                            @endforeach
-                           </select>
-                        
-                    </div>
-                </div>
-              
-            </div>
-       
-       
-           
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Size Name</label>
-                        <select class="form-control" name="size" id="">
-                         
-                       <option >{{$product->size}}</option> 
-                           @foreach ( $sizes as $size)
-                             
-                            <option value="{{$size->size}}" >{{implode(',',Json_decode($size->size))}}</option>
-                            @endforeach
-                           </select>
-                        
-                    </div>
-                </div>
-              
+            <div class="form-group">
+                <label for="exampleSelectGender">Product Color</label>
+                <select class="form-control" name="color">
+                    <option>{{$product->color}}</option>
+                    @foreach ($colors as $color)
+                        <option value="{{$color->color}}">{{$color->color}}</option>
+                    @endforeach
+                </select>
             </div>
 
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Unit Name</label>
-                        <select class="form-control" name="unit" id="">
-                          <option>{{$product->unit}}</option>
-                        @foreach ($units as $unit)
-                        
-                            <option value="{{$unit->name}}" >{{$unit->name}} </option>
-                            @endforeach
-                           </select>
-                        
-                    </div>
-                </div>
-              
-            </div>
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Image</label>
-                        <input name="file[]" type="file" class="form-control"  multiple >
-                        
-                    </div>
-                </div>
-              
-            </div>
-            
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_message">Description</label>
-                        <textarea id="form_message" name="description" class="form-control"  rows="4">{{$product->description}}</textarea>
-                        </div>
-
-                    </div>
-
-
-                <div class="col-md-12">
-                    
-                    <button  type="submit" class="btn btn-success btn-send  pt-2 btn-block
-                        " value="Submit" >Submit</button>
-                
-            </div>
-      
+            <div class="form-group">
+                <label for="">Price</label>
+                <input type="text" class="form-control" name="price"  value="{{$product->price}}">
+                @error('price')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
             </div>
 
+            <div class="form-group">
+                <label for="">Discount Price</label>
+                <input type="text" class="form-control" name="discountprice"  value="{{$product->discount_price}}">
 
+            </div>
+
+            <div class="form-group">
+                <label for="">Description</label>
+                <textarea class="form-control" name="description" id="exampleTextarea1" rows="4">{{$product->description}}</textarea>
+                @error('description')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+            </div>
+
+          <div class="form-group">
+            <label>Image</label>
+            <input name="file[]" type="file" class="form-control"  multiple>
+            @error('file')
+                <div class="alert alert-danger">{{ $message }}</div>
+            @enderror
+
+          </div>
+
+          <button type="submit" class="btn btn-primary me-2">Submit</button>
+
+        </form>
+      </div>
     </div>
-     </form>
-    </div>
-        </div>
-
-
-</div>
-    <!-- /.8 -->
-
-</div>
-<!-- /.row-->
-
-</div>
-</div>
-
-
-@endsection
+  </div>
+  @endsection

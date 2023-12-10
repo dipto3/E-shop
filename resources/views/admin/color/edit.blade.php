@@ -1,67 +1,31 @@
 @extends('admin.master')
+@section('admin.content')
+    <div class="col-12 grid-margin stretch-card">
+        <div class="card">
+            <div class="card-body">
+                <h4 class="card-title" style="color:rgb(0, 138, 202);font-size:25px; text-align:center;">Edit Color</h4>
 
-@section('content')
-<div class="container">
-    <div class=" text-center mt-5 ">
-
-        <h3 style="color: royalblue;" >Edit Color Form</h3>
-            
-        
-    </div>
-
-
-<div class="row ">
-  <div class="col-lg-7 mx-auto">
-    <div class="card mt-2 mx-auto p-4 bg-light">
-        <div class="card-body bg-light">
-   
-        <div class = "container">
-        <form id="contact-form" role="form" action="{{url('/update-color/'.$color->id)}}" method="POST">
-            @csrf
-            
-
-        
-
-        <div class="controls">
-
-            <div class="row">
-                <div class="col-md-12">
+                <form action="{{ url('/update-color/' . $color->id) }}" method="POST" class="forms-sample"
+                    enctype="multipart/form-data">
+                    @csrf
                     <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Color Name</label>
-                        <input id="form_name" data-role="tagsinput"  type="text" name="color" class="form-control" value="{{implode(',',Json_decode($color->color))}}"  >
-                        
+                        <label for="exampleInputName1"><b>Color :</b></label>
+                        <input type="text" class="form-control" name="color" value="{{ $color->color }}">
                     </div>
-                </div>
-              
+                    <div class="form-group">
+                        <label for="exampleInputName1"><b>Image :</b></label>
+                        <input type="file" class="form-control" name="image">
+                    </div>
+                    <div class="form-group">
+                        <label for="exampleInputName1"><b>Old Image :</b?< /label>
+                                <td>
+                                    <img width="150px" height="100px" src="{{ asset('images/color' . '/' . $color->image) }}">
+                                </td>
+                    </div>
+                    <button type="submit" class="btn btn-info me-2">Submit</button>
+
+                </form>
             </div>
-            
-            <div class="row">
-           
-
-
-                <div class="col-md-12">
-                    
-                    <input  type="submit" class="btn btn-success btn-send  pt-2 btn-block
-                        " value="Submit" >
-                
-            </div>
-      
-            </div>
-
-
-    </div>
-     </form>
-    </div>
         </div>
-
-
-</div>
-    <!-- /.8 -->
-
-</div>
-<!-- /.row-->
-
-</div>
-</div>
-
+    </div>
 @endsection

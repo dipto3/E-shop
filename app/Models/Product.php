@@ -4,23 +4,42 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Order;
 class Product extends Model
 {
     use HasFactory;
     protected $fillable = [
-        'id','name','description','category','unit','size','color','status','price','image',];
+        'name',
+        'category',
+        'size',
+        'color',
+        'price',
+        'discount_price',
+        'image',
+        'status',
+        'hot_deal',
+        'description',
+    ];
 
-        public function category(){
-            return $this->belongsTo(Category::class,'category'); 
-        }
-        public function unit(){
-            return $this->belongsTo(Unit::class,'unit'); 
-        }
-        public function size(){
-            return $this->belongsTo(Size::class,'size'); 
-        }
-        public function color(){
-            return $this->belongsTo(Color::class,'color'); 
-        }
+    public function order_details(){
+        return $this->belongsTo(Order_details::class, 'product_id', 'id');
+    }
+    // public function order()
+    // {
+    //     return $this->belongsToMany(Order::class, 'product_id','qty');
+    // }
+
+    // public function order()
+    // {
+    //     return $this->belongsToMany(Order::class, 'product_id','qty');
+    // }
+    // public function wishlist(){
+    //     // dd('sd');
+    //             return $this->belongsTo(Wishlist::class,'product_id','id');
+    //         }
+    // public function user(){
+    //     return $this->belongsTo(User::class,'id');
+    // }
+
+
 }

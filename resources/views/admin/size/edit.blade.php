@@ -1,67 +1,26 @@
 @extends('admin.master')
-
-@section('content')
-<div class="container">
-    <div class=" text-center mt-5 ">
-
-        <h3 style="color: royalblue;" >Edit Size Form</h3>
-            
-        
-    </div>
-
-
-<div class="row ">
-  <div class="col-lg-7 mx-auto">
-    <div class="card mt-2 mx-auto p-4 bg-light">
-        <div class="card-body bg-light">
-   
-        <div class = "container">
-        <form id="contact-form" role="form" action="{{url('/update-size/'.$size->id)}}" method="POST">
+@section('admin.content')
+<div class="col-12 grid-margin stretch-card">
+    <div class="card">
+      <div class="card-body">
+        <h4 class="card-title" style="color:rgb(0, 138, 202);font-size:25px; text-align:center;">Edit Size</h4>
+        <p class="card-description">
+            Please fill out the form below.
+        </p>
+    
+        <form action="{{url('/update-size/'.$size->id)}}" method="POST" class="forms-sample">
             @csrf
-            
-
-        
-
-        <div class="controls">
-
-            <div class="row">
-                <div class="col-md-12">
-                    <div class="form-group">
-                        <label style="color: rgb(57, 114, 219);" for="form_name">Category Name</label>
-                        <input id="form_name" data-role="tagsinput"  type="text" name="size" class="form-control" value="{{implode(',',Json_decode($size->size))}}"  >
-                        
-                    </div>
-                </div>
-              
-            </div>
-            
-            <div class="row">
+          <div class="form-group">
+            <label for="exampleInputName1">Name</label>
+            <input type="text" class="form-control" name="name" data-role="tagsinput"  value="{{implode(',',Json_decode($size->name))}}" >
            
-
-
-                <div class="col-md-12">
-                    
-                    <input  type="submit" class="btn btn-success btn-send  pt-2 btn-block
-                        " value="Submit" >
-                
-            </div>
-      
-            </div>
-
-
+          </div>
+ 
+       
+          <button type="submit" class="btn btn-primary me-2">Submit</button>
+         
+        </form>
+      </div>
     </div>
-     </form>
-    </div>
-        </div>
-
-
-</div>
-    <!-- /.8 -->
-
-</div>
-<!-- /.row-->
-
-</div>
-</div>
-
+  </div>
 @endsection

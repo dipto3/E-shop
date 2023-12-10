@@ -4,7 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
-
+use App\Models\Product;
 class Order extends Model
 {
     use HasFactory;
@@ -26,5 +26,12 @@ class Order extends Model
         'image',
         'payment_status',
         'delivery_status',
+        'base_price',
+        'discount_price',
     ];
+
+    public function products()
+    {
+        return $this->belongsTo(Product::class,'id');
+    }
 }

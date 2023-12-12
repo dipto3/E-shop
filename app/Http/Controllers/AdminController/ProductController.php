@@ -35,7 +35,7 @@ class ProductController extends Controller
         $product->description = $request->description;
 
         $images = [];
-        if ($files = $request->file('file')) {
+        if ($files = $request->file('image')) {
             $i = 0;
             foreach ($files as $file) {
                 $name = $file->getClientOriginalName();

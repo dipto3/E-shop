@@ -28,7 +28,7 @@ $totalitem = 0;
                         <a class="nav-link" href="{{ url('/') }}">Home</a>
                     </li>
                     <li class="nav-item dropdown">
-                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="tv-shows.html"
+                        <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href=""
                             data-bs-toggle="dropdown">
                             Categories
                         </a>
@@ -58,7 +58,7 @@ $totalitem = 0;
                         <a class="nav-link" href="{{ url('/shop') }}">Shop</a>
                     </li>
                     <li class="nav-item">
-                        <a class="nav-link" href="">About</a>
+                        <a class="nav-link" href="{{ route('hotdeal.shop') }}">Offer</a>
                     </li>
                     <li class="nav-item dropdown">
                         <a class="nav-link dropdown-toggle dropdown-toggle-nocaret" href="javascript:;"

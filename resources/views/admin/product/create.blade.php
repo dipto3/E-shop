@@ -9,9 +9,9 @@
                     <div class="form-group">
                         <label for="">Name</label>
                         <input type="text" class="form-control" name="name" placeholder="Product Name">
-                        @error('name')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @if ($errors->has('name'))
+                            <span class="text-danger">{{ $errors->first('name') }}</span>
+                        @endif
                     </div>
                     <div class="form-group">
                         <label for="exampleSelectGender">Product Category</label>
@@ -22,7 +22,9 @@
                             @endforeach
 
                         </select>
-
+                        @if ($errors->has('category'))
+                            <span class="text-danger">{{ $errors->first('category') }}</span>
+                        @endif
 
                     </div>
                     <div class="form-group">
@@ -30,52 +32,62 @@
                         <select class="form-control" name="size">
                             <option>Choose Size</option>
                             @foreach ($sizes as $size)
-                                <option value="{{ $size->name }}">{{ $size->name }}</option>
+                                <option value="{{ $size->name }}" @selected(old('size') == $size->name)>{{ $size->name }}
+                                </option>
                             @endforeach
                         </select>
+                        {{-- @if ($errors->has('size'))
+                            <span class="text-danger">{{ $errors->first('size') }}</span>
+                        @endif --}}
 
 
                     </div>
                     <div class="form-group">
-                        <label for="exampleSelectGender">Product Color</label>
+                        <label for="color">Product Color</label>
                         <select class="form-control" name="color">
                             <option>Choose Color</option>
                             @foreach ($colors as $color)
-                                <option value="{{ $color->color }}">{{ $color->color }}</option>
+                                <option value="{{ $color->color }}" @selected(old('color') == $color->color)>{{ $color->color }}
+                                </option>
                             @endforeach
                         </select>
-
+                        @if ($errors->has('color'))
+                            <span class="text-danger">{{ $errors->first('color') }}</span>
+                        @endif
 
                     </div>
 
                     <div class="form-group">
                         <label for="">Price</label>
-                        <input type="text" class="form-control" name="price" placeholder="Product price" required>
-                        @error('price')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        <input type="text" class="form-control" name="price" placeholder="Product price">
+                        @if ($errors->has('price'))
+                            <span class="text-danger">{{ $errors->first('price') }}</span>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label for="">Discount Price</label>
-                        <input type="text" class="form-control" name="discountprice" placeholder="Product price">
-
+                        <input type="text" class="form-control" name="discountprice" placeholder="Product price"
+                            value="{{ old('discountprice') }}">
+                        @if ($errors->has('discountprice'))
+                            <span class="text-danger">{{ $errors->first('discountprice') }}</span>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label for="">Description</label>
                         <textarea class="form-control" name="description" id="exampleTextarea1" rows="4"></textarea>
-                        @error('description')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        @if ($errors->has('description'))
+                            <span class="text-danger">{{ $errors->first('description') }}</span>
+                        @endif
                     </div>
 
                     <div class="form-group">
                         <label>Image</label>
-                        <input name="file[]" type="file" class="form-control" multiple>
-                        @error('file')
-                            <div class="alert alert-danger">{{ $message }}</div>
-                        @enderror
+                        <input name="image[]" type="file" class="form-control" multiple>
+                        @if ($errors->has('image.*'))
+                            <span class="text-danger">{{ $errors->first('image.*') }}</span>
+                        @endif
 
                     </div>
 

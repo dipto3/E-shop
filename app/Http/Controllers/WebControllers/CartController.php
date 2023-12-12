@@ -14,7 +14,7 @@ use RealRashid\SweetAlert\Facades\Alert;
 class CartController extends Controller
 {
     public function add_cart(Request $request, $id)
-    {
+    { 
         if (Auth::id()) {
             $user = Auth::user();
             $product = Product::find($id);
@@ -41,10 +41,11 @@ class CartController extends Controller
                 // $cart->total_price = $cart->price * $cart->quantity;
                 $cart->save();
 
-                //                alert::success('Product in cart');
-                //                Toastr::success('Product in cart ', '', ["positionClass" => "toast-top-right"]);
+             
                 return redirect()->back();
             } else {
+                
+
                 $cart = new Cart;
                 $cart->user_name = $user->name;
                 $cart->user_id = $user->id;
@@ -88,8 +89,6 @@ class CartController extends Controller
 
                 $cart->save();
 
-                //                Alert::success('Product in cart','Success');
-                //                Toastr::success('Product in cart', 'Success!', ["positionClass" => "toast-top-right"]);
                 return redirect()->back();
             }
         } else {

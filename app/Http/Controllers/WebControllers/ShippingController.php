@@ -59,8 +59,6 @@ class ShippingController extends Controller
                 'rcv_district' => $request->district,
                 'zip_code' => $request->zip
             ]);
-          
-
             return redirect('/checkout');
         }
     }

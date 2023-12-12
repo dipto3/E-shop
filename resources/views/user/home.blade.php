@@ -21,9 +21,9 @@
                                     <div class="">
                                         <h1 class="h1 text-white fw-bold">{{ $hotdeal->frst_desp }}</h1>
                                         <p class="text-white fw-bold"><i>{{ $hotdeal->scnd_desp }}</i></p>
-                                        <div class=""><a class="btn btn-dark btn-ecomm"
+                                        {{-- <div class=""><a class="btn btn-dark btn-ecomm"
                                                 href="{{ route('hotdeal.shop') }}">Shop Now</a>
-                                        </div>
+                                        </div> --}}
                                     </div>
                                 </div>
                                 <div class="col">

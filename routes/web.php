@@ -111,7 +111,6 @@ Route::get('/order-remove/{id}', [OrderController::class, 'cancel']);
 // Route::resource('/hot_deal', HotdealController::class);
 //Category-admin
 // Route::post('/order', [OrderController::class, 'index'])->name('order');
-
 // Route::get('/search-product/{name}', [AllproductController::class, 'search_ranges'])->name('search');
 
 //frontend
@@ -122,7 +121,7 @@ Route::group(['middleware' => 'auth'], function () {
     Route::get('/delete-wishlist/{id}', [\App\Http\Controllers\WebControllers\WishlistController::class, 'destroy']);
 
     Route::post('/add_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'add_cart'])->name('cart.store');
-    Route::get('/hotdeal-products', [UserController::class, 'hotdeal'])->name('hotdeal.shop');
+
 
     Route::get('/delete_cart/{id}', [\App\Http\Controllers\WebControllers\CartController::class, 'delete_cart'])->name('delete.cart');
 
@@ -149,3 +148,4 @@ Route::get('/carts', [CartController::class, 'carts']);
 Route::get('/productbycat/{name}', [AllproductController::class, 'productbycat'])->name('hello');
 Route::get('/product-details/{id}', [\App\Http\Controllers\WebControllers\ProductdetailsController::class, 'viewdetails'])->name('product.details');
 Route::get('/shop', [AllproductController::class, 'shop']);
+Route::get('/hotdeal-products', [UserController::class, 'hotdeal'])->name('hotdeal.shop');

@@ -28,7 +28,7 @@ class ProductRequest extends FormRequest
             'name' => 'required',
             'price' => 'required',
             'description' => 'required',
-            'image.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp|dimensions:width=300,height=300',
+            'image.*' => 'required|image|mimes:jpeg,png,jpg,gif,webp|dimensions:width=400,height=450',
             'price' => 'required',
             'color' => 'required',
             'category' => 'required',
@@ -46,7 +46,7 @@ class ProductRequest extends FormRequest
             'image.*.required' => 'Product image is required.',
             'image.*.image' => 'Product file must be an image (jpeg, png, jpg, gif, webp).',
             'image.*.mimes' => 'Product image must be of type: jpeg, png, jpg, gif, webp.',
-            'image.*.dimensions' => 'Product image dimensions must be 300x300 pixels.',
+            'image.*.dimensions' => 'Product image dimensions must be 400x450 pixels.',
         ];
     }
 }
